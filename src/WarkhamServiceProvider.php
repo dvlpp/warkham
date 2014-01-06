@@ -1,6 +1,7 @@
 <?php
 namespace Warkham;
 
+use Former\FormerServiceProvider;
 use Former\MethodDispatcher;
 use Illuminate\Container\Container;
 use Illuminate\Support\ServiceProvider;
@@ -40,6 +41,7 @@ class WarkhamServiceProvider extends ServiceProvider
 
 		// Call the class binders
 		$serviceProvider = new static($app);
+		$app = FormerServiceProvider::make($app);
 		$app = $serviceProvider->bindWarkhamClasses($app);
 
 		return $app;
