@@ -2,14 +2,15 @@
 	"name": "vlpp/warkham",
 	"require": {
 		"illuminate/support": "~4",
-		"illuminate/container": "~4"
+		"illuminate/container": "~4",
+		"anahkiasen/former": "dev-develop"
 	},
 	"require-dev": {
 		"mockery/mockery": "dev-master"
 	},
 	"autoload": {
 		"psr-4": {
-			"Warkham": "src"
+			"Warkham\\": "src/"
 		}
 	},
 	"license": "MIT",
@@ -23,5 +24,8 @@
 			"email": "philippelonchampt@gmail.com"
 		}
 	],
+	"config": {
+		"preferred-install": "dist"
+	},
 	"minimum-stability": "dev"
 }

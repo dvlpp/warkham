@@ -1,6 +1,7 @@
 <?php
 namespace Warkham;
 
+use Former\MethodDispatcher;
 use Illuminate\Container\Container;
 use Illuminate\Support\ServiceProvider;
 
@@ -36,6 +37,26 @@ class WarkhamServiceProvider extends ServiceProvider
 		if (!$app) {
 			$app = new Container;
 		}
+
+		// Call the class binders
+		$serviceProvider = new static($app);
+		$app = $serviceProvider->bindWarkhamClasses($app);
+
+		return $app;
+	}
+
+	/**
+	 * Bind the Warkham classes to the Container
+	 *
+	 * @param Container $app
+	 *
+	 * @return Container
+	 */
+	public function bindWarkhamClasses(Container $app)
+	{
+		$app->singleton('warkham', function ($app) {
+			return new Warkham($app, new MethodDispatcher($app));
+		});
 
 		return $app;
 	}
