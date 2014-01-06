@@ -1,0 +1,27 @@
+{
+	"name": "vlpp/warkham",
+	"require": {
+		"illuminate/support": "~4",
+		"illuminate/container": "~4"
+	},
+	"require-dev": {
+		"mockery/mockery": "dev-master"
+	},
+	"autoload": {
+		"psr-4": {
+			"Warkham": "src"
+		}
+	},
+	"license": "MIT",
+	"authors": [
+		{
+			"name": "Maxime Fabre",
+			"email": "ehtnam6@gmail.com"
+		},
+		{
+			"name": "Philippe Lonchampt",
+			"email": "philippelonchampt@gmail.com"
+		}
+	],
+	"minimum-stability": "dev"
+}
