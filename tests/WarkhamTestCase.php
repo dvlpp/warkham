@@ -3,8 +3,8 @@ namespace Warkham;
 
 require __DIR__.'/../vendor/autoload.php';
 
+use HtmlObject\Element;
 use PHPUnit_Framework_TestCase;
-use Warkham\Abstracts\AbstractField;
 use Warkham\Dummies\DummyField;
 
 /**
@@ -81,12 +81,12 @@ abstract class WarkhamTestCase extends PHPUnit_Framework_TestCase
 	/**
 	 * Matches and asserts a field
 	 *
-	 * @param AbstractField $field
-	 * @param array         $attributes
+	 * @param Element $field
+	 * @param array   $attributes
 	 *
 	 * @return void
 	 */
-	protected function assertField(AbstractField $field, $attributes = array())
+	protected function assertField(Element $field, $attributes = array())
 	{
 		$matcher = $this->matchField($attributes);
 

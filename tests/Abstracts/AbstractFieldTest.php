@@ -28,4 +28,20 @@ class AbstractFieldTest extends WarkhamTestCase
 			'data-disabled' => 'true',
 		));
 	}
+
+	public function testCanAddClass()
+	{
+		$field   = $this->getDummyField()->class('foobar')->addClass('baz');
+		$matcher = $this->assertField($field, array(
+			'class' => 'foobar baz',
+		));
+	}
+
+	public function testCanSetValue()
+	{
+		$field   = $this->getDummyField()->setValue('test');
+		$matcher = $this->assertField($field, array(
+			'value' => 'test',
+		));
+	}
 }
