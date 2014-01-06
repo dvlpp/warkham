@@ -68,7 +68,6 @@ abstract class WarkhamTestCase extends PHPUnit_Framework_TestCase
 	{
 		$attributes = array_merge(array(
 			'name'  => 'dummy',
-			'value' => 'foobar',
 		), $attributes);
 
 		return array(
@@ -89,7 +88,11 @@ abstract class WarkhamTestCase extends PHPUnit_Framework_TestCase
 	protected function assertField(Element $field, $attributes = array())
 	{
 		$matcher = $this->matchField($attributes);
+		$render  = $field->render();
 
-		return $this->assertTag($matcher, $field->render());
+		return $this->assertTag(
+			$matcher,
+			$render,
+			"Failing to assert that ".PHP_EOL.$render.PHP_EOL."matches".PHP_EOL.json_encode($matcher));
 	}
 }
