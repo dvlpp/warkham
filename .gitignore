@@ -1,0 +1,5 @@
+# Dotfiles
+.DS_Store
+
+# Dependencies
+vendor
