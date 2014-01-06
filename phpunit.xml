@@ -11,6 +11,10 @@
 		 syntaxCheck="false"
 >
 
+	<logging>
+		<log type="coverage-text" target="coverage.txt" />
+	</logging>
+
 	<filter>
 		<whitelist>
 			<directory>src</directory>

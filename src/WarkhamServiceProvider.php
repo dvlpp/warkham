@@ -14,6 +14,8 @@ class WarkhamServiceProvider extends ServiceProvider
 	/**
 	 * Register the various Warkham classes
 	 *
+	 * @codeCoverageIgnore
+	 *
 	 * @return void
 	 */
 	public function register()
