@@ -11,10 +11,10 @@ abstract class AbstractField extends Field
 {
 	use WarkhamField;
 
-  /**
-   * Properties to be injected as attributes
-   *
-   * @var array
-   */
-  protected $injectedProperties = array('type', 'name', 'value');
+	/**
+	 * Properties to be injected as attributes
+	 *
+	 * @var array
+	 */
+	protected $injectedProperties = array('type', 'name', 'value');
 }
