@@ -8,6 +8,13 @@ use Former\Traits\Field;
  */
 abstract class AbstractField extends Field
 {
+  /**
+   * Properties to be injected as attributes
+   *
+   * @var array
+   */
+  protected $injectedProperties = array('type', 'name', 'value');
+
 	/**
 	 * Enable or disable a field
 	 *
@@ -17,8 +24,27 @@ abstract class AbstractField extends Field
 	 */
 	public function enable($enabled)
 	{
-		$enabled = !$enabled ? 'true' : 'false';
-		$this->dataDisabled($enabled);
+		return $this->setDataAttribute('disabled', !$enabled);
+	}
+
+	////////////////////////////////////////////////////////////////////
+	/////////////////////////////// HELPERS ////////////////////////////
+	////////////////////////////////////////////////////////////////////
+
+	/**
+	 * Set a data attribute on the field
+	 *
+	 * @param string $attribute
+	 * @param mixed  $value
+	 */
+	protected function setDataAttribute($attribute, $value)
+	{
+		// Format boolean values
+		if (is_bool($value)) {
+			$value = $value ? 'true' : 'false';
+		}
+
+		$this->setAttribute('data-'.$attribute, $value);
 
 		return $this;
 	}

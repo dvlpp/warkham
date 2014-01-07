@@ -2,41 +2,24 @@
 namespace Warkham;
 
 require __DIR__.'/../vendor/autoload.php';
+require __DIR__.'/ContainerTestCase.php';
 
 use HtmlObject\Element;
-use PHPUnit_Framework_TestCase;
 use Warkham\Dummies\DummyField;
 
 /**
  * The abstract test case for all Warkham tests
  */
-abstract class WarkhamTestCase extends PHPUnit_Framework_TestCase
+abstract class WarkhamTestCase extends ContainerTestCase
 {
-	/**
-	 * The current container
-	 *
-	 * @var Illuminate\Container\Container
-	 */
-	protected $app;
-
 	/**
 	 * Set up the tests
 	 */
 	public function setUp()
 	{
-		$this->app = WarkhamServiceProvider::make();
-	}
+		parent::setUp();
 
-	/**
-	 * Fetch a class from the container
-	 *
-	 * @param string $key
-	 *
-	 * @return object
-	 */
-	public function __get($key)
-	{
-		return $this->app[$key];
+		$this->app = WarkhamServiceProvider::make($this->app);
 	}
 
 	////////////////////////////////////////////////////////////////////
@@ -67,7 +50,8 @@ abstract class WarkhamTestCase extends PHPUnit_Framework_TestCase
 	protected function matchField($attributes = array())
 	{
 		$attributes = array_merge(array(
-			'name'  => 'dummy',
+			'name' => 'dummy',
+			'type' => 'text',
 		), $attributes);
 
 		return array(
