@@ -14,6 +14,17 @@ class FileTest extends WarkhamTestCase
 		));
 	}
 
+	public function testCanCallOriginalFileMethods()
+	{
+		$field = $this->warkham->file('dummy');
+		$field->accept('jpg');
+
+		$this->assertField($field, array(
+			'type'   => 'file',
+			'accept' => 'image/jpeg',
+		));
+	}
+
 	public function testCanSetAsMultiple()
 	{
 		$field = $this->warkham->file('dummy');

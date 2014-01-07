@@ -1,14 +1,17 @@
 <?php
 namespace Warkham\Fields;
 
+use Former\Form\Fields\File as FormerFile;
 use Illuminate\Support\Str;
-use Warkham\Abstracts\AbstractField;
+use Warkham\Traits\WarkhamField;
 
 /**
  * A file input
  */
-class File extends AbstractField
+class File extends FormerFile
 {
+	use WarkhamField;
+
 	/**
 	 * The input type
 	 *
