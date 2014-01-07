@@ -74,9 +74,22 @@ abstract class WarkhamTestCase extends ContainerTestCase
 		$matcher = $this->matchField($attributes);
 		$render  = $field->render();
 
+		return $this->assertHtml($matcher, $render);
+	}
+
+	/**
+	 * Asserts a piece of HTML matches an array
+	 *
+	 * @param array  $expected
+	 * @param string $output
+	 *
+	 * @return vodi
+	 */
+	protected function assertHtml($expected, $output)
+	{
 		return $this->assertTag(
-			$matcher,
-			$render,
-			"Failing to assert that ".PHP_EOL.$render.PHP_EOL."matches".PHP_EOL.json_encode($matcher));
+			$expected,
+			$output,
+			"Failing to assert that ".PHP_EOL.$output.PHP_EOL."matches".PHP_EOL.json_encode($expected));
 	}
 }
