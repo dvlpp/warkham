@@ -4,6 +4,10 @@
     "bower": "1.2.7",
     "grunt": "*",
     "grunt-cli": "*",
-    "grunt-bower-task": "*"
+    "grunt-bower-task": "*",
+    "grunt-contrib-concat": "*",
+    "grunt-contrib-cssmin": "*",
+    "grunt-contrib-uglify": "*",
+    "grunt-contrib-watch": "*"
   }
 }

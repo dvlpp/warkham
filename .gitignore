@@ -1,6 +1,10 @@
 # Dotfiles
 .DS_Store
 
+# Assets
+public/warkham.css
+public/warkham.js
+
 # Dependencies
 public/components
 node_modules
