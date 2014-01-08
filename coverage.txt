@@ -1,19 +1,19 @@
 
 
 Code Coverage Report:    
-  2014-01-08 18:38:46    
+  2014-01-08 18:39:54    
                          
  Summary:                
-  Classes: 66.67% (4/6)  
-  Methods: 83.33% (10/12)
-  Lines:   87.18% (34/39)
+  Classes: 83.33% (5/6)  
+  Methods: 91.67% (11/12)
+  Lines:   89.74% (35/39)
 
 \Warkham::WarkhamServiceProvider
   Methods: 100.00% ( 2/ 2)   Lines: 100.00% ( 10/ 10)
 \Warkham\Facades::Warkham
   Methods: 100.00% ( 1/ 1)   Lines: 100.00% (  4/  4)
 \Warkham\Fields::File
-  Methods:  75.00% ( 3/ 4)   Lines:  87.50% (  7/  8)
+  Methods: 100.00% ( 4/ 4)   Lines: 100.00% (  8/  8)
 \Warkham\Fields::Textarea
   Methods: 100.00% ( 1/ 1)   Lines: 100.00% (  1/  1)
 \Warkham\Traits::WarkhamField

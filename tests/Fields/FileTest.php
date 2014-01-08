@@ -25,6 +25,15 @@ class FileTest extends WarkhamTestCase
 		));
 	}
 
+	public function testCanSetProgressAttribute()
+	{
+		$field = $this->warkham->file('dummy')->progress(true);
+		$this->assertField($field, array(
+			'type'          => 'file',
+			'data-progress' => 'true',
+		));
+	}
+
 	public function testCanSetAsMultiple()
 	{
 		$field = $this->warkham->file('dummy');
