@@ -2,7 +2,6 @@
 namespace Warkham\Fields;
 
 use Former\Form\Fields\File as FormerFile;
-use Illuminate\Support\Str;
 use Warkham\Traits\WarkhamField;
 
 /**
@@ -49,13 +48,7 @@ class File extends FormerFile
 	 */
 	public function uploadRoute($route)
 	{
-		// Find route
-		$route = Str::contains('@', $route) ? $this->app['url']->controller($route) : $this->app['url']->route($route);
-		if ($route) {
-			$this->setAttribute('data-url', $route);
-		}
-
-		return $this;
+		return $this->setRoute($route);
 	}
 
 	/**

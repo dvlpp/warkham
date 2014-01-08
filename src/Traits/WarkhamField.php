@@ -1,6 +1,8 @@
 <?php
 namespace Warkham\Traits;
 
+use Illuminate\Support\Str;
+
 /**
  * A trait that adds Warkham-related methods to fields
  */
@@ -21,6 +23,22 @@ trait WarkhamField
 	////////////////////////////////////////////////////////////////////
 	/////////////////////////////// HELPERS ////////////////////////////
 	////////////////////////////////////////////////////////////////////
+
+	/**
+	 * Set a data-url attribute
+	 *
+	 * @param string $route
+	 */
+	protected function setRoute($route)
+	{
+		// Find route
+		$route = Str::contains('@', $route) ? $this->app['url']->controller($route) : $this->app['url']->route($route);
+		if ($route) {
+			$this->setAttribute('data-url', $route);
+		}
+
+		return $this;
+	}
 
 	/**
 	 * Set a data attribute on the field
