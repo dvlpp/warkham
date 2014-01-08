@@ -1,0 +1,9 @@
+{
+  "name": "warkham",
+  "dependencies": {
+    "bower": "1.2.7",
+    "grunt": "*",
+    "grunt-cli": "*",
+    "grunt-bower-task": "*"
+  }
+}

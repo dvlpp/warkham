@@ -2,4 +2,6 @@
 .DS_Store
 
 # Dependencies
+public/components
+node_modules
 vendor
