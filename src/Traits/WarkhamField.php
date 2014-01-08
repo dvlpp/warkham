@@ -15,7 +15,7 @@ trait WarkhamField
 	 */
 	public function enable($enabled)
 	{
-		return $this->setDataAttribute('disabled', !$enabled);
+		return $this->disabled($enabled ? 'false' : 'true');
 	}
 
 	////////////////////////////////////////////////////////////////////

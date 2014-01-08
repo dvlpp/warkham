@@ -17,7 +17,7 @@ class AbstractFieldTest extends WarkhamTestCase
 	{
 		$field   = $this->getDummyField()->enable(true);
 		$matcher = $this->assertField($field, array(
-			'data-disabled' => 'false',
+			'disabled' => 'false',
 		));
 	}
 
@@ -25,7 +25,7 @@ class AbstractFieldTest extends WarkhamTestCase
 	{
 		$field   = $this->getDummyField()->enable(false);
 		$matcher = $this->assertField($field, array(
-			'data-disabled' => 'true',
+			'disabled' => 'true',
 		));
 	}
 
