@@ -68,6 +68,7 @@ module.exports = function(grunt) {
 			css: {
 				dest: '<%= paths.compiled.css %>/<%= name %>.css',
 				src: [
+					'<%= components %>/bootstrap/dist/css/bootstrap.min.css',
 					'<%= components %>/chosen/chosen.min.css',
 				],
 			},

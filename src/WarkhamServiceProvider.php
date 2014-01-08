@@ -46,6 +46,9 @@ class WarkhamServiceProvider extends ServiceProvider
 		$app = FormerServiceProvider::make($app);
 		$app = $serviceProvider->bindWarkhamClasses($app);
 
+		// Set framework
+		$app['former']->framework('TwitterBootstrap3');
+
 		return $app;
 	}
 
