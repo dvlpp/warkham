@@ -62,7 +62,10 @@ class WarkhamServiceProvider extends ServiceProvider
 	public function bindWarkhamClasses(Container $app)
 	{
 		$app->singleton('warkham', function ($app) {
-			return new Warkham($app, new MethodDispatcher($app, 'Warkham\\Fields\\'));
+			$methodDispatcher = array('Warkham\\Fields\\', Warkham::FIELDSPACE);
+			$methodDispatcher = new MethodDispatcher($app, $methodDispatcher);
+
+			return new Warkham($app, $methodDispatcher);
 		});
 
 		return $app;

@@ -16,7 +16,7 @@ use Warkham\Facades\Warkham;
 		</header>
 
 		<?= Warkham::open() ?>
-			<?= Warkham::text('foo') ?>
+			<?= Warkham::text('name') ?>
 		<?= Warkham::close() ?>
 	</main>
 	<script src="warkham.min.js"></script>
