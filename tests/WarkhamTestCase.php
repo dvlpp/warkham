@@ -22,6 +22,17 @@ abstract class WarkhamTestCase extends ContainerTestCase
 		$this->app = WarkhamServiceProvider::make($this->app);
 	}
 
+	/**
+	 * Reset the currently registered Former labels
+	 *
+	 * @return void
+	 */
+	public function resetLabels()
+	{
+		$this->former->labels = array();
+		$this->former->ids    = array();
+	}
+
 	////////////////////////////////////////////////////////////////////
 	/////////////////////////////// DUMMIES ////////////////////////////
 	////////////////////////////////////////////////////////////////////
