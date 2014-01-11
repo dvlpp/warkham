@@ -11,12 +11,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Anahkiasen/former.git",
-                "reference": "817d35dc25fe7079db7569eb1692e1d9cd12c6bd"
+                "reference": "d1009b569c3dd9ac049ef0ccbff22bed3a1009f5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Anahkiasen/former/zipball/817d35dc25fe7079db7569eb1692e1d9cd12c6bd",
-                "reference": "817d35dc25fe7079db7569eb1692e1d9cd12c6bd",
+                "url": "https://api.github.com/repos/Anahkiasen/former/zipball/d1009b569c3dd9ac049ef0ccbff22bed3a1009f5",
+                "reference": "d1009b569c3dd9ac049ef0ccbff22bed3a1009f5",
                 "shasum": ""
             },
             "require": {
@@ -60,7 +60,7 @@
                 "foundation",
                 "laravel"
             ],
-            "time": "2014-01-06 13:55:06"
+            "time": "2014-01-08 18:24:01"
         },
         {
             "name": "anahkiasen/html-object",
@@ -68,12 +68,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Anahkiasen/html-object.git",
-                "reference": "2c6cdc6368d19ac42357f7ae17bd99652a1916e4"
+                "reference": "6264f3dd6b65b40a47632328e9049db83750a4c6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Anahkiasen/html-object/zipball/2c6cdc6368d19ac42357f7ae17bd99652a1916e4",
-                "reference": "2c6cdc6368d19ac42357f7ae17bd99652a1916e4",
+                "url": "https://api.github.com/repos/Anahkiasen/html-object/zipball/6264f3dd6b65b40a47632328e9049db83750a4c6",
+                "reference": "6264f3dd6b65b40a47632328e9049db83750a4c6",
                 "shasum": ""
             },
             "require": {
@@ -91,12 +91,12 @@
             ],
             "authors": [
                 {
-                    "name": "Anahkiasen",
+                    "name": "Maxime Fabre",
                     "email": "ehtnam6@gmail.com"
                 }
             ],
             "description": "A set of classes to create and manipulate HTML objects abstractions",
-            "time": "2013-11-19 15:20:02"
+            "time": "2014-01-08 20:26:54"
         },
         {
             "name": "illuminate/cache",
@@ -105,12 +105,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/cache.git",
-                "reference": "947ad35e040cd239c2208e4214a4683884ad76c0"
+                "reference": "21debfd5f34384da4df29c8a79f6946d30f16ea6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/illuminate/cache/zipball/947ad35e040cd239c2208e4214a4683884ad76c0",
-                "reference": "947ad35e040cd239c2208e4214a4683884ad76c0",
+                "url": "https://api.github.com/repos/illuminate/cache/zipball/21debfd5f34384da4df29c8a79f6946d30f16ea6",
+                "reference": "21debfd5f34384da4df29c8a79f6946d30f16ea6",
                 "shasum": ""
             },
             "require": {
@@ -148,7 +148,7 @@
                     "role": "Developer"
                 }
             ],
-            "time": "2013-12-29 04:41:04"
+            "time": "2014-01-08 19:55:26"
         },
         {
             "name": "illuminate/config",
@@ -501,12 +501,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/session.git",
-                "reference": "014f782c2dba7654534c97b2f16171732c5281b6"
+                "reference": "c0a3a811f77705f33192d46319dcf8415b93234f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/illuminate/session/zipball/014f782c2dba7654534c97b2f16171732c5281b6",
-                "reference": "014f782c2dba7654534c97b2f16171732c5281b6",
+                "url": "https://api.github.com/repos/illuminate/session/zipball/c0a3a811f77705f33192d46319dcf8415b93234f",
+                "reference": "c0a3a811f77705f33192d46319dcf8415b93234f",
                 "shasum": ""
             },
             "require": {
@@ -547,7 +547,7 @@
                     "role": "Developer"
                 }
             ],
-            "time": "2013-12-29 04:41:04"
+            "time": "2014-01-08 19:55:26"
         },
         {
             "name": "illuminate/support",
@@ -556,12 +556,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/support.git",
-                "reference": "48db89ad7bd5f6b384377abc7ad1f96a387eabd9"
+                "reference": "ee75af06f763baa6fa04d94a64de328652e731ec"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/illuminate/support/zipball/48db89ad7bd5f6b384377abc7ad1f96a387eabd9",
-                "reference": "48db89ad7bd5f6b384377abc7ad1f96a387eabd9",
+                "url": "https://api.github.com/repos/illuminate/support/zipball/ee75af06f763baa6fa04d94a64de328652e731ec",
+                "reference": "ee75af06f763baa6fa04d94a64de328652e731ec",
                 "shasum": ""
             },
             "require": {
@@ -598,7 +598,7 @@
                     "role": "Developer"
                 }
             ],
-            "time": "2013-12-13 02:49:39"
+            "time": "2014-01-08 19:55:26"
         },
         {
             "name": "illuminate/translation",
@@ -1081,12 +1081,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/padraic/mockery.git",
-                "reference": "644b78e1ecee00419b63b2ee5cf0e427f34d82a6"
+                "reference": "adfba47a81584bb486cda9923c95a96edfcfb168"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/padraic/mockery/zipball/644b78e1ecee00419b63b2ee5cf0e427f34d82a6",
-                "reference": "644b78e1ecee00419b63b2ee5cf0e427f34d82a6",
+                "url": "https://api.github.com/repos/padraic/mockery/zipball/adfba47a81584bb486cda9923c95a96edfcfb168",
+                "reference": "adfba47a81584bb486cda9923c95a96edfcfb168",
                 "shasum": ""
             },
             "require": {
@@ -1097,6 +1097,11 @@
                 "hamcrest/hamcrest-php": "~1.1"
             },
             "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "0.9.x-dev"
+                }
+            },
             "autoload": {
                 "psr-0": {
                     "Mockery": "library/"
@@ -1127,7 +1132,7 @@
                 "test double",
                 "testing"
             ],
-            "time": "2013-12-31 14:43:56"
+            "time": "2014-01-09 14:53:14"
         }
     ],
     "aliases": [
