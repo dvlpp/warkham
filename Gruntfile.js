@@ -22,8 +22,8 @@ module.exports = function(grunt) {
 
 		paths: {
 			original: {
-				css  : '<%= src %>/css',
-				js   : '<%= src %>/js',
+				css  : '<%= src %>/assets/css',
+				js   : '<%= src %>/assets/js',
 			},
 			compiled: {
 				js  : '<%= builds %>',
@@ -77,6 +77,7 @@ module.exports = function(grunt) {
 				src: [
 					'<%= components %>/jquery/jquery.js',
 					'<%= components %>/chosen/chosen.jquery.js',
+					'<%= paths.original.js %>/*.js'
 				],
 			}
 		},
