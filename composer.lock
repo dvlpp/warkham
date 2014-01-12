@@ -11,12 +11,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Anahkiasen/former.git",
-                "reference": "d1009b569c3dd9ac049ef0ccbff22bed3a1009f5"
+                "reference": "2c4701807b4dbcb54af8cf00d15ac6c4c88f6e80"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Anahkiasen/former/zipball/d1009b569c3dd9ac049ef0ccbff22bed3a1009f5",
-                "reference": "d1009b569c3dd9ac049ef0ccbff22bed3a1009f5",
+                "url": "https://api.github.com/repos/Anahkiasen/former/zipball/2c4701807b4dbcb54af8cf00d15ac6c4c88f6e80",
+                "reference": "2c4701807b4dbcb54af8cf00d15ac6c4c88f6e80",
                 "shasum": ""
             },
             "require": {
@@ -60,7 +60,7 @@
                 "foundation",
                 "laravel"
             ],
-            "time": "2014-01-08 18:24:01"
+            "time": "2014-01-11 16:42:58"
         },
         {
             "name": "anahkiasen/html-object",
@@ -68,12 +68,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Anahkiasen/html-object.git",
-                "reference": "6264f3dd6b65b40a47632328e9049db83750a4c6"
+                "reference": "5a94a0c9ee4113832932ca1941067c7a049687ad"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Anahkiasen/html-object/zipball/6264f3dd6b65b40a47632328e9049db83750a4c6",
-                "reference": "6264f3dd6b65b40a47632328e9049db83750a4c6",
+                "url": "https://api.github.com/repos/Anahkiasen/html-object/zipball/5a94a0c9ee4113832932ca1941067c7a049687ad",
+                "reference": "5a94a0c9ee4113832932ca1941067c7a049687ad",
                 "shasum": ""
             },
             "require": {
@@ -91,12 +91,12 @@
             ],
             "authors": [
                 {
-                    "name": "Maxime Fabre",
+                    "name": "Anahkiasen",
                     "email": "ehtnam6@gmail.com"
                 }
             ],
             "description": "A set of classes to create and manipulate HTML objects abstractions",
-            "time": "2014-01-08 20:26:54"
+            "time": "2014-01-11 17:01:42"
         },
         {
             "name": "illuminate/cache",

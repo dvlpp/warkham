@@ -68,15 +68,15 @@ module.exports = function(grunt) {
 			css: {
 				dest: '<%= paths.compiled.css %>/<%= name %>.css',
 				src: [
-					'<%= components %>/bootstrap/dist/css/bootstrap.min.css',
-					'<%= components %>/chosen/chosen.min.css',
+					'<%= components %>/bootstrap/dist/css/bootstrap.css',
+					'<%= components %>/chosen/chosen.css',
 				],
 			},
 			js: {
 				dest: '<%= paths.compiled.js %>/<%= name %>.js',
 				src: [
-					'<%= components %>/jquery/jquery.min.js',
-					'<%= components %>/chosen/chosen.jquery.min.js',
+					'<%= components %>/jquery/jquery.js',
+					'<%= components %>/chosen/chosen.jquery.js',
 				],
 			}
 		},
@@ -85,7 +85,7 @@ module.exports = function(grunt) {
 			minify: {
 				expand : true,
 				cwd    : '<%= builds %>',
-				src    : '*.css',
+				src    : 'warkham.css',
 				dest   : '<%= builds %>',
 				ext    : '.min.css'
 			}
@@ -96,7 +96,7 @@ module.exports = function(grunt) {
 				files: [{
 					expand : true,
 					cwd    : '<%= paths.compiled.js %>',
-					src    : '*.js',
+					src    : 'warkham.js',
 					dest   : '<%= paths.compiled.js %>',
 					ext    : '.min.js',
 				}],
