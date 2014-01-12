@@ -46,6 +46,9 @@ switch ($request) {
 			<?= Warkham::file('file') ?>
 			<?= Warkham::textarea('textarea') ?>
 			<?= Warkham::oracle('oracle')->setAvailableValuesRoute('oracle') ?>
+			<?= Warkham::choice('foo', 'bar')->setAvailableValues(['foo', 'bar'])->ui('list') ?>
+			<?= Warkham::choice('foo', 'bar')->setAvailableValues(['foo', 'bar'])->ui('radio') ?>
+			<?= Warkham::choice('foo', 'bar')->setAvailableValues(['foo', 'bar'])->ui('checklist') ?>
 		<?= Warkham::close() ?>
 	</main>
 	<script src="warkham.min.js"></script>
