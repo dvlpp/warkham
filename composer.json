@@ -3,6 +3,7 @@
 	"require": {
 		"illuminate/support": "~4",
 		"illuminate/container": "~4",
+		"illuminate/events": "~4",
 		"anahkiasen/former": "dev-develop"
 	},
 	"require-dev": {

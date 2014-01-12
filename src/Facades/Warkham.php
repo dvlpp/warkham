@@ -18,9 +18,21 @@ class Warkham extends Facade
 	{
 		// Build Container at runtime if necessary
 		if (!static::$app) {
-			static::$app = WarkhamServiceProvider::make();
+			static::make();
 		}
 
 		return 'warkham';
+	}
+
+	/**
+	 * Create application container
+	 *
+	 * @return Illuminate\Container\Container
+	 */
+	public static function make()
+	{
+		static::$app = WarkhamServiceProvider::make();
+
+		return static::$app;
 	}
 }

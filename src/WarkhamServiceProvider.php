@@ -4,7 +4,10 @@ namespace Warkham;
 use Former\FormerServiceProvider;
 use Former\MethodDispatcher;
 use Illuminate\Container\Container;
+use Illuminate\Events\Dispatcher;
+use Illuminate\Routing\Router;
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Routing\UrlGenerator;
 
 /**
  * Binds the Warkham classes to the container
@@ -44,10 +47,35 @@ class WarkhamServiceProvider extends ServiceProvider
 		// Call the class binders
 		$serviceProvider = new static($app);
 		$app = FormerServiceProvider::make($app);
+		$app = $serviceProvider->bindCoreClasses($app);
 		$app = $serviceProvider->bindWarkhamClasses($app);
 
 		// Set framework
 		$app['former']->framework('TwitterBootstrap3');
+
+		return $app;
+	}
+
+	/**
+	 * Bind core classes to the Container
+	 *
+	 * @param Container $app
+	 *
+	 * @return Container
+	 */
+	public function bindCoreClasses(Container $app)
+	{
+		$app->bindIf('events', function ($app) {
+			return new Dispatcher($app);
+		}, true);
+
+		$app->bindIf('router', function ($app) {
+			return new Router($app['events'], $app);
+		}, true);
+
+		$app->bind('url', function ($app) {
+			return new UrlGenerator($app['router']->getRoutes(), $app['request']);
+		});
 
 		return $app;
 	}

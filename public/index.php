@@ -1,6 +1,31 @@
 <?php
 require __DIR__.'/../vendor/autoload.php';
+
 use Warkham\Facades\Warkham;
+use Illuminate\Support\Facades\Response;
+
+// Create application container for the demo here
+$app = Warkham::make();
+
+// Define some routes for testing
+$oracle = function() {
+	Response::json(array(
+		1 => 'foo',
+		2 => 'bar',
+	))->send();
+};
+
+// Register the routes
+$app['router']->get('oracle', ['as' => 'oracle', 'use' => $oracle]);
+
+// Mock application handling
+$request = $_SERVER['REQUEST_URI'];
+$request = substr($request, strpos($request, '/public/') + 8);
+
+switch ($request) {
+	case 'oracle':
+		return $oracle();
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -16,7 +41,11 @@ use Warkham\Facades\Warkham;
 		</header>
 
 		<?= Warkham::open() ?>
-			<?= Warkham::text('name') ?>
+			<?= Warkham::text('text') ?>
+			<?= Warkham::checkbox('checkbox') ?>
+			<?= Warkham::file('file') ?>
+			<?= Warkham::textarea('textarea') ?>
+			<?= Warkham::oracle('oracle')->setAvailableValuesRoute('oracle') ?>
 		<?= Warkham::close() ?>
 	</main>
 	<script src="warkham.min.js"></script>
