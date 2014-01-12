@@ -41,6 +41,7 @@ module.exports = function(grunt) {
 		watch: {
 			options: {
 				interrupt : true,
+				livereload: true,
 			},
 
 			grunt: {
@@ -77,7 +78,7 @@ module.exports = function(grunt) {
 				src: [
 					'<%= components %>/jquery/jquery.js',
 					'<%= components %>/chosen/chosen.jquery.js',
-					'<%= paths.original.js %>/*.js'
+					'<%= paths.original.js %>/**/*.js'
 				],
 			}
 		},

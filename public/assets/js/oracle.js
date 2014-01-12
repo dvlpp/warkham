@@ -6,5 +6,7 @@ $('.wkm-oracle').each(function() {
 		$.each(results, function (key, value) {
 			$field.append(new Option(value, key));
 		});
+
+		$field.trigger('chosen:updated');
 	});
 });
