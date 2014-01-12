@@ -1,8 +1,6 @@
 <?php
 namespace Warkham\Fields;
 
-use Warkham\Abstracts\AbstractField;
-
 /**
  * A self-mutating choice field
  */

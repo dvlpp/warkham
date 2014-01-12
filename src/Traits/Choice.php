@@ -16,6 +16,10 @@ trait Choice
 	 */
 	public function ui($choice)
 	{
+		if (!in_array($choice, ['radio', 'checklist', 'list'])) {
+			return $this;
+		}
+
 		// Get the name of the class to call
 		$classes = array(
 			'radio'     => 'Radio',
@@ -44,7 +48,6 @@ trait Choice
 
 		// Pass values and class
 		$field->setAvailableValues($this->values);
-		$field->addClass('wmk-'.$choice);
 
 		// Add Framework classes
 		$this->currentFramework()->getFieldClasses($field, []);

@@ -60,15 +60,25 @@ abstract class WarkhamTestCase extends ContainerTestCase
 	 */
 	protected function matchField($attributes = array())
 	{
+		$tag      = array_pull($attributes, 'tag') ?: 'input';
+		$children = array_pull($attributes, 'children');
+
+		// Create attributes array
 		$attributes = array_merge(array(
 			'name' => 'dummy',
 			'type' => 'text',
 		), $attributes);
 
+		// Remove type if not an input
+		if ($tag !== 'input') {
+			unset($attributes['type']);
+		}
+
 		return array(
-			'tag'        => 'input',
+			'tag'        => $tag,
 			'id'         => 'dummy',
 			'attributes' => $attributes,
+			'children'   => $children,
 		);
 	}
 

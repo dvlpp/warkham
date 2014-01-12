@@ -23,9 +23,9 @@ $ phpunit
 | Abstract | setValue                | V      |
 | Checkbox | check                   | V      |
 | Checkbox | text                    | V      |
-| Choice   | multiple                |        |
-| Choice   | setAvailableValues      |        |
-| Choice   | ui                      |        |
+| Choice   | multiple                | V      |
+| Choice   | setAvailableValues      | V      |
+| Choice   | ui                      | V      |
 | Date     | max                     |        |
 | Date     | min                     |        |
 | Date     | withHours               |        |

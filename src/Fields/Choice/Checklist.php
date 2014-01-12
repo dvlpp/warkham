@@ -3,6 +3,7 @@ namespace Warkham\Fields\Choice;
 
 use Former\Form\Fields\Checkbox;
 use Warkham\Traits\Choice;
+use Warkham\Traits\WarkhamField;
 
 /**
  * Checkboxes implementation of the Choice field
@@ -10,6 +11,7 @@ use Warkham\Traits\Choice;
 class Checklist extends Checkbox
 {
 	use Choice;
+	use WarkhamField;
 
 	/**
 	 * The current selected interface
@@ -17,6 +19,15 @@ class Checklist extends Checkbox
 	 * @var string
 	 */
 	protected $interface = 'checklist';
+
+	/**
+	 * The default attributes
+	 *
+	 * @var array
+	 */
+	protected $attributes = array(
+		'class' => 'wkm-checklist',
+	);
 
 	/**
 	 * Cache of the current values

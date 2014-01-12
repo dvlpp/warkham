@@ -3,6 +3,7 @@ namespace Warkham\Fields\Choice;
 
 use Former\Form\Fields\Select as FormerSelect;
 use Warkham\Traits\Choice;
+use Warkham\Traits\WarkhamField;
 
 /**
  * Select implementation of the Choice field
@@ -10,6 +11,7 @@ use Warkham\Traits\Choice;
 class Select extends FormerSelect
 {
 	use Choice;
+	use WarkhamField;
 
 	/**
 	 * The current selected interface
@@ -17,6 +19,15 @@ class Select extends FormerSelect
 	 * @var string
 	 */
 	protected $interface = 'list';
+
+	/**
+	 * The default attributes
+	 *
+	 * @var array
+	 */
+	protected $attributes = array(
+		'class' => 'wkm-list',
+	);
 
 	/**
 	 * Cache of the current values

@@ -3,6 +3,7 @@ namespace Warkham\Fields\Choice;
 
 use Former\Form\Fields\Radio as FormerRadio;
 use Warkham\Traits\Choice;
+use Warkham\Traits\WarkhamField;
 
 /**
  * Radios implementation of the Choice field
@@ -10,6 +11,7 @@ use Warkham\Traits\Choice;
 class Radio extends FormerRadio
 {
 	use Choice;
+	use WarkhamField;
 
 	/**
 	 * The current selected interface
@@ -17,6 +19,15 @@ class Radio extends FormerRadio
 	 * @var string
 	 */
 	protected $interface = 'radio';
+
+	/**
+	 * The default attributes
+	 *
+	 * @var array
+	 */
+	protected $attributes = array(
+		'class' => 'wkm-radio',
+	);
 
 	/**
 	 * Cache of the current values
