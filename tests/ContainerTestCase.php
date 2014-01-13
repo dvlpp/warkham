@@ -27,6 +27,16 @@ class ContainerTestCase extends PHPUnit_Framework_TestCase
 	}
 
 	/**
+	 * Destroy mocked instances after each test
+	 *
+	 * @return void
+	 */
+	public function tearDown()
+	{
+		Mockery::close();
+	}
+
+	/**
 	 * Fetch a class from the container
 	 *
 	 * @param string $key
@@ -68,11 +78,24 @@ class ContainerTestCase extends PHPUnit_Framework_TestCase
 	}
 
 	/**
+	 * Mock the Filesystem
+	 *
+	 * @return Mockery
+	 */
+	protected function mockFiles(array $expectations = array())
+	{
+		$this->mock('files', 'Illuminate\Filesystem\Filesystem', array_merge(array(
+			'exists'     => true,
+			'getRequire' => true,
+		), $expectations));
+	}
+
+	/**
 	 * Mock an UrlGenerator instance
 	 *
 	 * @return Mockery
 	 */
-	public function mockUrlGenerator()
+	protected function mockUrlGenerator()
 	{
 		$this->mock('url', 'UrlGenerator', array(
 			'route' => 'http://localhost/route',

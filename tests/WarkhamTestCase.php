@@ -20,6 +20,7 @@ abstract class WarkhamTestCase extends ContainerTestCase
 		parent::setUp();
 
 		$this->app = WarkhamServiceProvider::make($this->app);
+		$this->mockUrlGenerator();
 	}
 
 	/**

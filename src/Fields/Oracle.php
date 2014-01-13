@@ -18,6 +18,30 @@ class Oracle extends Select
 	);
 
 	/**
+	 * Whether values are to be fetched remotly or not
+	 *
+	 * @param boolean $remote
+	 *
+	 * @return self
+	 */
+	public function remote($remote)
+	{
+		$this->setDataAttribute('remote', $remote);
+
+		// If we don't want to fetch data via AJAX, get them now
+		$route = $this->getAttribute('data-url');
+		if (!$remote and $route) {
+			$data = $this->app['url']->route($route);
+			$data = $this->app['files']->getRemote($data);
+			$data = json_decode($data, true);
+
+			$this->options($data);
+		}
+
+		return $this;
+	}
+
+	/**
 	 * Set the route to use to fetch values
 	 *
 	 * @param string $route
