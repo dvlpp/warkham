@@ -46,7 +46,7 @@ class Oracle extends Select
 	 *
 	 * @param string $route
 	 */
-	public function setAvailableValuesRoute($route)
+	public function setRemoteRoute($route)
 	{
 		return $this->setRoute($route);
 	}

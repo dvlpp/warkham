@@ -27,7 +27,7 @@ class OracleTest extends WarkhamTestCase
 			'getRemote' => json_encode($this->endpoint),
 		));
 
-		$field = $this->warkham->oracle('dummy')->setAvailableValuesRoute('route')->remote(false);
+		$field = $this->warkham->oracle('dummy')->setRemoteRoute('route')->remote(false);
 		$this->assertSelect($field, array(
 			'class'       => 'wkm-oracle',
 			'data-url'    => 'http://localhost/route',
@@ -42,7 +42,7 @@ class OracleTest extends WarkhamTestCase
 			'getRemote' => json_encode($this->endpoint),
 		));
 
-		$field = $this->warkham->oracle('dummy')->setAvailableValuesRoute('route')->remote(true);
+		$field = $this->warkham->oracle('dummy')->setRemoteRoute('route')->remote(true);
 		$this->assertSelect($field, array(
 			'class'       => 'wkm-oracle',
 			'data-url'    => 'http://localhost/route',
