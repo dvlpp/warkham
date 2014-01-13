@@ -50,7 +50,7 @@ module.exports = function(grunt) {
 			},
 			scripts: {
 				files: ['<%= paths.original.js %>/**/*'],
-				tasks: ['js', 'uglify'],
+				tasks: ['js'],
 			},
 		},
 
@@ -84,10 +84,10 @@ module.exports = function(grunt) {
 		},
 
 		cssmin: {
-			minify: {
+			dist: {
 				expand : true,
 				cwd    : '<%= builds %>',
-				src    : 'warkham.css',
+				src    : '<%= name %>.css',
 				dest   : '<%= builds %>',
 				ext    : '.min.css'
 			}
@@ -95,13 +95,11 @@ module.exports = function(grunt) {
 
 		uglify: {
 			dist: {
-				files: [{
-					expand : true,
-					cwd    : '<%= paths.compiled.js %>',
-					src    : 'warkham.js',
-					dest   : '<%= paths.compiled.js %>',
-					ext    : '.min.js',
-				}],
+				expand : true,
+				cwd    : '<%= paths.compiled.js %>',
+				src    : '<%= name %>.js',
+				dest   : '<%= paths.compiled.js %>',
+				ext    : '.min.js',
 			}
 		},
 
