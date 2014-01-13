@@ -9,23 +9,16 @@ class ChoiceTest extends WarkhamTestCase
 	{
 		$choice = $this->warkham->choice('dummy')->options(['foo', 'bar'], 1);
 
-		$this->assertField($choice, array(
-			'tag'      => 'select',
-			'class'    => 'wkm-list',
-			'children' => array(
-				'count' => 2,
-				'only'  => array(
-					'tag' => 'option',
-				),
-			),
+		$this->assertSelect($choice, array(
+			'class' => 'wkm-list',
 		));
 	}
 
 	public function testCanSetToMultipleIfList()
 	{
 		$choice = $this->warkham->choice('dummy')->options(['foo', 'bar'], 1)->multiple(true);
-		$this->assertField($choice, array(
-			'tag'           => 'select',
+		$this->assertSelect($choice, array(
+			'class'         => 'wkm-list',
 			'data-multiple' => true,
 		));
 
@@ -37,14 +30,8 @@ class ChoiceTest extends WarkhamTestCase
 	{
 		$choice = $this->warkham->choice('dummy')->setAvailableValues(['foo', 'bar']);
 
-		$this->assertField($choice, array(
-			'tag'      => 'select',
-			'children' => array(
-				'count' => 2,
-				'only'  => array(
-					'tag' => 'option',
-				),
-			),
+		$this->assertSelect($choice, array(
+			'class' => 'wkm-list',
 		));
 	}
 

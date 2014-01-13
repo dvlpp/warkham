@@ -99,6 +99,31 @@ abstract class WarkhamTestCase extends ContainerTestCase
 	}
 
 	/**
+	 * Assert a Select field
+	 *
+	 * @param Element $field
+	 * @param array   $attributes
+	 *
+	 * @return void
+	 */
+	protected function assertSelect(Element $field, $attributes = array())
+	{
+		$matcher = array_merge(array(
+			'tag'      => 'select',
+			'children' => array(
+				'count' => 2,
+				'only'  => array(
+					'tag' => 'option',
+				),
+			),
+		), $attributes);
+		$matcher = $this->matchField($matcher);
+		$render  = $field->render();
+
+		return $this->assertHtml($matcher, $render);
+	}
+
+	/**
 	 * Asserts a piece of HTML matches an array
 	 *
 	 * @param array  $expected
