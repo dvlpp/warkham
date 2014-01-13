@@ -4,10 +4,15 @@
     "bower": "1.2.7",
     "grunt": "*",
     "grunt-cli": "*",
+    "glob": "*"
+  },
+  "devDependencies": {
     "grunt-bower-task": "*",
     "grunt-contrib-concat": "*",
     "grunt-contrib-cssmin": "*",
     "grunt-contrib-uglify": "*",
-    "grunt-contrib-watch": "*"
+    "grunt-contrib-watch": "*",
+    "grunt-phpunit": "*",
+    "load-grunt-tasks": "*"
   }
 }
