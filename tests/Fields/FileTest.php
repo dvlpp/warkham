@@ -67,7 +67,7 @@ class FileTest extends WarkhamTestCase
 
 	public function testCanSetUploadRoute()
 	{
-		$this->app['url'] = $this->mockUrlGenerator();
+		$this->mockUrlGenerator();
 
 		$field = $this->warkham->file('dummy');
 		$field->uploadRoute('foobar');

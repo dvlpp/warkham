@@ -1,6 +1,7 @@
 <?php
 namespace Warkham;
 
+use Closure;
 use Illuminate\Container\Container;
 use Mockery;
 use PHPUnit_Framework_TestCase;
@@ -22,7 +23,7 @@ class ContainerTestCase extends PHPUnit_Framework_TestCase
 		$this->app = new Container;
 
 		// Bind mocked instances
-		$this->app['url'] = $this->mockUrlGenerator();
+		$this->mockUrlGenerator();
 	}
 
 	/**
@@ -42,13 +43,38 @@ class ContainerTestCase extends PHPUnit_Framework_TestCase
 	////////////////////////////////////////////////////////////////////
 
 	/**
+	 * Bind a mocked instance into the Container
+	 *
+	 * @param string        $binding
+	 * @param string        $class
+	 * @param array|Closure $expectations
+	 *
+	 * @return Mockery
+	 */
+	protected function mock($binding, $class, $expectations)
+	{
+		// Create mocked instance
+		if ($expectations instanceof Closure) {
+			$mocked = Mockery::mock($class);
+			$mocked = $expectations($mocked)->mock();
+		} else {
+			$mocked = Mockery::mock($class, $expectations);
+		}
+
+		// Bind into container
+		$this->app[$binding] = $mocked;
+
+		return $mocked;
+	}
+
+	/**
 	 * Mock an UrlGenerator instance
 	 *
 	 * @return Mockery
 	 */
 	public function mockUrlGenerator()
 	{
-		return Mockery::mock('Illuminate\Routing\UrlGenerator', array(
+		$this->mock('url', 'UrlGenerator', array(
 			'route' => 'http://localhost/route',
 		));
 	}
