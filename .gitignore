@@ -9,3 +9,6 @@ public/warkham.js
 public/components
 node_modules
 vendor
+
+# Cache and compiled
+tests/.coverage

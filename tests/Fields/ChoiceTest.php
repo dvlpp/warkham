@@ -54,4 +54,13 @@ class ChoiceTest extends WarkhamTestCase
 
 		$this->assertEquals($matcher, $choice->render());
 	}
+
+	public function testFailsGracefullyIfIncorrectUi()
+	{
+		$choice = $this->warkham->choice('dummy')->options(['foo', 'bar'])->ui('foobar');
+
+		$this->assertSelect($choice, array(
+			'class' => 'wkm-list',
+		));
+	}
 }
