@@ -50,6 +50,21 @@ module.exports = function(grunt) {
 			},
 		},
 
+		phpunit: {
+			options: {
+				followOutput: true,
+			},
+
+			dist: {},
+
+			coverage: {
+				options: {
+					coverageText: 'coverage.txt',
+					coverageHtml: 'tests/.coverage'
+				}
+			},
+		},
+
 		// Assets
 		//////////////////////////////////////////////////////////////////
 
@@ -110,6 +125,8 @@ module.exports = function(grunt) {
 		'css',
 		'js',
 	]);
+
+	grunt.registerTask('test', 'Launch the tests', ['phpunit:dist']);
 
 	// Asset types
 	////////////////////////////////////////////////////////////////////

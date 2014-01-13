@@ -23,7 +23,7 @@ $ grunt watch
 ## Running the tests
 
 ```
-$ phpunit
+$ grunt test
 ```
 
 ## Roadmap
