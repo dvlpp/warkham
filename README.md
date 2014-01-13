@@ -1,10 +1,23 @@
 # Warkham
 
-## Installing dependencies
+## Setup the repository
 
-```
+```bash
+$ npm install
 $ composer self-update
 $ composer install
+```
+
+## Compiling assets
+
+```
+$ grunt
+```
+
+Or during development, to make assets recompile as they're changed:
+
+```
+$ grunt watch
 ```
 
 ## Running the tests
@@ -45,7 +58,9 @@ $ phpunit
 | List     | setValue                |        |
 | List     | sortable                |        |
 | Oracle   | forceValue              |        |
-| Oracle   | setAvailableValuesRoute |        |
+| Oracle   | remote                  | V      |
+| Oracle   | setDataset              |        |
+| Oracle   | setRemoteRoute          | V      |
 | Oracle   | setValue                |        |
 | Taglist  | max                     |        |
 | Taglist  | setAvailableValues      |        |
