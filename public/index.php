@@ -50,6 +50,7 @@ switch ($request) {
 			<?= Warkham::choice('foo', 'Choice (list)')->setAvailableValues(['foo', 'bar'])->ui('list') ?>
 			<?= Warkham::choice('foo', 'Choice (radio)')->setAvailableValues(['foo', 'bar'])->ui('radio') ?>
 			<?= Warkham::choice('foo', 'Choice (checklist)')->setAvailableValues(['foo', 'bar'])->ui('checklist') ?>
+			<?= Warkham::date('date') ?>
 		<?= Warkham::close() ?>
 	</main>
 	<script src="builds/js/warkham.min.js"></script>

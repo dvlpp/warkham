@@ -37,8 +37,8 @@ $ grunt test
 | Choice   | multiple                | V      |
 | Choice   | setAvailableValues      | V      |
 | Choice   | ui                      | V      |
-| Date     | max                     |        |
-| Date     | min                     |        |
+| Date     | max                     | V      |
+| Date     | min                     | V      |
 | Date     | withHours               |        |
 | Date     | withMinutes             |        |
 | File     | accept                  | V      |

@@ -30,8 +30,36 @@ class Date extends AbstractGroupField
 		parent::__construct($app, $label, $validations);
 
 		$this->nest(array(
-			'date' => $app['former']->date($name.'[date]'),
-			'time' => $app['former']->time($name.'[time]'),
+			'date' => $app['former']->date($name.'[date]')->addClass('wkm-date-date'),
+			'time' => $app['former']->time($name.'[time]')->addClass('wkm-date-time'),
 		));
+	}
+
+	/**
+	 * Set a date as maximum date
+	 *
+	 * @param string $date
+	 *
+	 * @return self
+	 */
+	public function max($date)
+	{
+		$this->date->max($date);
+
+		return $this;
+	}
+
+	/**
+	 * Set a date as minimum date
+	 *
+	 * @param string $date
+	 *
+	 * @return self
+	 */
+	public function min($date)
+	{
+		$this->date->min($date);
+
+		return $this;
 	}
 }

@@ -33,5 +33,6 @@ abstract class AbstractGroupField extends Tag
   public function __construct(Container $app, $label, $validations)
   {
   	$this->app = $app;
+    $this->addClass($this->app['former.framework']->getGroupClasses());
   }
 }

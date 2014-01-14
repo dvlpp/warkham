@@ -10,12 +10,14 @@ class DateTest extends WarkhamTestCase
 		$field = $this->warkham->date('dummy');
 
 		$this->assertField($field, array(
-			'name' => 'dummy[date]',
-			'type' => 'date',
+			'name'  => 'dummy[date]',
+			'type'  => 'date',
+			'class' => 'wkm-date-date',
 		));
 		$this->assertField($field, array(
-			'name' => 'dummy[time]',
-			'type' => 'time',
+			'name'  => 'dummy[time]',
+			'type'  => 'time',
+			'class' => 'wkm-date-time',
 		));
 		$this->assertHtml(array(
 			'tag'        => 'div',
@@ -23,5 +25,18 @@ class DateTest extends WarkhamTestCase
 				'class' => 'wkm-date'
 			),
 		), $field);
+	}
+
+	public function testCanSetMinAndMaxDate()
+	{
+		$field = $this->warkham->date('dummy')->min('1990-01-01')->max('2013-01-01');
+
+		$this->assertField($field, array(
+			'name'  => 'dummy[date]',
+			'type'  => 'date',
+			'class' => 'wkm-date-date',
+			'min'   => '1990-01-01',
+			'max'   => '2013-01-01',
+		));
 	}
 }

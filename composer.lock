@@ -11,12 +11,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Anahkiasen/former.git",
-                "reference": "3337c01fbbe993d85c08d79f8942d6dbe1f4c8c7"
+                "reference": "881e7f6f92e3081f3526b20c6dcf420a094ef892"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Anahkiasen/former/zipball/3337c01fbbe993d85c08d79f8942d6dbe1f4c8c7",
-                "reference": "3337c01fbbe993d85c08d79f8942d6dbe1f4c8c7",
+                "url": "https://api.github.com/repos/Anahkiasen/former/zipball/881e7f6f92e3081f3526b20c6dcf420a094ef892",
+                "reference": "881e7f6f92e3081f3526b20c6dcf420a094ef892",
                 "shasum": ""
             },
             "require": {
@@ -60,7 +60,7 @@
                 "foundation",
                 "laravel"
             ],
-            "time": "2014-01-14 22:20:01"
+            "time": "2014-01-14 22:26:48"
         },
         {
             "name": "anahkiasen/html-object",
