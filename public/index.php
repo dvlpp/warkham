@@ -32,7 +32,7 @@ switch ($request) {
 <head>
 	<meta charset="UTF-8">
 	<title>Warkham Test</title>
-	<link rel="stylesheet" href="warkham.min.css">
+	<link rel="stylesheet" href="builds/css/warkham.min.css">
 </head>
 <body>
 	<main class="container">
@@ -45,12 +45,12 @@ switch ($request) {
 			<?= Warkham::checkbox('checkbox') ?>
 			<?= Warkham::file('file') ?>
 			<?= Warkham::textarea('textarea') ?>
-			<?= Warkham::oracle('oracle')->setAvailableValuesRoute('oracle') ?>
+			<?= Warkham::oracle('oracle')->setRemoteRoute('oracle') ?>
 			<?= Warkham::choice('foo', 'bar')->setAvailableValues(['foo', 'bar'])->ui('list') ?>
 			<?= Warkham::choice('foo', 'bar')->setAvailableValues(['foo', 'bar'])->ui('radio') ?>
 			<?= Warkham::choice('foo', 'bar')->setAvailableValues(['foo', 'bar'])->ui('checklist') ?>
 		<?= Warkham::close() ?>
 	</main>
-	<script src="warkham.min.js"></script>
+	<script src="builds/js/warkham.min.js"></script>
 </body>
 </html>

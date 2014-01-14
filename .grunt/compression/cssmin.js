@@ -1,9 +1,9 @@
 module.exports = {
 	dist: {
 		expand : true,
-		cwd    : '<%= builds %>',
+		cwd    : '<%= paths.compiled.css %>',
 		src    : '<%= name %>.css',
-		dest   : '<%= builds %>',
+		dest   : '<%= paths.compiled.css %>',
 		ext    : '.min.css'
 	}
 };

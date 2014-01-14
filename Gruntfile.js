@@ -26,18 +26,22 @@ module.exports = function(grunt) {
 	////////////////////////////////////////////////////////////////////
 
 	var config = {
-		src        : 'public',
-		builds     : 'public',
-		components : '<%= src %>/components',
+		name : 'warkham',
+
+		src        : 'public/assets',
+		builds     : 'public/builds',
+		components : 'public/components',
 
 		paths: {
 			original: {
-				css  : '<%= src %>/assets/css',
-				js   : '<%= src %>/assets/js',
+				css : '<%= src %>/css',
+				img : '<%= src %>/img',
+				js  : '<%= src %>/js',
 			},
 			compiled: {
-				js  : '<%= builds %>',
-				css : '<%= builds %>',
+				js  : '<%= builds %>/js',
+				img : '<%= builds %>/img',
+				css : '<%= builds %>/css',
 			},
 		},
 	};

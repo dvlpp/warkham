@@ -9,7 +9,9 @@
   "devDependencies": {
     "grunt-bower-task": "*",
     "grunt-contrib-concat": "*",
+    "grunt-contrib-copy": "*",
     "grunt-contrib-cssmin": "*",
+    "grunt-contrib-compass": "*",
     "grunt-contrib-jshint": "*",
     "grunt-contrib-uglify": "*",
     "grunt-contrib-watch": "*",

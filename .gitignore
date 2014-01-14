@@ -2,8 +2,7 @@
 .DS_Store
 
 # Assets
-public/warkham.css
-public/warkham.js
+public/builds
 
 # Dependencies
 public/components
@@ -11,4 +10,6 @@ node_modules
 vendor
 
 # Cache and compiled
+.sass-cache
+public/assets/css
 tests/.coverage

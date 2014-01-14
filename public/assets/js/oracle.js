@@ -1,4 +1,4 @@
-$('.wkm-oracle').each(function() {
+$('select.wkm-oracle').each(function() {
 	var $field   = $(this);
 	var endpoint = $field.data('url');
 
@@ -7,6 +7,6 @@ $('.wkm-oracle').each(function() {
 			$field.append(new Option(value, key));
 		});
 
-		$field.trigger('chosen:updated');
+		$field.trigger('change');
 	});
 });
