@@ -1,0 +1,8 @@
+#!/bin/bash
+
+git pull;
+bundle install;
+composer self-update;
+composer install;
+npm install;
+grunt;

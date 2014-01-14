@@ -1,11 +1,9 @@
 # Warkham
 
-## Setup the repository
+## Setup/Update the repository
 
 ```bash
-$ npm install
-$ composer self-update
-$ composer install
+$ ./pull
 ```
 
 ## Compiling assets

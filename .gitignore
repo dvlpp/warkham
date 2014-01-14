@@ -1,5 +1,6 @@
 # Dotfiles
 .DS_Store
+.rvmrc
 
 # Assets
 public/builds
