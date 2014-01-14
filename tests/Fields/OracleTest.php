@@ -43,8 +43,8 @@ class OracleTest extends WarkhamTestCase
 		));
 
 		$field = $this->warkham->oracle('dummy')->setRemoteRoute('route')->remote(true);
-		$this->assertSelect($field, array(
-			'class'       => 'wkm-oracle',
+		$this->assertField($field, array(
+			'class'       => 'wkm-text form-control wkm-oracle',
 			'data-url'    => 'http://localhost/route',
 			'data-remote' => 'true',
 			'children'    => array(),

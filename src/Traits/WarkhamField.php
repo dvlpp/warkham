@@ -85,12 +85,12 @@ trait WarkhamField
 		));
 
 		// Pass values and attributes (except class)
-		$field->setAttributes($this->attributes)->removeClass('form-control');
+		$attributes = array_except($this->attributes, 'class');
+		$field->setAttributes($attributes);
 		$field->setAvailableValues($this->values);
 
 		// Add Framework classes
 		$this->currentFramework()->getFieldClasses($field, []);
-
 
 		return $field;
 	}

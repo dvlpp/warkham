@@ -36,7 +36,7 @@ class Oracle extends Select
 
 			$this->options($data);
 		} else {
-			return $this->mutateTo('text');
+			return $this->mutateTo('text')->addClass('wkm-oracle');
 		}
 
 		return $this;
