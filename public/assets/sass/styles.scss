@@ -1,5 +1,13 @@
 @import "compass";
 
-.select2-container {
-	width: 100%;
-}
+// Helpers
+//////////////////////////////////////////////////////////////////////
+
+@import "helpers/mixins";
+@import "helpers/variables";
+
+// Plugins
+//////////////////////////////////////////////////////////////////////
+
+@import "plugins/select2";
+@import "plugins/typeahead";

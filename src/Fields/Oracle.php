@@ -31,11 +31,12 @@ class Oracle extends Select
 		// If we don't want to fetch data via AJAX, get them now
 		$route = $this->getAttribute('data-url');
 		if (!$remote and $route) {
-			$data = $this->app['url']->route($route);
-			$data = $this->app['files']->getRemote($data);
+			$data = $this->app['files']->getRemote($route);
 			$data = json_decode($data, true);
 
 			$this->options($data);
+		} else {
+			return $this->mutateTo('text');
 		}
 
 		return $this;

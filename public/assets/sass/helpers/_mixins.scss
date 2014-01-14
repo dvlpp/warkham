@@ -1,0 +1,15 @@
+// Mixins
+//////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////
+
+/**
+ * Generates a vertical gradient
+ */
+@mixin vertical-gradient($from, $to: nil) {
+	@if $to == nil {
+		$to: darken($from, 5);
+	}
+
+	background: mix($from, $to);
+	@include background-image(linear-gradient(to bottom, $from, $to));
+}

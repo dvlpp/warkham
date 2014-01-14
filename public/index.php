@@ -45,7 +45,8 @@ switch ($request) {
 			<?= Warkham::checkbox('checkbox') ?>
 			<?= Warkham::file('file') ?>
 			<?= Warkham::textarea('textarea') ?>
-			<?= Warkham::oracle('oracle')->setRemoteRoute('oracle') ?>
+			<?= Warkham::oracle('oracle', 'Oracle (local)')->setRemoteRoute('oracle')->remote(false) ?>
+			<?= Warkham::oracle('oracle', 'Oracle (remote)')->setRemoteRoute('oracle')->remote(true) ?>
 			<?= Warkham::choice('foo', 'bar')->setAvailableValues(['foo', 'bar'])->ui('list') ?>
 			<?= Warkham::choice('foo', 'bar')->setAvailableValues(['foo', 'bar'])->ui('radio') ?>
 			<?= Warkham::choice('foo', 'bar')->setAvailableValues(['foo', 'bar'])->ui('checklist') ?>

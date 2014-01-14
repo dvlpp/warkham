@@ -2,6 +2,7 @@
 namespace Warkham\Traits;
 
 use Illuminate\Support\Str;
+use ReflectionClass;
 
 /**
  * A trait that adds Warkham-related methods to fields
@@ -20,9 +21,79 @@ trait WarkhamField
 		return $this->disabled($enabled ? 'false' : 'true');
 	}
 
+	/**
+	 * Swap out the current values
+	 *
+	 * @param array $values
+	 *
+	 * @return self
+	 */
+	public function setAvailableValues($values)
+	{
+		$this->values = $values;
+
+		switch ($this->interface) {
+			case 'radio':
+				return $this->radios($values);
+
+			case 'checklist':
+				return $this->checkboxes($values);
+
+			case 'list':
+				return $this->options($values);
+
+			default:
+				return $this->value($values);
+		}
+	}
+
 	////////////////////////////////////////////////////////////////////
 	/////////////////////////////// HELPERS ////////////////////////////
 	////////////////////////////////////////////////////////////////////
+
+	/**
+	 * Mutate the field to another field
+	 *
+	 * @param string $field
+	 *
+	 * @return Field
+	 */
+	protected function mutateTo($field)
+	{
+		// Go around PHP's reserved list
+		if ($field === 'Choice\\List') {
+			$field = 'Choice\\Select';
+		}
+
+		// Get field type
+		$type = class_basename(strtolower($field));
+		$type = array_get(array(
+			'checklist' => 'checkbox',
+			'list'      => 'select',
+		), $type, $type);
+
+		// Create new instance
+		$field = new ReflectionClass('Warkham\Fields\\'.ucfirst($field));
+		$field = $field->newInstanceArgs(array(
+			$this->app,
+			$type,
+			$this->name,
+			$this->label,
+			array(),
+			null,
+			array()
+		));
+
+		// Pass values and attributes (except class)
+		$field->setAttributes($this->attributes)->removeClass('form-control');
+		$field->setAvailableValues($this->values);
+
+		// Add Framework classes
+		$this->currentFramework()->getFieldClasses($field, []);
+
+
+		return $field;
+	}
 
 	/**
 	 * Set a data-url attribute

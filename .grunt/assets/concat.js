@@ -12,6 +12,7 @@ module.exports = {
 		src: [
 			'<%= components %>/jquery/jquery.js',
 			'<%= components %>/select2/select2.js',
+			'<%= components %>/typeahead.js/dist/typeahead.js',
 			'<%= paths.original.js %>/**/*.js'
 		],
 	}

@@ -34,9 +34,10 @@ module.exports = function(grunt) {
 
 		paths: {
 			original: {
-				css : '<%= src %>/css',
-				img : '<%= src %>/img',
-				js  : '<%= src %>/js',
+				css  : '<%= src %>/css',
+				img  : '<%= src %>/img',
+				js   : '<%= src %>/js',
+				sass : '<%= src %>/sass',
 			},
 			compiled: {
 				js  : '<%= builds %>/js',
@@ -66,6 +67,7 @@ module.exports = function(grunt) {
 	////////////////////////////////////////////////////////////////////
 
 	grunt.registerTask('css', 'Build stylesheets', [
+		'compass:compile',
 		'concat:css',
 		'cssmin',
 	]);

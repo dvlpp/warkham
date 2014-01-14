@@ -8,7 +8,11 @@ module.exports = {
 		files: 'Gruntfile.js',
 		tasks: 'default',
 	},
-	scripts: {
+	css: {
+		files: ['<%= paths.original.sass %>/**/*'],
+		tasks: ['css'],
+	},
+	js: {
 		files: ['<%= paths.original.js %>/**/*'],
 		tasks: ['js'],
 	},
