@@ -3,15 +3,29 @@ module.exports = function(grunt) {
 	// Load modules
 	require('load-grunt-tasks')(grunt);
 
-	// Project configuration.
-	grunt.initConfig({
+	/**
+	 * Loads all available tasks options
+	 *
+	 * @param {String} folder
+	 *
+	 * @return {Object}
+	 */
+	function loadConfig(folder) {
+		var glob = require('glob');
+		var path = require('path');
+		var key;
 
-		name: 'warkham',
+		glob.sync('**/*.js', {cwd: folder}).forEach(function(option) {
+			key = path.basename(option, '.js');
+			config[key] = require(folder + option);
+		});
+	}
 
-		//////////////////////////////////////////////////////////////////
-		/////////////////////////////// PATHS ////////////////////////////
-		//////////////////////////////////////////////////////////////////
+	////////////////////////////////////////////////////////////////////
+	//////////////////////////// CONFIGURATION /////////////////////////
+	////////////////////////////////////////////////////////////////////
 
+	var config = {
 		src        : 'public',
 		builds     : 'public',
 		components : '<%= src %>/components',
@@ -26,95 +40,11 @@ module.exports = function(grunt) {
 				css : '<%= builds %>',
 			},
 		},
+	};
 
-		//////////////////////////////////////////////////////////////////
-		/////////////////////////////// TASKS ////////////////////////////
-		//////////////////////////////////////////////////////////////////
-
-		// Development
-		//////////////////////////////////////////////////////////////////
-
-		watch: {
-			options: {
-				interrupt : true,
-				livereload: true,
-			},
-
-			grunt: {
-				files: 'Gruntfile.js',
-				tasks: 'default',
-			},
-			scripts: {
-				files: ['<%= paths.original.js %>/**/*'],
-				tasks: ['js'],
-			},
-		},
-
-		phpunit: {
-			options: {
-				followOutput: true,
-			},
-
-			dist: {},
-
-			coverage: {
-				options: {
-					coverageText: 'coverage.txt',
-					coverageHtml: 'tests/.coverage'
-				}
-			},
-		},
-
-		// Assets
-		//////////////////////////////////////////////////////////////////
-
-		bower: {
-			install: {
-				options: {
-					targetDir: '<%= components %>'
-				}
-			}
-		},
-
-		concat: {
-			css: {
-				dest: '<%= paths.compiled.css %>/<%= name %>.css',
-				src: [
-					'<%= components %>/bootstrap/dist/css/bootstrap.css',
-					'<%= components %>/select2/select2.css',
-				],
-			},
-			js: {
-				dest: '<%= paths.compiled.js %>/<%= name %>.js',
-				src: [
-					'<%= components %>/jquery/jquery.js',
-					'<%= components %>/select2/select.js',
-					'<%= paths.original.js %>/**/*.js'
-				],
-			}
-		},
-
-		cssmin: {
-			dist: {
-				expand : true,
-				cwd    : '<%= builds %>',
-				src    : '<%= name %>.css',
-				dest   : '<%= builds %>',
-				ext    : '.min.css'
-			}
-		},
-
-		uglify: {
-			dist: {
-				expand : true,
-				cwd    : '<%= paths.compiled.js %>',
-				src    : '<%= name %>.js',
-				dest   : '<%= paths.compiled.js %>',
-				ext    : '.min.js',
-			}
-		},
-
-	});
+	// Load all tasks
+	loadConfig('./.grunt/');
+	grunt.initConfig(config);
 
 	////////////////////////////////////////////////////////////////////
 	/////////////////////////////// COMMANDS ///////////////////////////
