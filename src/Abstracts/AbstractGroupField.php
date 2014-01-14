@@ -1,27 +1,37 @@
 <?php
 namespace Warkham\Abstracts;
 
-use Former\Form\Group;
+use HtmlObject\Element;
+use HtmlObject\Traits\Tag;
+use Illuminate\Container\Container;
 
-abstract class AbstractGroupField extends Group
+abstract class AbstractGroupField extends Tag
 {
+	protected $app;
+
 	/**
-	 * Get the group opener
+	 * The field's element
 	 *
-	 * @return string
+	 * @var string
 	 */
-	public function open()
-	{
-		return parent::open().parent::getFormattedLabel();
-	}
+	protected $element = 'div';
 
   /**
-   * Prints out the opening of the Control Group
+   * Whether the element is self closing
    *
-   * @return string A control group opening tag
+   * @var boolean
    */
-  public function __toString()
+  protected $isSelfClosing = false;
+
+  /**
+   * Build a new Group field
+   *
+   * @param Container $app
+   * @param string    $label
+   * @param array     $validations
+   */
+  public function __construct(Container $app, $label, $validations)
   {
-  	return $this->render();
+  	$this->app = $app;
   }
 }

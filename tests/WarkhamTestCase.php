@@ -4,7 +4,7 @@ namespace Warkham;
 require __DIR__.'/../vendor/autoload.php';
 require __DIR__.'/ContainerTestCase.php';
 
-use HtmlObject\Element;
+use HtmlObject\Traits\Tag;
 use Warkham\Dummies\DummyField;
 
 /**
@@ -77,7 +77,7 @@ abstract class WarkhamTestCase extends ContainerTestCase
 
 		return array(
 			'tag'        => $tag,
-			'id'         => 'dummy',
+			'id'         => $attributes['name'],
 			'attributes' => $attributes,
 			'children'   => $children,
 		);
@@ -86,12 +86,12 @@ abstract class WarkhamTestCase extends ContainerTestCase
 	/**
 	 * Matches and asserts a field
 	 *
-	 * @param Element $field
-	 * @param array   $attributes
+	 * @param Tag    $field
+	 * @param array  $attributes
 	 *
 	 * @return void
 	 */
-	protected function assertField(Element $field, $attributes = array())
+	protected function assertField(Tag $field, $attributes = array())
 	{
 		$matcher = $this->matchField($attributes);
 		$render  = $field->render();
@@ -102,12 +102,12 @@ abstract class WarkhamTestCase extends ContainerTestCase
 	/**
 	 * Assert a Select field
 	 *
-	 * @param Element $field
-	 * @param array   $attributes
+	 * @param Tag    $field
+	 * @param array  $attributes
 	 *
 	 * @return void
 	 */
-	protected function assertSelect(Element $field, $attributes = array())
+	protected function assertSelect(Tag $field, $attributes = array())
 	{
 		$matcher = array_merge(array(
 			'tag'      => 'select',

@@ -7,9 +7,21 @@ class DateTest extends WarkhamTestCase
 {
 	public function testCanCreateDate()
 	{
-		$this->markTestSkipped('Not working for now');
-
 		$field = $this->warkham->date('dummy');
-		dd($field->render());
+
+		$this->assertField($field, array(
+			'name' => 'dummy[date]',
+			'type' => 'date',
+		));
+		$this->assertField($field, array(
+			'name' => 'dummy[time]',
+			'type' => 'time',
+		));
+		$this->assertHtml(array(
+			'tag'        => 'div',
+			'attributes' => array(
+				'class' => 'wkm-date'
+			),
+		), $field);
 	}
 }

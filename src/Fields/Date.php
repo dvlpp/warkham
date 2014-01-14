@@ -10,20 +10,6 @@ use Illuminate\Container\Container;
 class Date extends AbstractGroupField
 {
 	/**
-	 * The field's element
-	 *
-	 * @var string
-	 */
-	protected $element = 'div';
-
-  /**
-   * Whether the element is self closing
-   *
-   * @var boolean
-   */
-  protected $isSelfClosing = false;
-
-	/**
 	 * The default attributes
 	 *
 	 * @var array
@@ -39,13 +25,13 @@ class Date extends AbstractGroupField
 	 * @param string    $label
 	 * @param array     $validations
 	 */
-  public function __construct(Container $app, $label, $validations)
+  public function __construct(Container $app, $type, $name, $label, $validations)
 	{
 		parent::__construct($app, $label, $validations);
 
 		$this->nest(array(
-			'date' => $app['warkham']->input('date', $label),
-			'time' => $app['warkham']->input('time', $label),
+			'date' => $app['former']->date($name.'[date]'),
+			'time' => $app['former']->time($name.'[time]'),
 		));
 	}
 }

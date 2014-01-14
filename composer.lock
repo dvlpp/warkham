@@ -11,16 +11,16 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Anahkiasen/former.git",
-                "reference": "a24b6465f481132133d52226066f89f664555ebe"
+                "reference": "3337c01fbbe993d85c08d79f8942d6dbe1f4c8c7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Anahkiasen/former/zipball/a24b6465f481132133d52226066f89f664555ebe",
-                "reference": "a24b6465f481132133d52226066f89f664555ebe",
+                "url": "https://api.github.com/repos/Anahkiasen/former/zipball/3337c01fbbe993d85c08d79f8942d6dbe1f4c8c7",
+                "reference": "3337c01fbbe993d85c08d79f8942d6dbe1f4c8c7",
                 "shasum": ""
             },
             "require": {
-                "anahkiasen/html-object": "~1.2.0",
+                "anahkiasen/html-object": "1.*",
                 "illuminate/config": "~4",
                 "illuminate/container": "~4",
                 "illuminate/http": "~4",
@@ -60,20 +60,20 @@
                 "foundation",
                 "laravel"
             ],
-            "time": "2014-01-14 11:49:07"
+            "time": "2014-01-14 22:20:01"
         },
         {
             "name": "anahkiasen/html-object",
-            "version": "1.2.0",
+            "version": "1.3.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Anahkiasen/html-object.git",
-                "reference": "71eb5bd920e845aaea0d7face6e73aa9a63d6bde"
+                "reference": "76195fe1893437aa58569a3e7fbbe40972978432"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Anahkiasen/html-object/zipball/71eb5bd920e845aaea0d7face6e73aa9a63d6bde",
-                "reference": "71eb5bd920e845aaea0d7face6e73aa9a63d6bde",
+                "url": "https://api.github.com/repos/Anahkiasen/html-object/zipball/76195fe1893437aa58569a3e7fbbe40972978432",
+                "reference": "76195fe1893437aa58569a3e7fbbe40972978432",
                 "shasum": ""
             },
             "require": {
@@ -83,7 +83,10 @@
             "autoload": {
                 "psr-0": {
                     "HtmlObject": "src"
-                }
+                },
+                "classmap": [
+                    "tests"
+                ]
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
@@ -96,7 +99,7 @@
                 }
             ],
             "description": "A set of classes to create and manipulate HTML objects abstractions",
-            "time": "2014-01-14 11:42:36"
+            "time": "2014-01-14 22:09:08"
         },
         {
             "name": "illuminate/cache",
@@ -1197,12 +1200,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/padraic/mockery.git",
-                "reference": "ab2c696982fa47bb21d3bff1cd97b6b657d6f4f4"
+                "reference": "4a528e507e26f58dde32de7e34cc4169e9300286"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/padraic/mockery/zipball/ab2c696982fa47bb21d3bff1cd97b6b657d6f4f4",
-                "reference": "ab2c696982fa47bb21d3bff1cd97b6b657d6f4f4",
+                "url": "https://api.github.com/repos/padraic/mockery/zipball/4a528e507e26f58dde32de7e34cc4169e9300286",
+                "reference": "4a528e507e26f58dde32de7e34cc4169e9300286",
                 "shasum": ""
             },
             "require": {
@@ -1232,6 +1235,11 @@
                     "name": "Pádraic Brady",
                     "email": "padraic.brady@gmail.com",
                     "homepage": "http://blog.astrumfutura.com"
+                },
+                {
+                    "name": "Dave Marshall",
+                    "email": "dave.marshall@atstsolutions.co.uk",
+                    "homepage": "http://davedevelopment.co.uk"
                 }
             ],
             "description": "Mockery is a simple yet flexible PHP mock object framework for use in unit testing with PHPUnit, PHPSpec or any other testing framework. Its core goal is to offer a test double framework with a succint API capable of clearly defining all possible object operations and interactions using a human readable Domain Specific Language (DSL). Designed as a drop in alternative to PHPUnit's phpunit-mock-objects library, Mockery is easy to integrate with PHPUnit and can operate alongside phpunit-mock-objects without the World ending.",
@@ -1248,7 +1256,7 @@
                 "test double",
                 "testing"
             ],
-            "time": "2014-01-13 13:26:51"
+            "time": "2014-01-14 21:15:04"
         }
     ],
     "aliases": [
