@@ -2,7 +2,6 @@
 namespace Warkham\Fields;
 
 use Warkham\Abstracts\AbstractGroupField;
-use Former\Form\Group;
 use Illuminate\Container\Container;
 
 /**
