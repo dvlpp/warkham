@@ -4,7 +4,9 @@
     "jquery": "~2.0.3",
     "bootstrap": "~3.0.3",
     "select2": "~3.4.5",
-    "typeahead.js": "~0.9.3"
+    "typeahead.js": "~0.9.3",
+    "bootstrap-wysiwyg": "*",
+    "bootstrap-markdown": "~2.1.1"
   },
   "resolutions": {
     "jquery": "~2.0.3"
