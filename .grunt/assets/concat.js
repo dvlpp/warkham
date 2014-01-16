@@ -14,6 +14,7 @@ module.exports = {
 			'<%= components %>/jquery/jquery.js',
 			'<%= components %>/bootstrap-markdown/js/bootstrap-markdown.js',
 			'<%= components %>/bootstrap-wysiwyg/bootstrap-wysiwyg.js',
+			'<%= components %>/hogan/web/1.0.0/hogan.js',
 			'<%= components %>/select2/select2.js',
 			'<%= components %>/typeahead.js/dist/typeahead.js',
 			'<%= paths.original.js %>/**/*.js'

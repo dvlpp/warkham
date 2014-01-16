@@ -1,30 +1,34 @@
 <?php
 require __DIR__.'/../vendor/autoload.php';
 
-use Warkham\Facades\Warkham;
 use Illuminate\Support\Facades\Response;
+use Warkham\Facades\Warkham;
 
-// Create application container for the demo here
 $app = Warkham::make();
 
+// Routes
+//////////////////////////////////////////////////////////////////////
+
 // Define some routes for testing
-$oracle = function() {
-	Response::json(array(
-		1 => 'foo',
-		2 => 'bar',
-	))->send();
+$movies = function() {
+	return Response::json(include 'fixture-movies.php')->send();
 };
 
 // Register the routes
-$app['router']->get('oracle', ['as' => 'oracle', 'use' => $oracle]);
+$app['router']->get('movies', ['as' => 'movies', 'use' => $movies]);
+$app['router']->get('oracle', ['as' => 'oracle', 'use' => $movies]);
+
+// Request
+//////////////////////////////////////////////////////////////////////
 
 // Mock application handling
 $request = $_SERVER['REQUEST_URI'];
 $request = substr($request, strpos($request, '/public/') + 8);
 
 switch ($request) {
+	case 'movies':
 	case 'oracle':
-		return $oracle();
+		return $movies();
 }
 ?>
 <!DOCTYPE html>
@@ -45,6 +49,7 @@ switch ($request) {
 			<?= Warkham::checkbox('checkbox') ?>
 			<?= Warkham::file('file') ?>
 			<?= Warkham::textarea('textarea') ?>
+			<?= Warkham::autocomplete('autocomplete')->setDataset(['foo', 'bar'])->setRemoteRoute('movies')->setTemplate('<em style="color: YellowGreen">{{value}}</em>') ?>
 			<?= Warkham::oracle('oracle', 'Oracle (local)')->setRemoteRoute('oracle')->remote(false) ?>
 			<?= Warkham::oracle('oracle', 'Oracle (remote)')->setRemoteRoute('oracle')->remote(true) ?>
 			<?= Warkham::choice('foo', 'Choice (list)')->setAvailableValues(['foo', 'bar'])->ui('list') ?>

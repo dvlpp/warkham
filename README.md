@@ -32,9 +32,9 @@ $ grunt test
 | Abstract     | enable                  | V      |
 | Abstract     | forceValue              | V      |
 | Abstract     | setValue                | V      |
-| Autocomplete | setDataset              |        |
-| Autocomplete | setRemoteRoute          |        |
-| Autocomplete | setTemplate             |        |
+| Autocomplete | setDataset              | V      |
+| Autocomplete | setRemoteRoute          | V      |
+| Autocomplete | setTemplate             | V      |
 | Checkbox     | check                   | V      |
 | Checkbox     | text                    | V      |
 | Choice       | multiple                | V      |
