@@ -25,6 +25,10 @@ trait WithTemplate
 	 */
 	public function render()
 	{
-		return parent::render().'<div class="wkm-template" for="' .$this->id. '">' .$this->template. '</div>';
+		$template = $this->template
+			? '<div class="wkm-template" for="' .$this->id. '">' .$this->template. '</div>'
+			: '';
+
+		return parent::render().$template;
 	}
 }

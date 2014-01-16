@@ -1,12 +1,13 @@
 <?php
 namespace Warkham\Fields;
 
-use Former\Form\Fields\Select;
 use Warkham\Traits\WarkhamField;
+use Warkham\Traits\WithTemplate;
 
-class Oracle extends Select
+class Oracle extends Text
 {
 	use WarkhamField;
+	use WithTemplate;
 
 	/**
 	 * The default attributes
@@ -18,28 +19,20 @@ class Oracle extends Select
 	);
 
 	/**
-	 * Whether values are to be fetched remotly or not
+	 * The template to render
 	 *
-	 * @param boolean $remote
-	 *
-	 * @return self
+	 * @var string
 	 */
-	public function remote($remote)
+	protected $template;
+
+	/**
+	 * Set the minimum length of the request to make
+	 *
+	 * @param integer $length
+	 */
+	public function setQueryMinLength($length)
 	{
-		$this->setDataAttribute('remote', $remote);
-
-		// If we don't want to fetch data via AJAX, get them now
-		$route = $this->getAttribute('data-url');
-		if (!$remote and $route) {
-			$data = $this->app['files']->getRemote($route);
-			$data = json_decode($data, true);
-
-			$this->options($data);
-		} else {
-			return $this->mutateTo('text')->addClass('wkm-oracle');
-		}
-
-		return $this;
+		return $this->setDataAttribute('queryminlength', $length);
 	}
 
 	/**

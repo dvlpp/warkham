@@ -60,9 +60,9 @@ $ grunt test
 | List         | setValue                |        |
 | List         | sortable                |        |
 | Oracle       | forceValue              |        |
-| Oracle       | setQueryMinLength       |        |
+| Oracle       | setQueryMinLength       | V      |
 | Oracle       | setRemoteRoute          | V      |
-| Oracle       | setTemplate             |        |
+| Oracle       | setTemplate             | V      |
 | Oracle       | setValue                |        |
 | Taglist      | allowCreate             |        |
 | Taglist      | setDataset              |        |

@@ -2,6 +2,7 @@
 require __DIR__.'/../vendor/autoload.php';
 
 use Illuminate\Support\Facades\Response;
+use Illuminate\Support\Str;
 use Warkham\Facades\Warkham;
 
 $app = Warkham::make();
@@ -10,8 +11,16 @@ $app = Warkham::make();
 //////////////////////////////////////////////////////////////////////
 
 // Define some routes for testing
-$movies = function() {
-	return Response::json(include 'fixture-movies.php')->send();
+$movies = function($query) {
+	$movies  = include 'fixture-movies.php';
+	$results = $query ? [] : $movies;
+	foreach ($movies as $movie) {
+		if (Str::contains(strtolower($movie), $query)) {
+			$results[] = $movie;
+		}
+	}
+
+	return Response::json($results)->send();
 };
 
 // Register the routes
@@ -24,11 +33,12 @@ $app['router']->get('oracle', ['as' => 'oracle', 'use' => $movies]);
 // Mock application handling
 $request = $_SERVER['REQUEST_URI'];
 $request = substr($request, strpos($request, '/public/') + 8);
+$request = substr($request, 0, strpos($request, '?'));
 
 switch ($request) {
 	case 'movies':
 	case 'oracle':
-		return $movies();
+		return $movies($_GET['q']);
 }
 ?>
 <!DOCTYPE html>
@@ -50,8 +60,7 @@ switch ($request) {
 			<?= Warkham::file('file') ?>
 			<?= Warkham::textarea('textarea') ?>
 			<?= Warkham::autocomplete('autocomplete')->setDataset(['foo', 'bar'])->setRemoteRoute('movies')->setTemplate('<em style="color: YellowGreen">{{value}}</em>') ?>
-			<?= Warkham::oracle('oracle', 'Oracle (local)')->setRemoteRoute('oracle')->remote(false) ?>
-			<?= Warkham::oracle('oracle', 'Oracle (remote)')->setRemoteRoute('oracle')->remote(true) ?>
+			<?= Warkham::oracle('oracle')->setRemoteRoute('movies')->setQueryMinLength(3)->setTemplate('<em style="color: red">{{value}}</em>') ?>
 			<?= Warkham::choice('foo', 'Choice (list)')->setAvailableValues(['foo', 'bar'])->ui('list') ?>
 			<?= Warkham::choice('foo', 'Choice (radio)')->setAvailableValues(['foo', 'bar'])->ui('radio') ?>
 			<?= Warkham::choice('foo', 'Choice (checklist)')->setAvailableValues(['foo', 'bar'])->ui('checklist') ?>
