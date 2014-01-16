@@ -1,18 +1,26 @@
 ## Warkham::oracle
 
-- **Remplacer typeahead par select2**, et simplifier API (cf CdC)
-- Proposer solution pour **définir un template** de présentation des valeurs trouvées
-- S'assurer que la **value du champ posté soit bien l'id**, et pas le text. Au besoin, passer par un hidden.
+- S'assurer que la value du champ posté soit bien l'id, et pas le text. Au besoin, passer par un hidden.
+- [JS] : développer / améliorer le code (gestion des templates, ...)
+- templates : voir pour solution unifiée Hogan / replace entre oracle et autocomplete
 
 ## Warkham::autocomplete
 
-- Trouver un moyen de **passer du json** (cf exemples "Open source projects by Twitter" [ici](http://twitter.github.io/typeahead.js/examples/)). Le pb ne se pose que sur la méthode setDataset (ie : chargement du dataset avec la page).
-- Template (idem oracle)
+- [JS] : développer / améliorer le code (gestion des templates, ...)
 
 ## Warkham::choice
 
-- Gérer la méthode ->multiple()
+- Gérer les méthodes multiple(), setDataset(), setMaxSelectionSize()
+- ajouter image UI dans Select2
+- [JS] : gérer clear
+- js/components/select2.js : ne pas transformer tous les \<select\> en select2 !
 
 ## Warkham::textarea
 
-- Ajouter les JS [Bootstrap-wysiwyg](http://mindmup.github.io/bootstrap-wysiwyg/) et [jQueryRain](http://www.jqueryrain.com/?VYAvkzCv)
+- ->setToolbar()
+- Développer les UI JS
+
+## Warkham::date
+
+- fallback JQuery UI ? ([exemple](http://net.tutsplus.com/tutorials/javascript-ajax/quick-tip-cross-browser-datepickers-within-minutes/))
+
