@@ -46,7 +46,7 @@ switch ($request) {
 <head>
 	<meta charset="UTF-8">
 	<title>Warkham Test</title>
-	<link rel="stylesheet" href="builds/css/warkham.min.css">
+	<link rel="stylesheet" href="builds/css/warkham.css">
 </head>
 <body>
 	<main class="container">
@@ -60,13 +60,13 @@ switch ($request) {
 			<?= Warkham::file('file') ?>
 			<?= Warkham::textarea('textarea') ?>
 			<?= Warkham::autocomplete('autocomplete')->setDataset(['foo', 'bar'])->setRemoteRoute('movies')->setTemplate('<em style="color: YellowGreen">{{value}}</em>') ?>
-			<?= Warkham::oracle('oracle')->setRemoteRoute('movies')->setQueryMinLength(3)->setTemplate('<em style="color: red">{{value}}</em>') ?>
+			<?= Warkham::oracle('oracle')->setRemoteRoute('movies')->setQueryMinLength(3)->setTemplate('<em style="color: red">{{value.id}} - {{value.text}}</em>') ?>
 			<?= Warkham::choice('foo', 'Choice (list)')->setAvailableValues(['foo', 'bar'])->ui('list') ?>
 			<?= Warkham::choice('foo', 'Choice (radio)')->setAvailableValues(['foo', 'bar'])->ui('radio') ?>
 			<?= Warkham::choice('foo', 'Choice (checklist)')->setAvailableValues(['foo', 'bar'])->ui('checklist') ?>
 			<?= Warkham::date('date') ?>
 		<?= Warkham::close() ?>
 	</main>
-	<script src="builds/js/warkham.min.js"></script>
+	<script src="builds/js/warkham.js"></script>
 </body>
 </html>

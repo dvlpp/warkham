@@ -9,12 +9,10 @@ $('.wkm-oracle').each(function() {
 		adaptContainerCssClass: function(classes) {
 			return classes.replace('form-control', '');
 		},
-		formatResult: function(result) {
-			if (!template) {
-				return result.text;
-			}
-
-			return template.replace('{{value}}', result.text);
+		formatResult: function(value) {
+			return Hogan.compile(template).render({
+				'value': value,
+			});
 		},
 		ajax: {
 			url      : endpoint,
