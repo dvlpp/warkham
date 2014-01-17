@@ -69,5 +69,5 @@ $ grunt test
 | Taglist      | setMaxSelectionSize     |        |
 | Taglist      | setTags                 |        |
 | Text         | mask                    | V      |
-| Textarea     | setToolbar              |        |
+| Textarea     | setToolbar              | V      |
 | Textarea     | ui                      | V      |

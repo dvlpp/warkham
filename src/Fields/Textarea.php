@@ -31,4 +31,19 @@ class Textarea extends FormerTextarea
 	{
 		return $this->setDataAttribute('ui', $interface);
 	}
+
+	/**
+	 * Set the available tools in toolbar
+	 *
+	 * @param array $toolbar
+	 *
+	 * @return self
+	 */
+	public function setToolbar(array $toolbar)
+	{
+		$possible = ['bold', 'italic', 'heading', 'link', 'image', 'list', 'undo'];
+		$toolbar  = array_intersect($possible, $toolbar);
+
+		return $this->setDataAttribute('toolbar', $toolbar);
+	}
 }

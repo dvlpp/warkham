@@ -19,6 +19,14 @@ class TextareaTest extends WarkhamTestCase
 		));
 	}
 
+	public function testCanSetToolbar()
+	{
+		$field = $this->warkham->textarea('dummy')->setToolbar(['bold', 'foobar']);
+		$this->assertTextarea($field, array(
+			'data-toolbar' => '["bold"]',
+		));
+	}
+
 	////////////////////////////////////////////////////////////////////
 	/////////////////////////////// HELPERS ////////////////////////////
 	////////////////////////////////////////////////////////////////////

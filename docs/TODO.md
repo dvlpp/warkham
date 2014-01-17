@@ -15,5 +15,4 @@
 
 ## Warkham::textarea
 
-- ->setToolbar()
 - Développer les UI JS

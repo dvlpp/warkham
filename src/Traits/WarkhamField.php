@@ -124,6 +124,11 @@ trait WarkhamField
 			$value = $value ? 'true' : 'false';
 		}
 
+		// Format arrays
+		elseif (is_array($value)) {
+			$value = json_encode($value);
+		}
+
 		$this->setAttribute('data-'.$attribute, $value);
 
 		return $this;
