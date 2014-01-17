@@ -12,6 +12,8 @@ module.exports = {
 		dest: '<%= paths.compiled.js %>/<%= name %>.js',
 		src: [
 			'<%= components %>/jquery/jquery.js',
+			'<%= components %>/yepnope/yepnope.js',
+			'<%= components %>/modernizr/modernizr.js',
 			'<%= components %>/bootstrap-markdown/js/bootstrap-markdown.js',
 			'<%= components %>/bootstrap-wysiwyg/bootstrap-wysiwyg.js',
 			'<%= components %>/hogan/web/1.0.0/hogan.js',

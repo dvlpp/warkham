@@ -27,12 +27,6 @@ module.exports = {
 		trailing      : true,
 		undef         : true,
 		unused        : true,
-
-		predef  : ['openModal', 'graphData', 'd3', 'Backbone', '_'],
-		globals : {
-			app         : true,
-			Application : true,
-		}
 	},
 
 	all: ['<%= paths.original.js %>/*'],

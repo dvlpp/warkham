@@ -9,7 +9,7 @@ module.exports = {
 			},
 			{
 				expand : true,
-				src    : ['*.png'],
+				src    : ['*.png', '*.gif'],
 				cwd    : '<%= components %>/select2/',
 				dest   : '<%= paths.compiled.css %>'
 			}

@@ -1,6 +1,5 @@
 module.exports = {
 	options: {
-		interrupt : true,
 		livereload: true,
 	},
 
