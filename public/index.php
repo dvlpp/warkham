@@ -11,7 +11,7 @@ $app = Warkham::make();
 //////////////////////////////////////////////////////////////////////
 
 // Define some routes for testing
-$movies = function($query) {
+$movies = function($query = null) {
 	$movies  = include 'fixture-movies.php';
 	$results = $query ? [] : $movies;
 	foreach ($movies as $movie) {
@@ -33,12 +33,14 @@ $app['router']->get('oracle', ['as' => 'oracle', 'use' => $movies]);
 // Mock application handling
 $request = $_SERVER['REQUEST_URI'];
 $request = substr($request, strpos($request, '/public/') + 8);
-$request = substr($request, 0, strpos($request, '?'));
+if ($query = strpos($request, '?')) {
+	$request = substr($request, 0, $query);
+}
 
 switch ($request) {
 	case 'movies':
 	case 'oracle':
-		return $movies($_GET['q']);
+		return $movies(array_get($_GET, 'q'));
 }
 ?>
 <!DOCTYPE html>
