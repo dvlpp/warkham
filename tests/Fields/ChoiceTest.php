@@ -45,6 +45,14 @@ class ChoiceTest extends WarkhamTestCase
 		$this->assertEquals($matcher, $choice->render());
 	}
 
+	public function testCanMutateToList()
+	{
+		$choice = $this->warkham->choice('dummy')->ui('list')->setAvailableValues(['foo', 'bar']);
+		$this->assertSelect($choice, array(
+			'class' => 'wkm-list',
+		));
+	}
+
 	public function testCanMutateToCheckboxes()
 	{
 		$choice = $this->warkham->choice('dummy')->ui('radio')->setAvailableValues(['foo', 'bar']);

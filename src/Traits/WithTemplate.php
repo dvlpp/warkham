@@ -7,6 +7,13 @@ namespace Warkham\Traits;
 trait WithTemplate
 {
 	/**
+	 * The stored template HTML
+	 *
+	 * @var string
+	 */
+	protected $template;
+
+	/**
 	 * Set the template to use for autocomplete
 	 *
 	 * @param string $template

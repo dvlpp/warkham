@@ -19,13 +19,6 @@ class Oracle extends Text
 	);
 
 	/**
-	 * The template to render
-	 *
-	 * @var string
-	 */
-	protected $template;
-
-	/**
 	 * Set the minimum length of the request to make
 	 *
 	 * @param integer $length

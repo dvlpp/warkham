@@ -1,28 +1,40 @@
 
 
-Code Coverage Report:      
-  2014-01-14 00:46:07      
-                           
- Summary:                  
-  Classes: 72.73% (8/11)   
-  Methods: 84.00% (21/25)  
-  Lines:   87.39% (104/119)
+Code Coverage Report:       
+  2014-01-18 15:26:48       
+                            
+ Summary:                   
+  Classes: 100.00% (15/15)  
+  Methods: 100.00% (40/40)  
+  Lines:   100.00% (141/141)
 
 \Warkham::WarkhamServiceProvider
   Methods: 100.00% ( 3/ 3)   Lines: 100.00% ( 20/ 20)
+\Warkham\Abstracts::AbstractField
+  Methods: 100.00% ( 1/ 1)   Lines: 100.00% (  3/  3)
+\Warkham\Abstracts::AbstractGroupField
+  Methods: 100.00% ( 1/ 1)   Lines: 100.00% (  3/  3)
 \Warkham\Facades::Warkham
   Methods: 100.00% ( 2/ 2)   Lines: 100.00% (  6/  6)
+\Warkham\Fields::Autocomplete
+  Methods: 100.00% ( 2/ 2)   Lines: 100.00% (  2/  2)
 \Warkham\Fields::Checkbox
-  Methods: 100.00% ( 3/ 3)   Lines: 100.00% ( 12/ 12)
+  Methods: 100.00% ( 4/ 4)   Lines: 100.00% ( 15/ 15)
+\Warkham\Fields::Date
+  Methods: 100.00% ( 3/ 3)   Lines: 100.00% ( 10/ 10)
 \Warkham\Fields::File
   Methods: 100.00% ( 4/ 4)   Lines: 100.00% (  8/  8)
 \Warkham\Fields::Oracle
-  Methods: 100.00% ( 2/ 2)   Lines: 100.00% ( 10/ 10)
+  Methods: 100.00% ( 2/ 2)   Lines: 100.00% (  2/  2)
+\Warkham\Fields::Taglist
+  Methods: 100.00% ( 6/ 6)   Lines: 100.00% (  6/  6)
 \Warkham\Fields::Text
   Methods: 100.00% ( 1/ 1)   Lines: 100.00% (  1/  1)
 \Warkham\Fields::Textarea
-  Methods: 100.00% ( 1/ 1)   Lines: 100.00% (  1/  1)
+  Methods: 100.00% ( 2/ 2)   Lines: 100.00% (  4/  4)
 \Warkham\Traits::Choice
-  Methods:  66.67% ( 2/ 3)   Lines:  94.44% ( 34/ 36)
+  Methods: 100.00% ( 2/ 2)   Lines: 100.00% (  6/  6)
 \Warkham\Traits::WarkhamField
-  Methods: 100.00% ( 3/ 3)   Lines: 100.00% ( 11/ 11)
+  Methods: 100.00% ( 5/ 5)   Lines: 100.00% ( 48/ 48)
+\Warkham\Traits::WithTemplate
+  Methods: 100.00% ( 2/ 2)   Lines: 100.00% (  6/  6)

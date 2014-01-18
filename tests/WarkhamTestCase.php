@@ -43,9 +43,11 @@ abstract class WarkhamTestCase extends ContainerTestCase
 	 *
 	 * @return DummyField
 	 */
-	protected function getDummyField()
+	protected function getDummyField($class = 'DummyField')
 	{
-		return new DummyField($this->app, 'text', 'dummy', 'dummy', 'foobar', array());
+		$class = 'Warkham\Dummies\\'.$class;
+
+		return new $class($this->app, 'text', 'dummy', 'dummy', 'foobar', array());
 	}
 
 	////////////////////////////////////////////////////////////////////
@@ -94,9 +96,8 @@ abstract class WarkhamTestCase extends ContainerTestCase
 	protected function assertField(Tag $field, $attributes = array())
 	{
 		$matcher = $this->matchField($attributes);
-		$render  = $field->render();
 
-		return $this->assertHtml($matcher, $render);
+		return $this->assertHtml($matcher, $field);
 	}
 
 	/**
@@ -109,7 +110,7 @@ abstract class WarkhamTestCase extends ContainerTestCase
 	 */
 	protected function assertSelect(Tag $field, $attributes = array())
 	{
-		$matcher = array_merge(array(
+		$matcher = $this->matchField(array_merge(array(
 			'tag'      => 'select',
 			'children' => array(
 				'count' => 2,
@@ -117,11 +118,9 @@ abstract class WarkhamTestCase extends ContainerTestCase
 					'tag' => 'option',
 				),
 			),
-		), $attributes);
-		$matcher = $this->matchField($matcher);
-		$render  = $field->render();
+		), $attributes));
 
-		return $this->assertHtml($matcher, $render);
+		return $this->assertHtml($matcher, $field);
 	}
 
 	/**
@@ -134,6 +133,11 @@ abstract class WarkhamTestCase extends ContainerTestCase
 	 */
 	protected function assertHtml($expected, $output)
 	{
+		// Convert objects to HTML
+		if (method_exists($output, 'render')) {
+			$output = $output->render();
+		}
+
 		return $this->assertTag(
 			$expected,
 			$output,

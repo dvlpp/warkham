@@ -21,21 +21,12 @@ class Autocomplete extends AbstractField
 	);
 
 	/**
-	 * The template to render
-	 *
-	 * @var string
-	 */
-	protected $template;
-
-	/**
 	 * Set the local values
 	 *
 	 * @param array $dataset
 	 */
 	public function setDataset(array $dataset = array())
 	{
-		$dataset = json_encode($dataset);
-
 		return $this->setDataAttribute('values', $dataset);
 	}
 

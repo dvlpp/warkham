@@ -12,7 +12,8 @@
 	"autoload": {
 		"psr-4": {
 			"Warkham\\": "src/"
-		}
+		},
+		"classmap": ["tests"]
 	},
 	"license": "MIT",
 	"authors": [

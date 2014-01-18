@@ -2,6 +2,7 @@
 namespace Warkham\Fields;
 
 use HtmlObject\Element;
+use Illuminate\Container\Container;
 use Warkham\Abstracts\AbstractField;
 
 /**
@@ -17,6 +18,23 @@ class Checkbox extends AbstractField
 	protected $attributes = array(
 		'class' => 'wkm-checkbox',
 	);
+
+	/**
+	 * Encore text type
+	 *
+	 * @param Container $app
+	 * @param strign    $type
+	 * @param string    $name
+	 * @param string    $label
+	 * @param string    $value
+	 * @param array     $attributes
+	 */
+	public function __construct(Container $app, $type, $name, $label, $value, $attributes)
+	{
+		parent::__construct($app, $type, $name, $label, $value, $attributes);
+
+		$this->type = 'checkbox';
+	}
 
 	/**
 	 * The Checkbox's text

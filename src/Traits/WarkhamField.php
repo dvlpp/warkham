@@ -43,7 +43,7 @@ trait WarkhamField
 				return $this->options($values);
 
 			default:
-				return $this->value($values);
+				return $this->setValue($values);
 		}
 	}
 

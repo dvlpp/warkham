@@ -26,7 +26,7 @@ class Taglist extends AbstractField
 	 *
 	 * @param array $values
 	 */
-	public function setValue(array $values = array())
+	public function setValue($values = array())
 	{
 		return $this->setTags($values);
 	}
@@ -36,7 +36,7 @@ class Taglist extends AbstractField
 	 *
 	 * @param array $values
 	 */
-	public function forceValue(array $values = array())
+	public function forceValue($values = array())
 	{
 		return $this->setTags($values);
 	}
