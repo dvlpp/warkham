@@ -67,6 +67,8 @@ switch ($request) {
 			<?= Warkham::choice('foo', 'Choice (radio)')->setAvailableValues(['foo', 'bar'])->ui('radio') ?>
 			<?= Warkham::choice('foo', 'Choice (checklist)')->setAvailableValues(['foo', 'bar'])->ui('checklist') ?>
 			<?= Warkham::date('date') ?>
+			<?= Warkham::taglist('taglist')->setTags(['foo', 'bar'])->setDataset(['baz', 'qux'])->setMaxSelectionSize(3) ?>
+			<?= Warkham::taglist('taglist', 'Taglist (no create)')->setTags(['foo'])->setDataset(['baz', 'qux'])->setMaxSelectionSize(3)->allowCreate(false) ?>
 		<?= Warkham::close() ?>
 	</main>
 	<script src="builds/js/warkham.js"></script>

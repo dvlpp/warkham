@@ -1,7 +1,7 @@
 $('.wkm-oracle').each(function() {
 	var minLength = this.dataset.queryminlength;
 	var endpoint  = this.dataset.url;
-	var template = $(this).siblings('.wkm-template').html();
+	var template  = $(this).siblings('.wkm-template').html();
 
 	$(this).select2({
 		placeholder: "Rechercher un film de Dustin Hoffmann",

@@ -50,6 +50,10 @@ $ grunt test
 | V      | Oracle       | setQueryMinLength       |
 | V      | Oracle       | setRemoteRoute          |
 | V      | Oracle       | setTemplate             |
+| V      | Taglist      | allowCreate             |
+| V      | Taglist      | setDataset              |
+| V      | Taglist      | setMaxSelectionSize     |
+| V      | Taglist      | setTags                 |
 | V      | Text         | mask                    |
 | V      | Textarea     | setToolbar              |
 | V      | Textarea     | ui                      |
@@ -67,7 +71,3 @@ $ grunt test
 |        | List         | sortable                |
 |        | Oracle       | forceValue              |
 |        | Oracle       | setValue                |
-|        | Taglist      | allowCreate             |
-|        | Taglist      | setDataset              |
-|        | Taglist      | setMaxSelectionSize     |
-|        | Taglist      | setTags                 |
