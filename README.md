@@ -38,6 +38,8 @@ $ grunt test
 | V      | Checkbox     | check                   |
 | V      | Checkbox     | text                    |
 | V      | Choice       | multiple                |
+| V      | Choice       | setDataset              |
+| V      | Choice       | setMaxSelectionSize     |
 | V      | Choice       | ui                      |
 | V      | Date         | max                     |
 | V      | Date         | min                     |
@@ -57,8 +59,6 @@ $ grunt test
 | V      | Text         | mask                    |
 | V      | Textarea     | setToolbar              |
 | V      | Textarea     | ui                      |
-|        | Choice       | setDataset              |
-|        | Choice       | setMaxSelectionSize     |
 |        | Date         | withHours               |
 |        | Date         | withMinutes             |
 |        | Filelist     | addable                 |

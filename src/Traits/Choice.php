@@ -33,7 +33,23 @@ trait Choice
 	public function multiple($multiple)
 	{
 		if ($this->interface === 'list') {
+			parent::multiple(true);
+
 			return $this->setDataAttribute('multiple', $multiple);
+		}
+
+		return $this;
+	}
+
+	/**
+	 * Set the maximum number of values
+	 *
+	 * @param integer $max
+	 */
+	public function setMaxSelectionSize($max)
+	{
+		if ($this->interface === 'list' and $this->attributes['multiple']) {
+			return $this->setDataAttribute('maxselectionsize', $max);
 		}
 
 		return $this;

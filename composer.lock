@@ -3,7 +3,7 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "6a73a2fca50653fdb4dc5c963206cfd7",
+    "hash": "51129c17cbeb878988beb23e46a3c073",
     "packages": [
         {
             "name": "anahkiasen/former",
@@ -11,12 +11,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Anahkiasen/former.git",
-                "reference": "881e7f6f92e3081f3526b20c6dcf420a094ef892"
+                "reference": "420de4fca11206db978ba0c3cf46fea61c1e2b77"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Anahkiasen/former/zipball/881e7f6f92e3081f3526b20c6dcf420a094ef892",
-                "reference": "881e7f6f92e3081f3526b20c6dcf420a094ef892",
+                "url": "https://api.github.com/repos/Anahkiasen/former/zipball/420de4fca11206db978ba0c3cf46fea61c1e2b77",
+                "reference": "420de4fca11206db978ba0c3cf46fea61c1e2b77",
                 "shasum": ""
             },
             "require": {
@@ -60,7 +60,7 @@
                 "foundation",
                 "laravel"
             ],
-            "time": "2014-01-14 22:26:48"
+            "time": "2014-01-17 20:53:13"
         },
         {
             "name": "anahkiasen/html-object",
@@ -208,12 +208,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/container.git",
-                "reference": "51c3d3c6f8dd51017db5d69949caf1a5ef31e856"
+                "reference": "5d350b30dd915cbc362c0068ccdffcfe3b6b8a70"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/illuminate/container/zipball/51c3d3c6f8dd51017db5d69949caf1a5ef31e856",
-                "reference": "51c3d3c6f8dd51017db5d69949caf1a5ef31e856",
+                "url": "https://api.github.com/repos/illuminate/container/zipball/5d350b30dd915cbc362c0068ccdffcfe3b6b8a70",
+                "reference": "5d350b30dd915cbc362c0068ccdffcfe3b6b8a70",
                 "shasum": ""
             },
             "require": {
@@ -245,7 +245,7 @@
                     "role": "Developer"
                 }
             ],
-            "time": "2014-01-14 01:36:14"
+            "time": "2014-01-17 18:26:03"
         },
         {
             "name": "illuminate/cookie",
@@ -352,12 +352,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/events.git",
-                "reference": "436529889f79f4ea6761784fed0e54bf5ba73e18"
+                "reference": "27a568f38603b51440af8e1d142b1a788ae0b2da"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/illuminate/events/zipball/436529889f79f4ea6761784fed0e54bf5ba73e18",
-                "reference": "436529889f79f4ea6761784fed0e54bf5ba73e18",
+                "url": "https://api.github.com/repos/illuminate/events/zipball/27a568f38603b51440af8e1d142b1a788ae0b2da",
+                "reference": "27a568f38603b51440af8e1d142b1a788ae0b2da",
                 "shasum": ""
             },
             "require": {
@@ -392,7 +392,7 @@
                     "role": "Developer"
                 }
             ],
-            "time": "2014-01-14 01:36:14"
+            "time": "2014-01-17 18:26:03"
         },
         {
             "name": "illuminate/filesystem",
@@ -401,12 +401,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/filesystem.git",
-                "reference": "6ea608f1ac6fff9dff3636f7dbe3e3365287dbdb"
+                "reference": "bdb6d0fef0b851f45474837aea5de0cb0c8358e6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/illuminate/filesystem/zipball/6ea608f1ac6fff9dff3636f7dbe3e3365287dbdb",
-                "reference": "6ea608f1ac6fff9dff3636f7dbe3e3365287dbdb",
+                "url": "https://api.github.com/repos/illuminate/filesystem/zipball/bdb6d0fef0b851f45474837aea5de0cb0c8358e6",
+                "reference": "bdb6d0fef0b851f45474837aea5de0cb0c8358e6",
                 "shasum": ""
             },
             "require": {
@@ -440,7 +440,7 @@
                     "role": "Developer"
                 }
             ],
-            "time": "2014-01-14 01:36:14"
+            "time": "2014-01-17 18:26:03"
         },
         {
             "name": "illuminate/http",
@@ -449,12 +449,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/http.git",
-                "reference": "371e28b654567f16309a6e6dba8e0b24673262b0"
+                "reference": "5725f4d615f1c6c17863961bf33a34e6f6edd48e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/illuminate/http/zipball/371e28b654567f16309a6e6dba8e0b24673262b0",
-                "reference": "371e28b654567f16309a6e6dba8e0b24673262b0",
+                "url": "https://api.github.com/repos/illuminate/http/zipball/5725f4d615f1c6c17863961bf33a34e6f6edd48e",
+                "reference": "5725f4d615f1c6c17863961bf33a34e6f6edd48e",
                 "shasum": ""
             },
             "require": {
@@ -490,7 +490,7 @@
                     "role": "Developer"
                 }
             ],
-            "time": "2014-01-16 04:15:22"
+            "time": "2014-01-17 20:17:39"
         },
         {
             "name": "illuminate/routing",
@@ -499,12 +499,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/routing.git",
-                "reference": "54da5567a70ae0e889d5e740df2e47bb636efcb5"
+                "reference": "d2620e744f8c76624ae0c9ea328db078b4914b26"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/illuminate/routing/zipball/54da5567a70ae0e889d5e740df2e47bb636efcb5",
-                "reference": "54da5567a70ae0e889d5e740df2e47bb636efcb5",
+                "url": "https://api.github.com/repos/illuminate/routing/zipball/d2620e744f8c76624ae0c9ea328db078b4914b26",
+                "reference": "d2620e744f8c76624ae0c9ea328db078b4914b26",
                 "shasum": ""
             },
             "require": {
@@ -545,7 +545,7 @@
                     "role": "Developer"
                 }
             ],
-            "time": "2014-01-16 04:15:22"
+            "time": "2014-01-17 20:17:39"
         },
         {
             "name": "illuminate/session",
@@ -609,12 +609,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/support.git",
-                "reference": "c7dfd1bad63f9ac5c3491112c21c14475b1c331e"
+                "reference": "4e32ecc6b52570283cacc0dbe4f468bc702c2759"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/illuminate/support/zipball/c7dfd1bad63f9ac5c3491112c21c14475b1c331e",
-                "reference": "c7dfd1bad63f9ac5c3491112c21c14475b1c331e",
+                "url": "https://api.github.com/repos/illuminate/support/zipball/4e32ecc6b52570283cacc0dbe4f468bc702c2759",
+                "reference": "4e32ecc6b52570283cacc0dbe4f468bc702c2759",
                 "shasum": ""
             },
             "require": {
@@ -651,7 +651,7 @@
                     "role": "Developer"
                 }
             ],
-            "time": "2014-01-14 01:36:14"
+            "time": "2014-01-17 18:26:03"
         },
         {
             "name": "illuminate/translation",
