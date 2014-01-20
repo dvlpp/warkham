@@ -67,9 +67,12 @@ switch ($request) {
 			<?= Warkham::choice('foo', 'Choice (multiple)')->setAvailableValues(['foo', 'bar', 'baz', 'qux'])->ui('list')->multiple(true)->setMaxSelectionSize(2) ?>
 			<?= Warkham::choice('foo', 'Choice (radio)')->setAvailableValues(['foo', 'bar'])->ui('radio') ?>
 			<?= Warkham::choice('foo', 'Choice (checklist)')->setAvailableValues(['foo', 'bar'])->ui('checklist') ?>
-			<?= Warkham::date('date') ?>
+			<?= Warkham::date('date')->maxTime('04:00') ?>
 			<?= Warkham::taglist('taglist')->setTags(['foo', 'bar'])->setDataset(['baz', 'qux'])->setMaxSelectionSize(3) ?>
 			<?= Warkham::taglist('taglist', 'Taglist (no create)')->setTags(['foo'])->setDataset(['baz', 'qux'])->setMaxSelectionSize(3)->allowCreate(false) ?>
+			<div class="form-actions">
+				<?= Warkham::button('Submit')->type('submit')->addClass('btn btn-primary') ?>
+			</div>
 		<?= Warkham::close() ?>
 	</main>
 	<script src="builds/js/warkham.js"></script>

@@ -27,7 +27,7 @@ $ grunt test
 ## Roadmap
 
 | Status | Class        | Method                  |
-| ------ | --------     | ----------------------- |
+| ------ | ------------ | ----------------------- |
 | V      | Abstract     | addClass                |
 | V      | Abstract     | enable                  |
 | V      | Abstract     | forceValue              |
@@ -59,8 +59,8 @@ $ grunt test
 | V      | Text         | mask                    |
 | V      | Textarea     | setToolbar              |
 | V      | Textarea     | ui                      |
-|        | Date         | withHours               |
-|        | Date         | withMinutes             |
+| V      | Date         | withHours               |
+| V      | Date         | withMinutes             |
 |        | Filelist     | addable                 |
 |        | Filelist     | removable               |
 |        | Filelist     | setValue                |
