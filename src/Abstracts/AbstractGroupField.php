@@ -5,9 +5,12 @@ use Former\Helpers;
 use HtmlObject\Element;
 use HtmlObject\Traits\Tag;
 use Illuminate\Container\Container;
+use Warkham\Traits\WarkhamField;
 
 abstract class AbstractGroupField extends Tag
 {
+	use WarkhamField;
+
 	/**
 	 * The Container
 	 *

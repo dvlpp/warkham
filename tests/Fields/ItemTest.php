@@ -57,4 +57,17 @@ class ItemTest extends WarkhamTestCase
 
 		$this->assertEquals($matcher, $items->render());
 	}
+
+	public function testCanSetAsSortable()
+	{
+		$items = $this->warkham->items('items')->sortable(true);
+
+		$this->assertHtml(array(
+			'tag'        => 'div',
+			'attributes' => array(
+				'class'         => 'wkm-items',
+				'data-sortable' => 'true',
+			),
+		), $items);
+	}
 }
