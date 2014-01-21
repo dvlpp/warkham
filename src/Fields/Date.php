@@ -25,8 +25,10 @@ class Date extends AbstractGroupField
 	 * @param string    $label
 	 * @param array     $validations
 	 */
-  public function __construct(Container $app, $name, $label, $validations)
+  public function __construct(Container $app, $type, $name, $label, $validations)
 	{
+		$label = $label ?: $name;
+
 		parent::__construct($app, $label, $validations);
 
 		$this->nest(array(

@@ -21,6 +21,17 @@ abstract class WarkhamTestCase extends ContainerTestCase
 
 		$this->app = WarkhamServiceProvider::make($this->app);
 		$this->mockUrlGenerator();
+
+		// Open a form
+		$this->app['warkham']->open();
+		$this->app['warkham']->framework('Nude');
+	}
+
+	public function tearDown()
+	{
+		parent::tearDown();
+
+		$this->app['warkham']->close();
 	}
 
 	/**
