@@ -79,7 +79,7 @@ class Item extends AbstractGroupField
 
 		// Add remove button if provided
 		if ($this->getAttribute('data-removeable')) {
-			$delete = Element::create('button', $this->removeableText)->class('btn btn-danger');
+			$delete = Element::create('button', $this->removeableText)->class('btn btn-danger')->dataAction('remove-item');
 			$parent->nest($this->createLi(array(
 				'button' => $delete,
 			)), 'button');
@@ -176,7 +176,7 @@ class Item extends AbstractGroupField
 		$this->setDataAttribute('addable', $addable);
 
 		// Create button
-		$button = Element::create('button', $text)->class('btn');
+		$button = Element::create('button', $text)->class('btn')->dataAction('add-item');
 		$this->nest($button, 'button');
 
 		// Create template
@@ -201,6 +201,10 @@ class Item extends AbstractGroupField
 
 		// Recreate items
 		$this->fields();
+
+		// Recreate template
+		$template = $this->createItem();
+		$this->setChild($template, 'template');
 
 		return $this;
 	}
