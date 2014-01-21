@@ -114,7 +114,6 @@ class ItemTest extends WarkhamTestCase
 		$items = $this->warkham->items('items')
 			->fields(array(
 				$this->warkham->text('dummy'),
-				$this->warkham->number('number'),
 			))
 			->removeable(true, 'NOPE');
 
@@ -133,8 +132,27 @@ class ItemTest extends WarkhamTestCase
 					'<input class="wkm-text form-control" id="dummy" type="text" name="dummy">'.
 				'</li>'.
 				'<li class="list-group-item">'.
-					'<label for="number">Number</label>'.
-					'<input class="form-control" id="number" type="number" name="number">'.
+					'<button class="btn btn-danger" data-action="remove-item">NOPE</button>'.
+				'</li>'.
+			'</ul>';
+
+		$this->assertContains($matcher, $items->render());
+	}
+
+	public function testTemplateHasRemoveButtonIfCalledAfterAddable()
+	{
+		$items = $this->warkham->items('items')
+			->fields(array(
+				$this->warkham->text('dummy'),
+			))
+			->addable()
+			->removeable(true, 'NOPE');
+
+		$matcher =
+			'<ul class="list-group wkm-template">'.
+				'<li class="list-group-item">'.
+					'<label for="dummy">Dummy</label>'.
+					'<input class="wkm-text form-control" id="dummy" type="text" name="dummy">'.
 				'</li>'.
 				'<li class="list-group-item">'.
 					'<button class="btn btn-danger" data-action="remove-item">NOPE</button>'.
