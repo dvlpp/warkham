@@ -137,7 +137,7 @@ class ItemTest extends WarkhamTestCase
 					'<input class="form-control" id="number" type="number" name="number">'.
 				'</li>'.
 				'<li class="list-group-item">'.
-					'<button class="btn btn-danger">NOPE</button>'.
+					'<button class="btn btn-danger" data-action="remove-item">NOPE</button>'.
 				'</li>'.
 			'</ul>';
 
