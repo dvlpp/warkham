@@ -59,6 +59,7 @@ module.exports = function(grunt) {
 		'bower',
 		'css',
 		'js',
+		'copy',
 	]);
 
 	grunt.registerTask('test', 'Launch the tests', ['phpunit:dist']);
