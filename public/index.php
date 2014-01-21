@@ -71,6 +71,7 @@ switch ($request) {
 			<?= Warkham::date('date')->maxDate('2014-02-01')->minDate('2013-01-01') ?>
 			<?= Warkham::taglist('taglist')->setTags(['foo', 'bar'])->setDataset(['baz', 'qux'])->setMaxSelectionSize(3) ?>
 			<?= Warkham::taglist('taglist', 'Taglist (no create)')->setTags(['foo'])->setDataset(['baz', 'qux'])->setMaxSelectionSize(3)->allowCreate(false) ?>
+			<?= Warkham::items('items')->fields(Warkham::text('text'), Warkham::number('number')) ?>
 			<div class="form-actions">
 				<?= Warkham::button('Submit')->type('submit')->addClass('btn btn-primary') ?>
 			</div>

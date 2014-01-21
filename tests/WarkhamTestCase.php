@@ -4,6 +4,7 @@ namespace Warkham;
 require __DIR__.'/../vendor/autoload.php';
 require __DIR__.'/ContainerTestCase.php';
 
+use DOMDocument;
 use HtmlObject\Traits\Tag;
 use Warkham\Dummies\DummyField;
 
@@ -152,6 +153,29 @@ abstract class WarkhamTestCase extends ContainerTestCase
 		return $this->assertTag(
 			$expected,
 			$output,
-			"Failing to assert that ".PHP_EOL.$output.PHP_EOL."matches".PHP_EOL.json_encode($expected));
+			"Failing to assert that ".PHP_EOL.$this->formatHtml($output).PHP_EOL."matches".PHP_EOL.json_encode($expected));
+	}
+
+	/**
+	 * Format a piece of HTML
+	 *
+	 * @param string $html
+	 *
+	 * @return string
+	 */
+	protected function formatHtml($html)
+	{
+		// Create a dummy DOM
+		$dom = new DOMDocument();
+		$dom->preserveWhiteSpace = false;
+		$dom->formatOutput = true;
+		$dom->loadHTML($html);
+
+		// Remove extra nodes from output
+		$output = $dom->saveHTML();
+		$output = preg_replace('/<(\/|!)?(DOCTYPE.+|html|body)>/', '', $output);
+		$output = trim($output);
+
+		return $output;
 	}
 }

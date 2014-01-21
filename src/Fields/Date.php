@@ -19,21 +19,15 @@ class Date extends AbstractGroupField
 	);
 
 	/**
-	 * Build a new Date field
+	 * Create the Date fields
 	 *
-	 * @param Container $app
-	 * @param string    $label
-	 * @param array     $validations
+	 * @return void
 	 */
-  public function __construct(Container $app, $type, $name, $label, $validations)
+	protected function createChildren()
 	{
-		$label = $label ?: $name;
-
-		parent::__construct($app, $label, $validations);
-
 		$this->nest(array(
-			'date' => $app['former']->date($name.'[date]')->addClass('wkm-date-date'),
-			'time' => $app['former']->time($name.'[time]')->addClass('wkm-date-time'),
+			'date' => $this->app['former']->date($this->name.'[date]')->addClass('wkm-date-date'),
+			'time' => $this->app['former']->time($this->name.'[time]')->addClass('wkm-date-time'),
 		));
 	}
 
@@ -116,7 +110,7 @@ class Date extends AbstractGroupField
 	 */
 	protected function setChildBound($children, $bound, $value)
 	{
-		$this->{$children}->{$bound}($value);
+		$this->$children->$bound($value);
 
 		return $this;
 	}

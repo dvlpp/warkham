@@ -30,6 +30,13 @@ abstract class AbstractGroupField extends Tag
 	protected $label;
 
 	/**
+	 * The name of the group
+	 *
+	 * @var string
+	 */
+	protected $name;
+
+	/**
 	 * Whether the element is self closing
 	 *
 	 * @var boolean
@@ -43,37 +50,53 @@ abstract class AbstractGroupField extends Tag
 	 * @param string    $label
 	 * @param array     $validations
 	 */
-	public function __construct(Container $app, $label, $validations)
+	public function __construct(Container $app, $type, $name, $label, $validations)
 	{
-		$this->app = $app;
-		$this->addClass($this->app['former.framework']->getGroupClasses());
-		$this->label = $label;
+		$this->addClass($app['former.framework']->getGroupClasses());
+
+		$this->app   = $app;
+		$this->label = $label ?: $name;
+		$this->name  = $name;
+
+		$this->createChildren();
 	}
 
 	/**
-	 * Set the Group's label
+	 * Hook to create children in the subclass
+	 *
+	 * @return void
+	 */
+	abstract protected function createChildren();
+
+	////////////////////////////////////////////////////////////////////
+	///////////////////////////// DOM ELEMENTS /////////////////////////
+	////////////////////////////////////////////////////////////////////
+
+	/**
+	 * Create a label element from a string
 	 *
 	 * @param string $label
+	 *
+	 * @return Element
 	 */
-	public function setLabel($label)
+	protected function createLabel($label, $field = null)
 	{
-		// Create label
-		if (!$label instanceof Element) {
-			$label = Helpers::translate($label);
-		}
+		$label = Helpers::translate($label);
+		$label = Element::create('label', $label)->for($field ?: strtolower($label));
+		$label->addClass($this->app['former.framework']->getLabelClasses());
 
-		// Set framework classes
-
-		// Bind as child
-		$this->setChild($label, 'label');
+		return $label;
 	}
 
+	/**
+	 * Render the group
+	 *
+	 * @return string
+	 */
 	public function render()
 	{
 		// Create label
-		$label = Helpers::translate($this->label);
-		$label = Element::create('label', $label)->for($label);
-		$label->addClass($this->app['former.framework']->getLabelClasses());
+		$label = $this->createLabel($this->label, $this->name);
 
 		// Create wrapping div
 		$children = $this->renderChildren();
