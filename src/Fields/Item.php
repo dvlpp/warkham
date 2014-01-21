@@ -158,7 +158,7 @@ class Item extends AbstractGroupField
 	 *
 	 * @return self
 	 */
-	public function sortable($sortable)
+	public function sortable($sortable = true)
 	{
 		return $this->setDataAttribute('sortable', $sortable);
 	}
@@ -171,7 +171,7 @@ class Item extends AbstractGroupField
 	 *
 	 * @return self
 	 */
-	public function addable($addable, $text = 'Ajouter')
+	public function addable($addable = true, $text = 'Ajouter')
 	{
 		$this->setDataAttribute('addable', $addable);
 
@@ -194,7 +194,7 @@ class Item extends AbstractGroupField
 	 *
 	 * @return self
 	 */
-	public function removeable($removeable, $text = 'Supprimer')
+	public function removeable($removeable = true, $text = 'Supprimer')
 	{
 		$this->setDataAttribute('removeable', $removeable);
 		$this->removeableText = $text;
