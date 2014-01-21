@@ -88,8 +88,11 @@ class ItemTest extends WarkhamTestCase
 			),
 		), $items);
 		$this->assertHtml(array(
-			'tag'     => 'button',
-			'content' => 'Ajouter',
+			'tag'        => 'button',
+			'content'    => 'Ajouter',
+			'attributes' => array(
+				'class' => 'btn',
+			),
 		), $items);
 
 		$matcher =

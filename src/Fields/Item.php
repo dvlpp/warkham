@@ -58,7 +58,7 @@ class Item extends AbstractGroupField
 		// Nest fields we specified
 		foreach ($this->fieldsTemplate as $field) {
 			$li = Element::create('li')->addClass('list-group-item')->nest(array(
-				'label' => $this->createLabel($field->getName()),
+				'label' => $this->createLabel($field->getId())->class(''),
 				'field' => $field,
 			));
 
@@ -134,7 +134,7 @@ class Item extends AbstractGroupField
 		$this->setDataAttribute('addable', $addable);
 
 		// Create button
-		$button = Element::create('button', $text);
+		$button = Element::create('button', $text)->class('btn');
 		$this->nest($button, 'button');
 
 		// Create template
