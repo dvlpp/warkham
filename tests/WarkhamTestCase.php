@@ -156,6 +156,23 @@ abstract class WarkhamTestCase extends ContainerTestCase
 			"Failing to assert that ".PHP_EOL.$this->formatHtml($output).PHP_EOL."matches".PHP_EOL.json_encode($expected));
 	}
 
+	////////////////////////////////////////////////////////////////////
+	//////////////////////////////// DEBUG /////////////////////////////
+	////////////////////////////////////////////////////////////////////
+
+	/**
+	 * Debug a field's HTML
+	 *
+	 * @param object $field
+	 *
+	 * @return string
+	 */
+	protected function debug($field)
+	{
+		print $this->formatHtml($field->render());
+		exit;
+	}
+
 	/**
 	 * Format a piece of HTML
 	 *
@@ -165,6 +182,8 @@ abstract class WarkhamTestCase extends ContainerTestCase
 	 */
 	protected function formatHtml($html)
 	{
+		libxml_use_internal_errors(true);
+
 		// Create a dummy DOM
 		$dom = new DOMDocument();
 		$dom->preserveWhiteSpace = false;

@@ -18,9 +18,12 @@ class Item extends AbstractGroupField
 		'class' => 'wkm-items',
 	);
 
-	////////////////////////////////////////////////////////////////////
-	///////////////////////////// CHILD FIELDS /////////////////////////
-	////////////////////////////////////////////////////////////////////
+	/**
+	 * A template for the inner fields
+	 *
+	 * @var array
+	 */
+	protected $fieldsTemplate = array();
 
 	/**
 	 * Create the Date fields
@@ -32,6 +35,37 @@ class Item extends AbstractGroupField
 		$this->nest(array(
 			'list' => Element::create('ul')->addClass('list-group'),
 		));
+	}
+
+	////////////////////////////////////////////////////////////////////
+	///////////////////////////// CHILD FIELDS /////////////////////////
+	////////////////////////////////////////////////////////////////////
+
+	/**
+	 * Create an item from a field
+	 *
+	 * @param Element|null $parent
+	 *
+	 * @return Element
+	 */
+	public function createItem($parent = null)
+	{
+		// Create parent if we don't have one
+		if (!$parent) {
+			$parent = Element::create('ul')->addClass('list-group wkm-template');
+		}
+
+		// Nest fields we specified
+		foreach ($this->fieldsTemplate as $field) {
+			$li = Element::create('li')->addClass('list-group-item')->nest(array(
+				'label' => $this->createLabel($field->getName()),
+				'field' => $field,
+			));
+
+			$parent->nest($li, $field->getName());
+		}
+
+		return $parent;
 	}
 
 	/**
@@ -47,14 +81,9 @@ class Item extends AbstractGroupField
 		$arguments = func_get_args();
 		$fields    = sizeof($arguments) === 1 ? $fields : $arguments;
 
-		foreach ($fields as $field) {
-			$li = Element::create('li')->addClass('list-group-item')->nest(array(
-				'label' => $this->createLabel($field->getName()),
-				'field' => $field,
-			));
-
-			$this->getChild('list')->nest($li, $field->getName());
-		}
+		// Store template and create item
+		$this->fieldsTemplate = $fields;
+		$this->createItem($this->getChild('list'));
 
 		return $this;
 	}
@@ -90,5 +119,28 @@ class Item extends AbstractGroupField
 	public function sortable($sortable)
 	{
 		return $this->setDataAttribute('sortable', $sortable);
+	}
+
+	/**
+	 * Set an items field as addable or not
+	 *
+	 * @param boolean $addable
+	 * @param string  $text
+	 *
+	 * @return self
+	 */
+	public function addable($addable, $text = 'Ajouter')
+	{
+		$this->setDataAttribute('addable', $addable);
+
+		// Create button
+		$button = Element::create('button', $text);
+		$this->nest($button, 'button');
+
+		// Create template
+		$template = $this->createItem();
+		$this->nest($template, 'template');
+
+		return $this;
 	}
 }

@@ -70,4 +70,39 @@ class ItemTest extends WarkhamTestCase
 			),
 		), $items);
 	}
+
+	public function testCanSetAddableAndTemplate()
+	{
+		$items = $this->warkham->items('items')
+			->fields(array(
+				$this->warkham->text('dummy'),
+				$this->warkham->number('number'),
+			))
+			->addable(true);
+
+		$this->assertHtml(array(
+			'tag'        => 'div',
+			'attributes' => array(
+				'class'        => 'wkm-items',
+				'data-addable' => 'true',
+			),
+		), $items);
+		$this->assertHtml(array(
+			'tag'     => 'button',
+			'content' => 'Ajouter',
+		), $items);
+
+		$matcher =
+			'<ul class="list-group wkm-template">'.
+				'<li class="list-group-item">'.
+					'<label for="dummy">Dummy</label>'.
+					'<input class="wkm-text form-control" id="dummy" type="text" name="dummy">'.
+				'</li>'.
+				'<li class="list-group-item">'.
+					'<label for="number">Number</label>'.
+					'<input class="form-control" id="number" type="number" name="number">'.
+				'</li>'.
+			'</ul>';
+		$this->assertContains($matcher, $items->render());
+	}
 }
