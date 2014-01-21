@@ -108,4 +108,39 @@ class ItemTest extends WarkhamTestCase
 			'</ul>';
 		$this->assertContains($matcher, $items->render());
 	}
+
+	public function testCanSetRemoveable()
+	{
+		$items = $this->warkham->items('items')
+			->fields(array(
+				$this->warkham->text('dummy'),
+				$this->warkham->number('number'),
+			))
+			->removeable(true, 'NOPE');
+
+		$this->assertHtml(array(
+			'tag'        => 'div',
+			'attributes' => array(
+				'class'           => 'wkm-items',
+				'data-removeable' => 'true',
+			),
+		), $items);
+
+		$matcher =
+			'<ul class="list-group">'.
+				'<li class="list-group-item">'.
+					'<label for="dummy">Dummy</label>'.
+					'<input class="wkm-text form-control" id="dummy" type="text" name="dummy">'.
+				'</li>'.
+				'<li class="list-group-item">'.
+					'<label for="number">Number</label>'.
+					'<input class="form-control" id="number" type="number" name="number">'.
+				'</li>'.
+				'<li class="list-group-item">'.
+					'<button class="btn btn-danger">NOPE</button>'.
+				'</li>'.
+			'</ul>';
+
+		$this->assertContains($matcher, $items->render());
+	}
 }

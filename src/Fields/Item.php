@@ -26,15 +26,27 @@ class Item extends AbstractGroupField
 	protected $fieldsTemplate = array();
 
 	/**
+	 * The values populated to the fields
+	 *
+	 * @var array
+	 */
+	protected $values = array();
+
+	/**
+	 * The text to use to remove items
+	 *
+	 * @var string
+	 */
+	protected $removeableText;
+
+	/**
 	 * Create the Date fields
 	 *
 	 * @return void
 	 */
 	protected function createChildren()
 	{
-		$this->nest(array(
-			'list' => Element::create('ul')->addClass('list-group'),
-		));
+		// ...
 	}
 
 	////////////////////////////////////////////////////////////////////
@@ -57,12 +69,20 @@ class Item extends AbstractGroupField
 
 		// Nest fields we specified
 		foreach ($this->fieldsTemplate as $field) {
-			$li = Element::create('li')->addClass('list-group-item')->nest(array(
+			$li = $this->createLi(array(
 				'label' => $this->createLabel($field->getId())->class(''),
 				'field' => $field,
 			));
 
 			$parent->nest($li, $field->getName());
+		}
+
+		// Add remove button if provided
+		if ($this->getAttribute('data-removeable')) {
+			$delete = Element::create('button', $this->removeableText)->class('btn btn-danger');
+			$parent->nest($this->createLi(array(
+				'button' => $delete,
+			)), 'button');
 		}
 
 		return $parent;
@@ -81,9 +101,15 @@ class Item extends AbstractGroupField
 		$arguments = func_get_args();
 		$fields    = sizeof($arguments) === 1 ? $fields : $arguments;
 
-		// Store template and create item
-		$this->fieldsTemplate = $fields;
-		$this->createItem($this->getChild('list'));
+		// Store template
+		if ($fields) {
+			$this->fieldsTemplate = $fields;
+		}
+
+		// Create items
+		$list = Element::create('ul')->addClass('list-group');
+		$this->createItem($list);
+		$this->setChild($list, 'list');
 
 		return $this;
 	}
@@ -95,14 +121,30 @@ class Item extends AbstractGroupField
 	 */
 	public function setValues(array $items = array())
 	{
+		if ($items) {
+			$this->values = $items;
+		}
+
 		// Set the value of each child individually
-		foreach ($items as $key => $item) {
+		foreach ($this->values as $key => $item) {
 			foreach ($item as $field => $value) {
 				$this->getChild('list')->getChild($field)->getChild('field')->setValue($value);
 			}
 		}
 
 		return $this;
+	}
+
+	/**
+	 * Create a list element
+	 *
+	 * @param array $contents
+	 *
+	 * @return Element
+	 */
+	protected function createLi(array $contents = array())
+	{
+		return Element::create('li')->addClass('list-group-item')->nest($contents);
 	}
 
 	////////////////////////////////////////////////////////////////////
@@ -140,6 +182,25 @@ class Item extends AbstractGroupField
 		// Create template
 		$template = $this->createItem();
 		$this->nest($template, 'template');
+
+		return $this;
+	}
+
+	/**
+	 * Set an items field's items as removeable
+	 *
+	 * @param boolean $removeable
+	 * @param string  $text
+	 *
+	 * @return self
+	 */
+	public function removeable($removeable, $text = 'Supprimer')
+	{
+		$this->setDataAttribute('removeable', $removeable);
+		$this->removeableText = $text;
+
+		// Recreate items
+		$this->fields();
 
 		return $this;
 	}
