@@ -43,6 +43,8 @@ $ grunt test
 | V      | Choice       | ui                      |
 | V      | Date         | max                     |
 | V      | Date         | min                     |
+| V      | Date         | withHours               |
+| V      | Date         | withMinutes             |
 | V      | File         | accept                  |
 | V      | File         | max                     |
 | V      | File         | multiple                |
@@ -59,15 +61,13 @@ $ grunt test
 | V      | Text         | mask                    |
 | V      | Textarea     | setToolbar              |
 | V      | Textarea     | ui                      |
-| V      | Date         | withHours               |
-| V      | Date         | withMinutes             |
+| X      | List         | addable                 |
+| X      | List         | removable               |
+| X      | List         | setValue                |
+| X      | List         | sortable                |
 |        | Filelist     | addable                 |
 |        | Filelist     | removable               |
 |        | Filelist     | setValue                |
 |        | Filelist     | sortable                |
-|        | List         | addable                 |
-|        | List         | removable               |
-|        | List         | setValue                |
-|        | List         | sortable                |
 |        | Oracle       | forceValue              |
 |        | Oracle       | setValue                |
