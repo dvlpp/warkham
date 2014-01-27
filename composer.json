@@ -7,7 +7,8 @@
 		"anahkiasen/former": "dev-develop"
 	},
 	"require-dev": {
-		"mockery/mockery": "dev-master"
+		"mockery/mockery": "dev-master",
+		"raveren/kint": "dev-master"
 	},
 	"autoload": {
 		"psr-4": {

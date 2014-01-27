@@ -70,7 +70,7 @@ class Item extends AbstractGroupField
 		// Nest fields we specified
 		foreach ($this->fieldsTemplate as $field) {
 			$li = $this->createLi(array(
-				'label' => $this->createLabel($field->getId())->class(''),
+				'label' => $this->createLabel($field->getCreatedId())->class(''),
 				'field' => $field,
 			));
 

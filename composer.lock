@@ -3,7 +3,7 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "51129c17cbeb878988beb23e46a3c073",
+    "hash": "c4865d750b2a0b867d8b12ecf0bfd463",
     "packages": [
         {
             "name": "anahkiasen/former",
@@ -1258,6 +1258,52 @@
                 "testing"
             ],
             "time": "2014-01-27 10:39:37"
+        },
+        {
+            "name": "raveren/kint",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/raveren/kint.git",
+                "reference": "24a15aa6e666aa9492f4bb43b48a3dbf531014ac"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/raveren/kint/zipball/24a15aa6e666aa9492f4bb43b48a3dbf531014ac",
+                "reference": "24a15aa6e666aa9492f4bb43b48a3dbf531014ac",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.2.0"
+            },
+            "type": "library",
+            "autoload": {
+                "files": [
+                    "Kint.class.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Rokas Šleinius",
+                    "homepage": "https://github.com/raveren"
+                },
+                {
+                    "name": "Contributors",
+                    "homepage": "https://github.com/raveren/kint/contributors"
+                }
+            ],
+            "description": "Kint - debugging helper for PHP developers",
+            "homepage": "https://github.com/raveren/kint",
+            "keywords": [
+                "debug",
+                "kint",
+                "php"
+            ],
+            "time": "2013-11-04 11:02:37"
         }
     ],
     "aliases": [
@@ -1266,7 +1312,8 @@
     "minimum-stability": "dev",
     "stability-flags": {
         "anahkiasen/former": 20,
-        "mockery/mockery": 20
+        "mockery/mockery": 20,
+        "raveren/kint": 20
     },
     "platform": [
 
