@@ -64,16 +64,16 @@
         },
         {
             "name": "anahkiasen/html-object",
-            "version": "1.3.0",
+            "version": "1.4.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Anahkiasen/html-object.git",
-                "reference": "76195fe1893437aa58569a3e7fbbe40972978432"
+                "reference": "776aff25a4db27964d95b2332e2f379b0aac9ff0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Anahkiasen/html-object/zipball/76195fe1893437aa58569a3e7fbbe40972978432",
-                "reference": "76195fe1893437aa58569a3e7fbbe40972978432",
+                "url": "https://api.github.com/repos/Anahkiasen/html-object/zipball/776aff25a4db27964d95b2332e2f379b0aac9ff0",
+                "reference": "776aff25a4db27964d95b2332e2f379b0aac9ff0",
                 "shasum": ""
             },
             "require": {
@@ -99,7 +99,7 @@
                 }
             ],
             "description": "A set of classes to create and manipulate HTML objects abstractions",
-            "time": "2014-01-14 22:09:08"
+            "time": "2014-01-27 22:41:20"
         },
         {
             "name": "illuminate/cache",
