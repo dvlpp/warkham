@@ -4,8 +4,8 @@ $('.wkm-autocomplete').each(function() {
 	var template = $(this).siblings('.wkm-template').html();
 
 	$(this).typeahead({
-		prefetch : endpoint,
-		local    : values,
+		prefetch : values,
+		remote   : endpoint,
 		template : template,
 		engine   : Hogan,
 	});
