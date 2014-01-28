@@ -50,8 +50,29 @@ class Item extends AbstractGroupField
 	}
 
 	////////////////////////////////////////////////////////////////////
-	///////////////////////////// CHILD FIELDS /////////////////////////
+	//////////////////////////////// ITEMS /////////////////////////////
 	////////////////////////////////////////////////////////////////////
+
+	/**
+	 * Nest an item in the group
+	 *
+	 * @param integer $index
+	 *
+	 * @return Element
+	 */
+	protected function getItem($index = 'new')
+	{
+		$identifier = 'list-'.$index;
+
+		// Create item if necessary
+		if (!$this->hasChild($identifier)) {
+			$list = Element::create('ul')->addClass('list-group');
+			$this->createItem($list, $index);
+			$this->prependChild($list, $identifier, 'list-new');
+		}
+
+		return $this->getChild($identifier);
+	}
 
 	/**
 	 * Create an item from a field
@@ -60,7 +81,7 @@ class Item extends AbstractGroupField
 	 *
 	 * @return Element
 	 */
-	public function createItem($parent = null)
+	public function createItem($parent = null, $identifier = 'new')
 	{
 		// Create parent if we don't have one
 		if (!$parent) {
@@ -69,9 +90,16 @@ class Item extends AbstractGroupField
 
 		// Nest fields we specified
 		foreach ($this->fieldsTemplate as $field) {
+			$field = clone $field;
+
+			// Append item identifier to field name
+			$name = $field->getName();
+			$field->name($name.'[' .$identifier. ']');
+
+			// Create LI element
 			$li = $this->createLi(array(
-				'label' => $this->createLabel($field->getId())->class(''),
-				'field' => $field,
+				'label' => $this->createLabel($field->getCreatedId())->class(''),
+				'field' => clone $field,
 			));
 
 			$parent->nest($li, $field->getName());
@@ -88,6 +116,10 @@ class Item extends AbstractGroupField
 		return $parent;
 	}
 
+	////////////////////////////////////////////////////////////////////
+	////////////////////////////// FIELDS //////////////////////////////
+	////////////////////////////////////////////////////////////////////
+
 	/**
 	 * Bind fields to the Item
 	 *
@@ -99,38 +131,15 @@ class Item extends AbstractGroupField
 	{
 		// Get fields to bind
 		$arguments = func_get_args();
-		$fields    = sizeof($arguments) === 1 ? $fields : $arguments;
+		$fields    = (sizeof($arguments) === 1 and is_array($fields)) ? $fields : $arguments;
 
 		// Store template
 		if ($fields) {
 			$this->fieldsTemplate = $fields;
 		}
 
-		// Create items
-		$list = Element::create('ul')->addClass('list-group');
-		$this->createItem($list);
-		$this->setChild($list, 'list');
-
-		return $this;
-	}
-
-	/**
-	 * Set the subfields values
-	 *
-	 * @param array $values
-	 */
-	public function setValues(array $items = array())
-	{
-		if ($items) {
-			$this->values = $items;
-		}
-
-		// Set the value of each child individually
-		foreach ($this->values as $key => $item) {
-			foreach ($item as $field => $value) {
-				$this->getChild('list')->getChild($field)->getChild('field')->setValue($value);
-			}
-		}
+		// Create list and nest it
+		$this->getItem();
 
 		return $this;
 	}
@@ -150,6 +159,27 @@ class Item extends AbstractGroupField
 	////////////////////////////////////////////////////////////////////
 	///////////////////////////// ATTRIBUTES ///////////////////////////
 	////////////////////////////////////////////////////////////////////
+
+	/**
+	 * Set the subfields values
+	 *
+	 * @param array $values
+	 */
+	public function setValues(array $items = array())
+	{
+		if ($items) {
+			$this->values = $items;
+		}
+
+		// Set the value of each child individually
+		foreach ($this->values as $key => $item) {
+			foreach ($item as $field => $value) {
+				$this->getItem($key)->getChild($field.'['.$key. ']')->getChild('field')->setValue($value);
+			}
+		}
+
+		return $this;
+	}
 
 	/**
 	 * Set an items field as sortable or not
