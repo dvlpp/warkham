@@ -174,7 +174,7 @@ class ItemTest extends WarkhamTestCase
 			->fields(array(
 				$this->warkham->text('dummy'),
 			))
-			->removeable(true, 'NOPE');
+			->removeable(true, 'NOPE', 'btn-NOPE');
 
 		$this->assertHtmlStructure(array(
 			'tag'        => 'div',
@@ -191,7 +191,7 @@ class ItemTest extends WarkhamTestCase
 					'<input class="wkm-text form-control" id="items[new][dummy]-2" type="text" name="items[new][dummy]">'.
 				'</li>'.
 				'<li class="list-group-item">'.
-					'<button class="btn btn-danger" data-action="remove-item">NOPE</button>'.
+					'<button class="btn-NOPE" data-action="remove-item">NOPE</button>'.
 				'</li>'.
 			'</ul>';
 

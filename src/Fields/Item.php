@@ -33,11 +33,14 @@ class Item extends AbstractGroupField
 	protected $values = array();
 
 	/**
-	 * The text to use to remove items
+	 * The format of buttons to use
 	 *
-	 * @var string
+	 * @var array
 	 */
-	protected $removeableText;
+	protected $buttons = array(
+		'addable'    => ['text' => 'Ajouter',   'class' => 'btn btn-primary'],
+		'removeable' => ['text' => 'Supprimer', 'class' => 'btn btn-danger'],
+	);
 
 	/**
 	 * Create the Date fields
@@ -107,7 +110,7 @@ class Item extends AbstractGroupField
 
 		// Add remove button if provided
 		if ($this->getAttribute('data-removeable')) {
-			$delete = Element::create('button', $this->removeableText)->class('btn btn-danger')->dataAction('remove-item');
+			$delete = $this->createButton('removeable')->dataAction('remove-item');
 			$parent->nest($this->createLi(array(
 				'button' => $delete,
 			)), 'button');
@@ -170,6 +173,24 @@ class Item extends AbstractGroupField
 	}
 
 	////////////////////////////////////////////////////////////////////
+	/////////////////////////////// BUTTONS ////////////////////////////
+	////////////////////////////////////////////////////////////////////
+
+	/**
+	 * Create a button
+	 *
+	 * @param string $type
+	 *
+	 * @return Element
+	 */
+	protected function createButton($type)
+	{
+		extract($this->buttons[$type]);
+
+		return Element::create('button', $text)->class($class);
+	}
+
+	////////////////////////////////////////////////////////////////////
 	///////////////////////////// ATTRIBUTES ///////////////////////////
 	////////////////////////////////////////////////////////////////////
 
@@ -214,12 +235,13 @@ class Item extends AbstractGroupField
 	 *
 	 * @return self
 	 */
-	public function addable($addable = true, $text = 'Ajouter')
+	public function addable($addable = true, $text = 'Ajouter', $class = 'btn btn-primary')
 	{
 		$this->setDataAttribute('addable', $addable);
+		$this->buttons['addable'] = compact('text', 'class');
 
 		// Create button
-		$button = Element::create('button', $text)->class('btn')->dataAction('add-item');
+		$button = $this->createButton('addable')->dataAction('add-item');
 		$this->nest($button, 'button');
 
 		// Create template
@@ -237,10 +259,10 @@ class Item extends AbstractGroupField
 	 *
 	 * @return self
 	 */
-	public function removeable($removeable = true, $text = 'Supprimer')
+	public function removeable($removeable = true, $text = 'Supprimer', $class = 'btn btn-danger')
 	{
 		$this->setDataAttribute('removeable', $removeable);
-		$this->removeableText = $text;
+		$this->buttons['removeable'] = compact('text', 'class');
 
 		// Recreate items
 		$this->fields();
