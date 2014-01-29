@@ -17,17 +17,17 @@ class ItemTest extends WarkhamTestCase
 				'<label for="items">Items</label>'.
 				'<ul class="list-group">'.
 					'<li class="list-group-item">'.
-						'<label for="dummy[new]">Dummy[new]</label>'.
-						'<input class="wkm-text form-control" id="dummy[new]" type="text" name="dummy[new]">'.
+						'<label for="items[new][dummy]">Items[new][dummy]</label>'.
+						'<input class="wkm-text form-control" id="items[new][dummy]" type="text" name="items[new][dummy]">'.
 					'</li>'.
 					'<li class="list-group-item">'.
-						'<label for="number[new]">Number[new]</label>'.
-						'<input class="form-control" id="number[new]" type="number" name="number[new]">'.
+						'<label for="items[new][number]">Items[new][number]</label>'.
+						'<input class="form-control" id="items[new][number]" type="number" name="items[new][number]">'.
 					'</li>'.
 				'</ul>'.
 			'</div>';
 
-		$this->assertEquals($matcher, $items->render());
+		$this->assertHtml($matcher, $items->render());
 	}
 
 	public function testCanCreateItemFieldWithMultipleItems()
@@ -46,37 +46,37 @@ class ItemTest extends WarkhamTestCase
 				'<label for="items">Items</label>'.
 				'<ul class="list-group">'.
 					'<li class="list-group-item">'.
-						'<label for="dummy[0]">Dummy[0]</label>'.
-						'<input class="wkm-text form-control" id="dummy[0]" type="text" name="dummy[0]" value="foo">'.
+						'<label for="items[0][dummy]">Items[0][dummy]</label>'.
+						'<input class="wkm-text form-control" id="items[0][dummy]" type="text" name="items[0][dummy]" value="foo">'.
 					'</li>'.
 					'<li class="list-group-item">'.
-						'<label for="number[0]">Number[0]</label>'.
-						'<input class="form-control" id="number[0]" type="number" name="number[0]" value="1">'.
-					'</li>'.
-				'</ul>'.
-				'<ul class="list-group">'.
-					'<li class="list-group-item">'.
-						'<label for="dummy[1]">Dummy[1]</label>'.
-						'<input class="wkm-text form-control" id="dummy[1]" type="text" name="dummy[1]" value="bar">'.
-					'</li>'.
-					'<li class="list-group-item">'.
-						'<label for="number[1]">Number[1]</label>'.
-						'<input class="form-control" id="number[1]" type="number" name="number[1]" value="2">'.
+						'<label for="items[0][number]">Items[0][number]</label>'.
+						'<input class="form-control" id="items[0][number]" type="number" name="items[0][number]" value="1">'.
 					'</li>'.
 				'</ul>'.
 				'<ul class="list-group">'.
 					'<li class="list-group-item">'.
-						'<label for="dummy[new]">Dummy[new]</label>'.
-						'<input class="wkm-text form-control" id="dummy[new]" type="text" name="dummy[new]">'.
+						'<label for="items[1][dummy]">Items[1][dummy]</label>'.
+						'<input class="wkm-text form-control" id="items[1][dummy]" type="text" name="items[1][dummy]" value="bar">'.
 					'</li>'.
 					'<li class="list-group-item">'.
-						'<label for="number[new]">Number[new]</label>'.
-						'<input class="form-control" id="number[new]" type="number" name="number[new]">'.
+						'<label for="items[1][number]">Items[1][number]</label>'.
+						'<input class="form-control" id="items[1][number]" type="number" name="items[1][number]" value="2">'.
+					'</li>'.
+				'</ul>'.
+				'<ul class="list-group">'.
+					'<li class="list-group-item">'.
+						'<label for="items[new][dummy]">Items[new][dummy]</label>'.
+						'<input class="wkm-text form-control" id="items[new][dummy]" type="text" name="items[new][dummy]">'.
+					'</li>'.
+					'<li class="list-group-item">'.
+						'<label for="items[new][number]">Items[new][number]</label>'.
+						'<input class="form-control" id="items[new][number]" type="number" name="items[new][number]">'.
 					'</li>'.
 				'</ul>'.
 			'</div>';
 
-		$this->assertEquals($matcher, $items->render());
+		$this->assertHtml($matcher, $items->render());
 	}
 
 	public function testCanSetValueOnSubfields()
@@ -94,34 +94,34 @@ class ItemTest extends WarkhamTestCase
 				'<label for="items">Items</label>'.
 				'<ul class="list-group">'.
 					'<li class="list-group-item">'.
-						'<label for="dummy[0]">Dummy[0]</label>'.
-						'<input class="wkm-text form-control" id="dummy[0]" type="text" name="dummy[0]" value="Foobar">'.
+						'<label for="items[0][dummy]">Items[0][dummy]</label>'.
+						'<input class="wkm-text form-control" id="items[0][dummy]" type="text" name="items[0][dummy]" value="Foobar">'.
 					'</li>'.
 					'<li class="list-group-item">'.
-						'<label for="number[0]">Number[0]</label>'.
-						'<input class="form-control" id="number[0]" type="number" name="number[0]" value="23">'.
+						'<label for="items[0][number]">Items[0][number]</label>'.
+						'<input class="form-control" id="items[0][number]" type="number" name="items[0][number]" value="23">'.
 					'</li>'.
 				'</ul>'.
 				'<ul class="list-group">'.
 					'<li class="list-group-item">'.
-						'<label for="dummy[new]">Dummy[new]</label>'.
-						'<input class="wkm-text form-control" id="dummy[new]" type="text" name="dummy[new]">'.
+						'<label for="items[new][dummy]">Items[new][dummy]</label>'.
+						'<input class="wkm-text form-control" id="items[new][dummy]" type="text" name="items[new][dummy]">'.
 					'</li>'.
 					'<li class="list-group-item">'.
-						'<label for="number[new]">Number[new]</label>'.
-						'<input class="form-control" id="number[new]" type="number" name="number[new]">'.
+						'<label for="items[new][number]">Items[new][number]</label>'.
+						'<input class="form-control" id="items[new][number]" type="number" name="items[new][number]">'.
 					'</li>'.
 				'</ul>'.
 			'</div>';
 
-		$this->assertEquals($matcher, $items->render());
+		$this->assertHtml($matcher, $items->render());
 	}
 
 	public function testCanSetAsSortable()
 	{
 		$items = $this->warkham->items('items')->sortable(true);
 
-		$this->assertHtml(array(
+		$this->assertHtmlStructure(array(
 			'tag'        => 'div',
 			'attributes' => array(
 				'class'         => 'wkm-items',
@@ -139,14 +139,14 @@ class ItemTest extends WarkhamTestCase
 			))
 			->addable();
 
-		$this->assertHtml(array(
+		$this->assertHtmlStructure(array(
 			'tag'        => 'div',
 			'attributes' => array(
 				'class'        => 'wkm-items',
 				'data-addable' => 'true',
 			),
 		), $items);
-		$this->assertHtml(array(
+		$this->assertHtmlStructure(array(
 			'tag'        => 'button',
 			'content'    => 'Ajouter',
 			'attributes' => array(
@@ -157,12 +157,12 @@ class ItemTest extends WarkhamTestCase
 		$matcher =
 			'<ul class="list-group wkm-template">'.
 				'<li class="list-group-item">'.
-					'<label for="dummy[new]-2">Dummy[new]-2</label>'.
-					'<input class="wkm-text form-control" id="dummy[new]-2" type="text" name="dummy[new]">'.
+					'<label for="items[new][dummy]-2">Items[new][dummy]-2</label>'.
+					'<input class="wkm-text form-control" id="items[new][dummy]-2" type="text" name="items[new][dummy]">'.
 				'</li>'.
 				'<li class="list-group-item">'.
-					'<label for="number[new]-2">Number[new]-2</label>'.
-					'<input class="form-control" id="number[new]-2" type="number" name="number[new]">'.
+					'<label for="items[new][number]-2">Items[new][number]-2</label>'.
+					'<input class="form-control" id="items[new][number]-2" type="number" name="items[new][number]">'.
 				'</li>'.
 			'</ul>';
 		$this->assertContains($matcher, $items->render());
@@ -176,7 +176,7 @@ class ItemTest extends WarkhamTestCase
 			))
 			->removeable(true, 'NOPE');
 
-		$this->assertHtml(array(
+		$this->assertHtmlStructure(array(
 			'tag'        => 'div',
 			'attributes' => array(
 				'class'           => 'wkm-items',
@@ -187,8 +187,8 @@ class ItemTest extends WarkhamTestCase
 		$matcher =
 			'<ul class="list-group wkm-template">'.
 				'<li class="list-group-item">'.
-					'<label for="dummy[new]-2">Dummy[new]-2</label>'.
-					'<input class="wkm-text form-control" id="dummy[new]-2" type="text" name="dummy[new]">'.
+					'<label for="items[new][dummy]-2">Items[new][dummy]-2</label>'.
+					'<input class="wkm-text form-control" id="items[new][dummy]-2" type="text" name="items[new][dummy]">'.
 				'</li>'.
 				'<li class="list-group-item">'.
 					'<button class="btn btn-danger" data-action="remove-item">NOPE</button>'.

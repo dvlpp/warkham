@@ -94,7 +94,7 @@ class Item extends AbstractGroupField
 
 			// Append item identifier to field name
 			$name = $field->getName();
-			$field->name($name.'[' .$identifier. ']');
+			$field->name($this->getFieldName($name, $identifier));
 
 			// Create LI element
 			$li = $this->createLi(array(
@@ -156,6 +156,19 @@ class Item extends AbstractGroupField
 		return Element::create('li')->addClass('list-group-item')->nest($contents);
 	}
 
+	/**
+	 * Get the concatenated name of a field
+	 *
+	 * @param string  $field
+	 * @param integer $index
+	 *
+	 * @return string
+	 */
+	protected function getFieldName($field, $index)
+	{
+		return sprintf('%s[%s][%s]', $this->name, $index, $field);
+	}
+
 	////////////////////////////////////////////////////////////////////
 	///////////////////////////// ATTRIBUTES ///////////////////////////
 	////////////////////////////////////////////////////////////////////
@@ -174,7 +187,7 @@ class Item extends AbstractGroupField
 		// Set the value of each child individually
 		foreach ($this->values as $key => $item) {
 			foreach ($item as $field => $value) {
-				$this->getItem($key)->getChild($field.'['.$key. ']')->getChild('field')->setValue($value);
+				$this->getItem($key)->getChild($this->getFieldName($field, $key))->getChild('field')->setValue($value);
 			}
 		}
 

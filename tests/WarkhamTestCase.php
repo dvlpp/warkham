@@ -202,6 +202,7 @@ abstract class WarkhamTestCase extends ContainerTestCase
 
 		$dom = new DOMDocument();
 		$dom->preserveWhiteSpace = false;
+		$dom->formatOutput = true;
 		$dom->loadHTML($html);
 
 		return $dom;
