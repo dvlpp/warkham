@@ -1,7 +1,3 @@
-## Warkham::date
-
-- fallback jQuery pour Firefox (pb de détection HTML5)
-
 ## Warkham::items
 
 - [JS] gérer addable / removable / sortable (Drag and drop jQuery UI)
