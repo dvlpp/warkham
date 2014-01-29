@@ -10,7 +10,7 @@ class WithTemplateTest extends WarkhamTestCase
 		$field = $this->getDummyField('DummyTemplateField')->setTemplate('<p>{{value}}</p>');
 
 		$this->assertNotContains('template="<p>{{value}}</p>"', $field->render());
-		$this->assertHtml(array(
+		$this->assertHtmlStructure(array(
 			'tag' => 'div',
 			'attributes' => array(
 				'for'   => 'dummy',

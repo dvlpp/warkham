@@ -50,6 +50,6 @@ class TextareaTest extends WarkhamTestCase
 			), $attributes),
 		);
 
-		return $this->assertHtml($attributes, $field);
+		return $this->assertHtmlStructure($attributes, $field);
 	}
 }

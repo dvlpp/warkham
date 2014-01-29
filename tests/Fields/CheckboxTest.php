@@ -30,8 +30,8 @@ class CheckboxTest extends WarkhamTestCase
 			),
 		);
 
-		$this->assertHtml($checkbox, $field);
-		$this->assertHtml($label, $field);
+		$this->assertHtmlStructure($checkbox, $field);
+		$this->assertHtmlStructure($label, $field);
 	}
 
 	public function testCanCheckCheckbox()

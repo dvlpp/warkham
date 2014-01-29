@@ -19,7 +19,7 @@ class DateTest extends WarkhamTestCase
 			'type'  => 'time',
 			'class' => 'wkm-date-time',
 		));
-		$this->assertHtml(array(
+		$this->assertHtmlStructure(array(
 			'tag'        => 'div',
 			'attributes' => array(
 				'class' => 'wkm-date'

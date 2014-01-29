@@ -109,7 +109,7 @@ abstract class WarkhamTestCase extends ContainerTestCase
 	{
 		$matcher = $this->matchField($attributes);
 
-		return $this->assertHtml($matcher, $field);
+		return $this->assertHtmlStructure($matcher, $field);
 	}
 
 	/**
@@ -132,7 +132,23 @@ abstract class WarkhamTestCase extends ContainerTestCase
 			),
 		), $attributes));
 
-		return $this->assertHtml($matcher, $field);
+		return $this->assertHtmlStructure($matcher, $field);
+	}
+
+	/**
+	 * Assert a piece of HTML matches another
+	 *
+	 * @param string $expected
+	 * @param string $output
+	 *
+	 * @return string
+	 */
+	protected function assertHtml($expected, $output)
+	{
+		$expected = $this->createDomFromString($expected);
+		$output   = $this->createDomFromString($output);
+
+		$this->assertEquals($expected, $output);
 	}
 
 	/**
@@ -143,7 +159,7 @@ abstract class WarkhamTestCase extends ContainerTestCase
 	 *
 	 * @return vodi
 	 */
-	protected function assertHtml($expected, $output)
+	protected function assertHtmlStructure($expected, $output)
 	{
 		// Convert objects to HTML
 		if (method_exists($output, 'render')) {
@@ -174,6 +190,24 @@ abstract class WarkhamTestCase extends ContainerTestCase
 	}
 
 	/**
+	 * Create a DOM object from a string
+	 *
+	 * @param string $html
+	 *
+	 * @return DOMDocument
+	 */
+	protected function createDomFromString($html)
+	{
+		libxml_use_internal_errors(true);
+
+		$dom = new DOMDocument();
+		$dom->preserveWhiteSpace = false;
+		$dom->loadHTML($html);
+
+		return $dom;
+	}
+
+	/**
 	 * Format a piece of HTML
 	 *
 	 * @param string $html
@@ -182,13 +216,7 @@ abstract class WarkhamTestCase extends ContainerTestCase
 	 */
 	protected function formatHtml($html)
 	{
-		libxml_use_internal_errors(true);
-
-		// Create a dummy DOM
-		$dom = new DOMDocument();
-		$dom->preserveWhiteSpace = false;
-		$dom->formatOutput = true;
-		$dom->loadHTML($html);
+		$dom = $this->createDomFromString($html);
 
 		// Remove extra nodes from output
 		$output = $dom->saveHTML();
