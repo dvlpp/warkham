@@ -5,6 +5,7 @@ module.exports = {
 			'<%= components %>/bootstrap/dist/css/bootstrap.css',
 			'<%= components %>/bootstrap-markdown/css/bootstrap-markdown.min.css',
 			'<%= components %>/select2/select2.css',
+			'<%= components %>/selectize/dist/css/selectize.default.css',
 			'<%= paths.original.css %>/*.css'
 		],
 	},
@@ -18,6 +19,7 @@ module.exports = {
 			'<%= components %>/bootstrap-wysiwyg/bootstrap-wysiwyg.js',
 			'<%= components %>/hogan/web/1.0.0/hogan.js',
 			'<%= components %>/select2/select2.js',
+			'<%= components %>/selectize/dist/js/standalone/selectize.js',
 
 			'<%= components %>/typeahead.js/dist/typeahead.js',
 			'<%= paths.original.js %>/components/*.js',

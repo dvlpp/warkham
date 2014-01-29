@@ -10,15 +10,15 @@ $('.wkm-taglist').each(function() {
 		allowCreate = true;
 	}
 
-	$field.select2({
-		adaptContainerCssClass : replaceClasses,
-		tags                   : tags,
-		maximumSelectionSize   : maxSize,
-		createSearchChoice     : function(term) {
-			return allowCreate ? {id: 0, text: term} : false;
-		}
-	});
+	// Format tags
+	for (i = 0; i < tags.length; i++) {
+		tags[i] = {text: tags[i], value: tags[i]};
+	}
 
-	// Initialize values
-	$field.val(values).trigger('change');
+	$field.val(values.join(',')).selectize({
+		onInitialize : replaceSelectizeClasses,
+		create       : allowCreate,
+		maxItems     : maxSize,
+		options      : tags,
+	});
 });

@@ -8,8 +8,8 @@ $('.wkm-list').each(function() {
 		return;
 	}
 
-	$field.select2({
-		adaptContainerCssClass : replaceClasses,
-		maximumSelectionSize   : maxSize,
+	$field.selectize({
+		maxItems     : maxSize,
+		onInitialize : replaceSelectizeClasses,
 	});
 });
