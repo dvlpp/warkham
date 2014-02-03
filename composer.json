@@ -1,5 +1,5 @@
 {
-	"name": "vlpp/warkham",
+	"name": "dvlpp/warkham",
 	"require": {
 		"illuminate/support": "~4",
 		"illuminate/container": "~4",
