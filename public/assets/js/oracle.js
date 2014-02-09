@@ -6,6 +6,7 @@ $('.wkm-oracle').each(function() {
 
 	$(this).select2({
 		placeholder            : placeholder,
+		allowClear             : true,
 		minimumInputLength     : minLength,
 		adaptContainerCssClass : replaceClasses,
 		formatResult           : function(value) {
