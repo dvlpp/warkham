@@ -3,7 +3,7 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "18ba6ff8603358a3fb643f5b3b7bfbe7",
+    "hash": "af6d5966fa29111f02d5acb82d55ede7",
     "packages": [
         {
             "name": "anahkiasen/former",
@@ -11,12 +11,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Anahkiasen/former.git",
-                "reference": "0871f9f74e1871a9baa6d531a3d898a8df29b86d"
+                "reference": "0a673a72ae590923a771c0938cf0c6d3268dbf76"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Anahkiasen/former/zipball/0871f9f74e1871a9baa6d531a3d898a8df29b86d",
-                "reference": "0871f9f74e1871a9baa6d531a3d898a8df29b86d",
+                "url": "https://api.github.com/repos/Anahkiasen/former/zipball/0a673a72ae590923a771c0938cf0c6d3268dbf76",
+                "reference": "0a673a72ae590923a771c0938cf0c6d3268dbf76",
                 "shasum": ""
             },
             "require": {
@@ -60,7 +60,7 @@
                 "foundation",
                 "laravel"
             ],
-            "time": "2014-01-29 17:16:28"
+            "time": "2014-02-09 00:37:11"
         },
         {
             "name": "anahkiasen/html-object",
@@ -449,12 +449,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/http.git",
-                "reference": "c8982a0ce288f26acec85031d014f80cb0fc0aff"
+                "reference": "d420164c01a6d107d920df1ff22b8de8012a24d9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/illuminate/http/zipball/c8982a0ce288f26acec85031d014f80cb0fc0aff",
-                "reference": "c8982a0ce288f26acec85031d014f80cb0fc0aff",
+                "url": "https://api.github.com/repos/illuminate/http/zipball/d420164c01a6d107d920df1ff22b8de8012a24d9",
+                "reference": "d420164c01a6d107d920df1ff22b8de8012a24d9",
                 "shasum": ""
             },
             "require": {
@@ -490,7 +490,7 @@
                     "role": "Developer"
                 }
             ],
-            "time": "2014-01-29 01:36:13"
+            "time": "2014-01-30 05:23:40"
         },
         {
             "name": "illuminate/routing",
@@ -499,12 +499,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/routing.git",
-                "reference": "bf688d8887ce3e89e355b1c079d53d9e5deb5d27"
+                "reference": "4659c00dba627e4679acba92f634ed64dd4590a0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/illuminate/routing/zipball/bf688d8887ce3e89e355b1c079d53d9e5deb5d27",
-                "reference": "bf688d8887ce3e89e355b1c079d53d9e5deb5d27",
+                "url": "https://api.github.com/repos/illuminate/routing/zipball/4659c00dba627e4679acba92f634ed64dd4590a0",
+                "reference": "4659c00dba627e4679acba92f634ed64dd4590a0",
                 "shasum": ""
             },
             "require": {
@@ -545,7 +545,7 @@
                     "role": "Developer"
                 }
             ],
-            "time": "2014-01-29 01:36:13"
+            "time": "2014-01-30 22:37:13"
         },
         {
             "name": "illuminate/session",
@@ -554,12 +554,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/session.git",
-                "reference": "e29dfb9298c03553e220bb8a05454bed803e8dea"
+                "reference": "88a244d8b3fba9fedf1e27854927fa910fe646e8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/illuminate/session/zipball/e29dfb9298c03553e220bb8a05454bed803e8dea",
-                "reference": "e29dfb9298c03553e220bb8a05454bed803e8dea",
+                "url": "https://api.github.com/repos/illuminate/session/zipball/88a244d8b3fba9fedf1e27854927fa910fe646e8",
+                "reference": "88a244d8b3fba9fedf1e27854927fa910fe646e8",
                 "shasum": ""
             },
             "require": {
@@ -600,7 +600,7 @@
                     "role": "Developer"
                 }
             ],
-            "time": "2014-01-19 04:04:29"
+            "time": "2014-01-30 22:37:13"
         },
         {
             "name": "illuminate/support",
@@ -609,12 +609,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/support.git",
-                "reference": "2240c57217f3053fdbce40fee1747a75eddedad0"
+                "reference": "dcccd16988e2f471faad517eb24e3c1d7933cf43"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/illuminate/support/zipball/2240c57217f3053fdbce40fee1747a75eddedad0",
-                "reference": "2240c57217f3053fdbce40fee1747a75eddedad0",
+                "url": "https://api.github.com/repos/illuminate/support/zipball/dcccd16988e2f471faad517eb24e3c1d7933cf43",
+                "reference": "dcccd16988e2f471faad517eb24e3c1d7933cf43",
                 "shasum": ""
             },
             "require": {
@@ -651,7 +651,7 @@
                     "role": "Developer"
                 }
             ],
-            "time": "2014-01-29 01:36:13"
+            "time": "2014-01-30 22:37:13"
         },
         {
             "name": "illuminate/translation",
@@ -660,12 +660,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/translation.git",
-                "reference": "014fcad65b97955b4b2fada7a94e911c2f7cd443"
+                "reference": "f4e7194391e3b44b24561a9134caf5b1d035b669"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/illuminate/translation/zipball/014fcad65b97955b4b2fada7a94e911c2f7cd443",
-                "reference": "014fcad65b97955b4b2fada7a94e911c2f7cd443",
+                "url": "https://api.github.com/repos/illuminate/translation/zipball/f4e7194391e3b44b24561a9134caf5b1d035b669",
+                "reference": "f4e7194391e3b44b24561a9134caf5b1d035b669",
                 "shasum": ""
             },
             "require": {
@@ -701,7 +701,7 @@
                     "role": "Developer"
                 }
             ],
-            "time": "2014-01-14 01:36:14"
+            "time": "2014-01-30 16:24:14"
         },
         {
             "name": "nesbot/carbon",
@@ -799,12 +799,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/Debug.git",
-                "reference": "ffad875704e293f196a72dcddcc313c8eccf4c9a"
+                "reference": "429b394c16e1af02f33aac4be1babff1d13c79de"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/Debug/zipball/ffad875704e293f196a72dcddcc313c8eccf4c9a",
-                "reference": "ffad875704e293f196a72dcddcc313c8eccf4c9a",
+                "url": "https://api.github.com/repos/symfony/Debug/zipball/429b394c16e1af02f33aac4be1babff1d13c79de",
+                "reference": "429b394c16e1af02f33aac4be1babff1d13c79de",
                 "shasum": ""
             },
             "require": {
@@ -845,7 +845,7 @@
             ],
             "description": "Symfony Debug Component",
             "homepage": "http://symfony.com",
-            "time": "2014-01-07 13:29:57"
+            "time": "2014-02-04 11:21:37"
         },
         {
             "name": "symfony/event-dispatcher",
@@ -854,12 +854,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/EventDispatcher.git",
-                "reference": "a37a9430e2eafb6a66de240ac13f91b45b4c3d37"
+                "reference": "3a6d2d87fc7d25c773ffdeaa19210090ae1b593b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/EventDispatcher/zipball/a37a9430e2eafb6a66de240ac13f91b45b4c3d37",
-                "reference": "a37a9430e2eafb6a66de240ac13f91b45b4c3d37",
+                "url": "https://api.github.com/repos/symfony/EventDispatcher/zipball/3a6d2d87fc7d25c773ffdeaa19210090ae1b593b",
+                "reference": "3a6d2d87fc7d25c773ffdeaa19210090ae1b593b",
                 "shasum": ""
             },
             "require": {
@@ -901,7 +901,7 @@
             ],
             "description": "Symfony EventDispatcher Component",
             "homepage": "http://symfony.com",
-            "time": "2014-01-07 13:29:57"
+            "time": "2014-02-04 15:16:44"
         },
         {
             "name": "symfony/finder",
@@ -957,12 +957,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/HttpFoundation.git",
-                "reference": "25b49c494ea6aed2cfd8448ae3f8437d01e731eb"
+                "reference": "4bd82e35304e4087706469525c5cb61d125f4c03"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/HttpFoundation/zipball/25b49c494ea6aed2cfd8448ae3f8437d01e731eb",
-                "reference": "25b49c494ea6aed2cfd8448ae3f8437d01e731eb",
+                "url": "https://api.github.com/repos/symfony/HttpFoundation/zipball/4bd82e35304e4087706469525c5cb61d125f4c03",
+                "reference": "4bd82e35304e4087706469525c5cb61d125f4c03",
                 "shasum": ""
             },
             "require": {
@@ -998,7 +998,7 @@
             ],
             "description": "Symfony HttpFoundation Component",
             "homepage": "http://symfony.com",
-            "time": "2014-01-07 13:28:54"
+            "time": "2014-02-03 17:15:33"
         },
         {
             "name": "symfony/http-kernel",
@@ -1007,12 +1007,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/HttpKernel.git",
-                "reference": "baa7bf261230ce946e20680b55e9cb2e29ec5eac"
+                "reference": "3934f25e23f0a507a7f7ca6611b1022794620ab3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/HttpKernel/zipball/baa7bf261230ce946e20680b55e9cb2e29ec5eac",
-                "reference": "baa7bf261230ce946e20680b55e9cb2e29ec5eac",
+                "url": "https://api.github.com/repos/symfony/HttpKernel/zipball/3934f25e23f0a507a7f7ca6611b1022794620ab3",
+                "reference": "3934f25e23f0a507a7f7ca6611b1022794620ab3",
                 "shasum": ""
             },
             "require": {
@@ -1069,7 +1069,7 @@
             ],
             "description": "Symfony HttpKernel Component",
             "homepage": "http://symfony.com",
-            "time": "2014-01-24 14:36:08"
+            "time": "2014-02-04 10:54:30"
         },
         {
             "name": "symfony/routing",
@@ -1144,12 +1144,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/Translation.git",
-                "reference": "c9efc5d2cc0daf5c197895e7898c8732c9d301d6"
+                "reference": "b00fd07417e493e08488e87bcebeb9681fc7323b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/Translation/zipball/c9efc5d2cc0daf5c197895e7898c8732c9d301d6",
-                "reference": "c9efc5d2cc0daf5c197895e7898c8732c9d301d6",
+                "url": "https://api.github.com/repos/symfony/Translation/zipball/b00fd07417e493e08488e87bcebeb9681fc7323b",
+                "reference": "b00fd07417e493e08488e87bcebeb9681fc7323b",
                 "shasum": ""
             },
             "require": {
@@ -1190,7 +1190,7 @@
             ],
             "description": "Symfony Translation Component",
             "homepage": "http://symfony.com",
-            "time": "2014-01-24 14:36:08"
+            "time": "2014-02-03 17:15:33"
         }
     ],
     "packages-dev": [
@@ -1200,12 +1200,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/padraic/mockery.git",
-                "reference": "cce505fe699d12bea3735eee2638d9955a908052"
+                "reference": "5414561da33f0541af447a76cda47424e82f971d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/padraic/mockery/zipball/cce505fe699d12bea3735eee2638d9955a908052",
-                "reference": "cce505fe699d12bea3735eee2638d9955a908052",
+                "url": "https://api.github.com/repos/padraic/mockery/zipball/5414561da33f0541af447a76cda47424e82f971d",
+                "reference": "5414561da33f0541af447a76cda47424e82f971d",
                 "shasum": ""
             },
             "require": {
@@ -1257,7 +1257,7 @@
                 "test double",
                 "testing"
             ],
-            "time": "2014-01-27 10:39:37"
+            "time": "2014-02-09 11:17:20"
         },
         {
             "name": "raveren/kint",

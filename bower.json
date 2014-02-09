@@ -2,11 +2,11 @@
   "name": "warkham",
   "dependencies": {
     "jquery": "~2.1.0",
-    "bootstrap": "~3.0.3",
+    "bootstrap": "~3.1.0",
     "select2": "~3.4.5",
-    "typeahead.js": "~0.9.3",
+    "typeahead.js": "~0.10.0",
     "bootstrap-wysiwyg": "*",
-    "bootstrap-markdown": "~2.1.1",
+    "bootstrap-markdown": "~2.2.1",
     "hogan": "~3.0.0",
     "modernizr": "~2.7.1",
     "yepnope": "~1.5.4",
@@ -14,6 +14,7 @@
     "jquery-ui": "~1.10.3"
   },
   "resolutions": {
-    "jquery": "~2.1.0"
+    "jquery": "~2.1.0",
+    "bootstrap": "~3.1.0"
   }
 }
