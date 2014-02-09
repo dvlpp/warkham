@@ -19,6 +19,11 @@ module.exports = {
 			'<%= components %>/hogan/web/1.0.0/hogan.js',
 			'<%= components %>/select2/select2.js',
 
+			'<%= components %>/jquery-ui/ui/jquery.ui.core.js',
+			'<%= components %>/jquery-ui/ui/jquery.ui.widget.js',
+			'<%= components %>/jquery-ui/ui/jquery.ui.mouse.js',
+			'<%= components %>/jquery-ui/ui/jquery.ui.sortable.js',
+
 			'<%= components %>/typeahead.js/dist/typeahead.bundle.js',
 			'<%= paths.original.js %>/components/*.js',
 			'<%= paths.original.js %>/*.js'
