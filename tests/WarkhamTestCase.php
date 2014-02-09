@@ -1,9 +1,6 @@
 <?php
 namespace Warkham;
 
-require __DIR__.'/../vendor/autoload.php';
-require __DIR__.'/ContainerTestCase.php';
-
 use DOMDocument;
 use HtmlObject\Traits\Tag;
 use Warkham\Dummies\DummyField;
