@@ -2,9 +2,6 @@
 .DS_Store
 .rvmrc
 
-# Assets
-public/builds
-
 # Dependencies
 public/components
 node_modules
