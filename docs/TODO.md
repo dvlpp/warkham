@@ -11,7 +11,7 @@
 ## Warkham::file
 
 - [JS] intégrer http://rubaxa.github.io/jquery.fileapi/
-- [PHP] Helper (gestion upload + génération thumb)
+- [PHP] Helper génération thumb)
 
 ## Warkham::choice
 

@@ -1,7 +1,9 @@
 <?php
-namespace Warkham\Traits;
+namespace Warkham\Controllers;
 
+use App;
 use Illuminate\Routing\Controller;
+use Input;
 
 /**
  * A Warkham controller
@@ -23,7 +25,10 @@ abstract class AbstractWarkhamController extends Controller
 
 		// Loop over uploads and move them to their destination
 		foreach ($uploads as $upload) {
-			$upload->move($destination);
+			$name  = md5_file($upload->getRealpath());
+			$name .= '.'.$upload->getClientOriginalExtension();
+
+			$upload->move($destination, $name);
 		}
 	}
 }
