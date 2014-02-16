@@ -1,11 +1,11 @@
 module.exports = {
 	options: {
-		appDir             : "<%= src %>",
-		cssDir             : "css",
-		imagesDir          : "img",
-		outputStyle        : 'nested',
-		noLineComments     : true,
-		relativeAssets     : true,
+		appDir         : "<%= app %>",
+		cssDir         : "css",
+		imagesDir      : "img",
+		outputStyle    : 'nested',
+		noLineComments : true,
+		relativeAssets : true,
 	},
 
 	/**

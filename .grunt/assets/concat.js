@@ -2,16 +2,16 @@ module.exports = {
 	css: {
 		dest: '<%= paths.compiled.css %>/<%= name %>.css',
 		src: [
-			'<%= components %>/bootstrap/dist/css/bootstrap.css',
+			'<%= paths.components.bootstrap.css %>',
 			'<%= components %>/bootstrap-markdown/css/bootstrap-markdown.min.css',
 			'<%= components %>/select2/select2.css',
-			'<%= paths.original.css %>/*.css'
+			'<%= paths.original.css %>/**/*.css'
 		],
 	},
 	js: {
 		dest: '<%= paths.compiled.js %>/<%= name %>.js',
 		src: [
-			'<%= components %>/jquery/jquery.js',
+			'<%= paths.components.jquery %>',
 			'<%= components %>/yepnope/yepnope.js',
 			'<%= components %>/modernizr/modernizr.js',
 			'<%= components %>/bootstrap-markdown/js/bootstrap-markdown.js',
@@ -25,8 +25,7 @@ module.exports = {
 			'<%= components %>/jquery-ui/ui/jquery.ui.sortable.js',
 
 			'<%= components %>/typeahead.js/dist/typeahead.bundle.js',
-			'<%= paths.original.js %>/components/*.js',
-			'<%= paths.original.js %>/*.js'
+			'<%= paths.original.js %>/**/*.js'
 		],
 	}
 };

@@ -13,7 +13,7 @@ module.exports = {
 		immed         : true,
 		indent        : true,
 		latedef       : true,
-		maxcomplexity : 4,
+		maxcomplexity : 5,
 		maxdepth      : 3,
 		maxlen        : 120,
 		maxparams     : 3,
@@ -22,11 +22,15 @@ module.exports = {
 		noarg         : true,
 		noempty       : true,
 		nonew         : true,
-		plusplus      : true,
 		quotmark      : true,
 		trailing      : true,
 		undef         : true,
 		unused        : true,
+
+		predef: ['Modernizr', 'Hogan', 'yepnope'],
+		globals: {
+			replaceClasses: true,
+		}
 	},
 
 	all: ['<%= paths.original.js %>/*'],

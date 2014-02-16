@@ -11,8 +11,8 @@ module.exports = function(grunt) {
 	 * @return {Object}
 	 */
 	function loadConfig(folder) {
-		var glob = require('glob');
-		var path = require('path');
+		var glob   = require('glob');
+		var path   = require('path');
 		var key;
 
 		glob.sync('**/*.js', {cwd: folder}).forEach(function(option) {
@@ -26,55 +26,43 @@ module.exports = function(grunt) {
 	////////////////////////////////////////////////////////////////////
 
 	var config = {
-		name : 'warkham',
+		pkg  : grunt.file.readJSON('package.json'),
+		name : '<%= pkg.name %>',
 
-		src        : 'public/assets',
+		grunt      : '.grunt',
+		app        : 'public/assets',
 		builds     : 'public/builds',
 		components : 'public/components',
 
 		paths: {
 			original: {
-				css  : '<%= src %>/css',
-				img  : '<%= src %>/img',
-				js   : '<%= src %>/js',
-				sass : '<%= src %>/sass',
+				css  : '<%= app %>/css',
+				js   : '<%= app %>/js',
+				sass : '<%= app %>/sass',
+				img  : '<%= app %>/img',
 			},
 			compiled: {
+				css : '<%= builds %>/css',
 				js  : '<%= builds %>/js',
 				img : '<%= builds %>/img',
-				css : '<%= builds %>/css',
 			},
+			components: {
+				bootstrap: {
+					css   : '<%= components %>/bootstrap/dist/css/bootstrap.css',
+					fonts : '<%= components %>/bootstrap/dist/fonts',
+					js    : '<%= components %>/bootstrap/dist/js/bootstrap.js',
+				},
+				jquery: '<%= components %>/jquery/dist/jquery.js',
+			}
 		},
 	};
 
 	// Load all tasks
-	loadConfig('./.grunt/');
+	var gruntPath = './'+config.grunt+'/';
+	loadConfig(gruntPath);
 	grunt.initConfig(config);
 
-	////////////////////////////////////////////////////////////////////
-	/////////////////////////////// COMMANDS ///////////////////////////
-	////////////////////////////////////////////////////////////////////
+	// Load custom tasks
+	require(gruntPath + 'tasks.js')(grunt);
 
-	grunt.registerTask('default', 'Build assets for local', [
-		'bower',
-		'css',
-		'js',
-		'copy',
-	]);
-
-	grunt.registerTask('test', 'Launch the tests', ['phpunit:dist']);
-
-	// Asset types
-	////////////////////////////////////////////////////////////////////
-
-	grunt.registerTask('css', 'Build stylesheets', [
-		'compass:compile',
-		'concat:css',
-		'cssmin',
-	]);
-
-	grunt.registerTask('js', 'Build scripts', [
-		'concat:js',
-		'uglify',
-	]);
 };
