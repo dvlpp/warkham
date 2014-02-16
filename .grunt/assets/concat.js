@@ -25,7 +25,8 @@ module.exports = {
 			'<%= components %>/jquery-ui/ui/jquery.ui.sortable.js',
 
 			'<%= components %>/typeahead.js/dist/typeahead.bundle.js',
-			'<%= paths.original.js %>/**/*.js'
+			'<%= paths.original.js %>/components/*.js',
+			'<%= paths.original.js %>/*.js',
 		],
 	}
 };

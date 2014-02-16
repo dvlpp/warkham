@@ -65,9 +65,9 @@ $ grunt test
 | X      | List         | removable               |
 | X      | List         | setValue                |
 | X      | List         | sortable                |
-|        | Filelist     | addable                 |
-|        | Filelist     | removable               |
-|        | Filelist     | setValue                |
-|        | Filelist     | sortable                |
+| X      | Filelist     | addable                 |
+| X      | Filelist     | removable               |
+| X      | Filelist     | setValue                |
+| X      | Filelist     | sortable                |
 |        | Oracle       | forceValue              |
 |        | Oracle       | setValue                |
