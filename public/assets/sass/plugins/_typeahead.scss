@@ -27,9 +27,9 @@
   background-color: white;
   border: 1px solid $border-color;
 
-  @include border-radius(6px);
-  @include box-shadow(0 5px 10px $border-color);
-  @include background-clip(padding-box);
+  border-radius: 6px;
+  box-shadow: 0 5px 10px $border-color;
+  background-clip: padding-box;
 }
 
 .tt-suggestion {

@@ -11,5 +11,5 @@
 	}
 
 	background: mix($from, $to);
-	@include background-image(linear-gradient(to bottom, $from, $to));
+	background-image: linear-gradient(to bottom, $from, $to);
 }

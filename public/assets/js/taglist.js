@@ -10,7 +10,7 @@ $('.wkm-taglist').each(function() {
 	var allowCreate = $field.data('allowcreate');
 
 	// Default for allowCreate
-	if (allowCreate == void 0) {
+	if (allowCreate === void 0) {
 		allowCreate = true;
 	}
 

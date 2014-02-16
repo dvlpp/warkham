@@ -24,7 +24,7 @@ $('.wkm-oracle').each(function() {
 			data     : function (term) {
 				return {q: term};
 			},
-			results: function (data, page) {
+			results: function (data) {
 				var results = [];
 				for(var k = 0; k < data.length; k++) {
 					results.push({
