@@ -142,7 +142,7 @@ class Item extends AbstractGroupField
 		}
 
 		// Create list and nest it
-		$this->getItem();
+		$this->getItem(0);
 
 		return $this;
 	}

@@ -9,9 +9,14 @@ $('button[data-action="add-item"]').click(function(event) {
 	event.preventDefault();
 
 	// Get template
+	var index     = $(this).siblings('ul.list-group:not(.wkm-template)').length;
 	var $template = $(this).siblings('.wkm-template')
 		.clone()
-		.removeClass('wkm-template');
+		.removeClass('wkm-template')
+		.get(0).outerHTML;
+
+	// Replace index
+	$template = $template.replace(/\[new\]/g, '[' +index+ ']');
 
 	// Insert it before
 	$(this).before($template);

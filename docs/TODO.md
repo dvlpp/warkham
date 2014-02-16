@@ -1,7 +1,5 @@
 ## Warkham::items
 
-- [JS] gérer submit form
-
 - [UI bonus] trouver un moyen simple de pouvoir positionner des classes BS type col-md-X sur les items pour gérer un système de layout
 
 ## Warkham::textarea
