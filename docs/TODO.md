@@ -18,10 +18,6 @@
 - [JS] intégrer http://rubaxa.github.io/jquery.fileapi/
 - [PHP] Helper génération thumb
 
-## Warkham::choice
-
-- [JS] intégrer http://brianreavis.github.io/selectize.js/
-
 ## Warkham::imagelist
 
 - développer
