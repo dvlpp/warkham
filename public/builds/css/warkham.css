@@ -6412,7 +6412,7 @@ disabled look for disabled choices in the results dropdown
 
 .twitter-typeahead {
   width: 100%; }
-  .twitter-typeahead .tt-query, .twitter-typeahead .tt-hint {
+  .twitter-typeahead .tt-input, .twitter-typeahead .tt-hint {
     margin-bottom: 0; }
   .twitter-typeahead .tt-hint {
     display: block;
@@ -6437,13 +6437,13 @@ disabled look for disabled choices in the results dropdown
 .tt-suggestion {
   display: block;
   padding: 3px 20px; }
-  .tt-suggestion.tt-is-under-cursor {
+  .tt-suggestion.tt-cursor {
     color: white;
     background: #007fbf;
     background-image: -webkit-gradient(linear, left top, left bottom, from(#0088cc), to(#0077b3));
     background-image: -webkit-linear-gradient(top, #0088cc, #0077b3);
     background-image: linear-gradient(to bottom, #0088cc, #0077b3); }
-    .tt-suggestion.tt-is-under-cursor a {
+    .tt-suggestion.tt-cursor a {
       color: white; }
   .tt-suggestion p {
     margin: 0; }
