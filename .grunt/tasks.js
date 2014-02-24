@@ -7,24 +7,38 @@ module.exports = function(grunt) {
 		'copy',
 	]);
 
+	grunt.registerTask('rebuild', 'Rebuild all assets from scratch', [
+		'clean',
+		'compass:clean',
+		'default',
+	]);
+
 	grunt.registerTask('test', 'Launch the tests', ['phpunit:dist']);
 
-	// Asset types
+	// Flow
 	////////////////////////////////////////////////////////////////////
+
+	grunt.registerTask('images', 'Recompress images', [
+		'svgmin',
+		'tinypng',
+	]);
+
+	// By filetype
+	////////////////////////////////////////////////////////////////////
+
+	grunt.registerTask('js', 'Build scripts', [
+		'jshint',
+		'concat:js',
+		'uglify',
+	]);
 
 	grunt.registerTask('css', 'Build stylesheets', [
 		'compass:compile',
-		'autoprefixer',
 		'csslint',
 		'csscss',
+		'autoprefixer',
 		'concat:css',
 		'cssmin',
-	]);
-
-	grunt.registerTask('js', 'Build scripts', [
-		'concat:js',
-		'jshint',
-		'uglify',
 	]);
 
 }
