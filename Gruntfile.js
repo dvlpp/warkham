@@ -11,8 +11,8 @@ module.exports = function(grunt) {
 	 * @return {Object}
 	 */
 	function loadConfig(folder) {
-		var glob   = require('glob');
-		var path   = require('path');
+		var glob = require('glob');
+		var path = require('path');
 		var key;
 
 		glob.sync('**/*.js', {cwd: folder}).forEach(function(option) {
@@ -40,19 +40,23 @@ module.exports = function(grunt) {
 				js   : '<%= app %>/js',
 				sass : '<%= app %>/sass',
 				img  : '<%= app %>/img',
+				svg  : '<%= app %>/svg',
 			},
 			compiled: {
 				css : '<%= builds %>/css',
 				js  : '<%= builds %>/js',
 				img : '<%= builds %>/img',
+				svg : '<%= builds %>/svg',
 			},
 			components: {
-				bootstrap: {
+				jquery    : '<%= components %>/jquery/dist/jquery.js',
+				icomoon   : '<%= components %>/icomoon/style.css',
+				backbone  : '<%= components %>/backbone/backbone.js',
+				bootstrap : {
 					css   : '<%= components %>/bootstrap/dist/css/bootstrap.css',
 					fonts : '<%= components %>/bootstrap/dist/fonts',
 					js    : '<%= components %>/bootstrap/dist/js/bootstrap.js',
 				},
-				jquery: '<%= components %>/jquery/dist/jquery.js',
 			}
 		},
 	};
