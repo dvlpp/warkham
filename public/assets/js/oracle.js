@@ -13,12 +13,10 @@ $('.wkm-oracle').each(function() {
 		allowClear             : true,
 		minimumInputLength     : minLength,
 		adaptContainerCssClass : replaceClasses,
-		formatResult           : function(value) {
-			return Hogan.compile(template).render({
-				'value': value,
-			});
+		formatResult           : function(string) {
+			return Handlebars.compile(template)({value: string});
 		},
-		ajax: {
+		ajax : {
 			url      : endpoint,
 			dataType : 'json',
 			data     : function (term) {

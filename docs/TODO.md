@@ -14,7 +14,3 @@
 ## Warkham::imagelist
 
 - développer
-
-## Warkham::autocomplete
-
-- [BUG?] l'autocomplétion ne fonctionne pas, ni en local ni en distant (aucun bind JS, d'après ce que j'ai pu constater)

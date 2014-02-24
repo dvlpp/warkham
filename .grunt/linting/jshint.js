@@ -27,7 +27,7 @@ module.exports = {
 		undef         : true,
 		unused        : true,
 
-		predef: ['Modernizr', 'Hogan', 'yepnope'],
+		predef: ['Modernizr', 'Bloodhound', 'Handlebars', 'yepnope'],
 		globals: {
 			replaceClasses: true,
 		}

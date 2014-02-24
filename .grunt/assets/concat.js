@@ -16,7 +16,7 @@ module.exports = {
 			'<%= components %>/modernizr/modernizr.js',
 			'<%= components %>/bootstrap-markdown/js/bootstrap-markdown.js',
 			'<%= components %>/bootstrap-wysiwyg/bootstrap-wysiwyg.js',
-			'<%= components %>/hogan/web/1.0.0/hogan.js',
+			'<%= components %>/handlebars/handlebars.js',
 			'<%= components %>/select2/select2.js',
 
 			'<%= components %>/jquery-ui/ui/jquery.ui.core.js',
