@@ -237,18 +237,7 @@ class Item extends AbstractGroupField
 	 */
 	public function addable($addable = true, $text = 'Ajouter', $class = 'btn btn-primary')
 	{
-		$this->setDataAttribute('addable', $addable);
-		$this->buttons['addable'] = compact('text', 'class');
-
-		// Create button
-		$button = $this->createButton('addable')->dataAction('add-item');
-		$this->nest($button, 'button');
-
-		// Create template
-		$template = $this->createItem();
-		$this->nest($template, 'template');
-
-		return $this;
+		return $this->addButtonToTemplate('addable', $addable, $text, $class);
 	}
 
 	/**
@@ -261,14 +250,37 @@ class Item extends AbstractGroupField
 	 */
 	public function removeable($removeable = true, $text = 'Supprimer', $class = 'btn btn-danger')
 	{
-		$this->setDataAttribute('removeable', $removeable);
-		$this->buttons['removeable'] = compact('text', 'class');
+		return $this->addButtonToTemplate('removeable', $removeable, $text, $class);
+	}
 
-		// Recreate items
-		$this->fields();
+	////////////////////////////////////////////////////////////////////
+	/////////////////////////////// HELPERS ////////////////////////////
+	////////////////////////////////////////////////////////////////////
 
-		// Recreate template
+	/**
+	 * Add a button to the template
+	 *
+	 * @param string  $name
+	 * @param boolean $enabled
+	 * @param string  $text
+	 * @param string  $class
+	 */
+	protected function addButtonToTemplate($name, $enabled, $text, $class)
+	{
+		$this->setDataAttribute($name, $enabled);
+		$this->buttons[$name] = compact('text', 'class');
+
+		// Create button
+		if ($name == 'addable') {
+			$button = $this->createButton($name)->dataAction('add-item');
+			$this->nest($button, 'button');
+		} else {
+			$this->fields();
+		}
+
+		// Create template
 		$template = $this->createItem();
+		$this->children['template'] = $template;
 		$this->setChild($template, 'template');
 
 		return $this;
