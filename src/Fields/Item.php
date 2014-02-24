@@ -60,15 +60,16 @@ class Item extends AbstractGroupField
 	 * Nest an item in the group
 	 *
 	 * @param integer $index
+	 * @param boolean $recreate
 	 *
 	 * @return Element
 	 */
-	protected function getItem($index = 'new')
+	protected function getItem($index = 'new', $recreate = false)
 	{
 		$identifier = 'list-'.$index;
 
 		// Create item if necessary
-		if (!$this->hasChild($identifier)) {
+		if (!$this->hasChild($identifier) or $recreate) {
 			$list = Element::create('ul')->addClass('list-group');
 			$this->createItem($list, $index);
 			$this->prependChild($list, $identifier, 'list-new');
@@ -141,8 +142,15 @@ class Item extends AbstractGroupField
 			$this->fieldsTemplate = $fields;
 		}
 
+		// Clear former registered fields
+		$this->app['former']->labels = array();
+		$this->app['former']->ids    = array();
+
 		// Create list and nest it
-		$this->getItem(0);
+		$this->getItem(0, true);
+
+		// Set values
+		$this->setValues();
 
 		return $this;
 	}
