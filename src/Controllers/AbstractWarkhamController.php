@@ -21,7 +21,7 @@ abstract class AbstractWarkhamController extends Controller
 	public function moveUploads($field, $destination)
 	{
 		$uploads     = (array) Input::file($field);
-		$destination = App::make('path.public').'/uploads';
+		$destination = 'uploads/'.$destination;
 
 		// Loop over uploads and move them to their destination
 		foreach ($uploads as $upload) {
