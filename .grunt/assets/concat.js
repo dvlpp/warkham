@@ -3,6 +3,7 @@ module.exports = {
 		dest: '<%= paths.compiled.css %>/<%= name %>.css',
 		src: [
 			'<%= paths.components.bootstrap.css %>',
+			'<%= components %>/bootstrap/dist/css/bootstrap-theme.css',
 			'<%= components %>/bootstrap-markdown/css/bootstrap-markdown.min.css',
 			'<%= components %>/select2/select2.css',
 			'<%= paths.original.css %>/**/*.css'
@@ -17,6 +18,8 @@ module.exports = {
 			'<%= components %>/bootstrap-markdown/js/bootstrap-markdown.js',
 			'<%= components %>/bootstrap-wysiwyg/bootstrap-wysiwyg.js',
 			'<%= components %>/handlebars/handlebars.js',
+			'<%= components %>/jquery.fileapi/FileAPI/FileAPI.min.js',
+			'<%= components %>/jquery.fileapi/jquery.fileapi.js',
 			'<%= components %>/select2/select2.js',
 
 			'<%= components %>/jquery-ui/ui/jquery.ui.core.js',

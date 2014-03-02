@@ -23,9 +23,14 @@ $movies = function($query = null) {
 	return Response::json($results)->send();
 };
 
+$upload = function() {
+	var_dump($_FILES);
+};
+
 // Register the routes
 $app['router']->get('movies', ['as' => 'movies', 'use' => $movies]);
 $app['router']->get('oracle', ['as' => 'oracle', 'use' => $movies]);
+$app['router']->post('upload', ['as' => 'upload', 'use' => $upload]);
 
 // Request
 //////////////////////////////////////////////////////////////////////
@@ -41,6 +46,9 @@ switch ($request) {
 	case 'movies':
 	case 'oracle':
 		return $movies(array_get($_GET, 'q'));
+
+	case 'upload':
+		return $upload();
 }
 ?>
 <!DOCTYPE html>
@@ -60,6 +68,8 @@ switch ($request) {
 			<?= Warkham::text('text') ?>
 			<?= Warkham::checkbox('checkbox') ?>
 			<?= Warkham::file('file') ?>
+			<?= Warkham::file('file')->multiple(true)->uploadRoute('upload')->progress(true) ?>
+			<?= Warkham::file('file')->multiple(true)->uploadRoute('upload')->thumbnail(200, 200) ?>
 			<?= Warkham::textarea('textarea') ?>
 			<?= Warkham::autocomplete('autocomplete')->setDataset(['foo', 'bar'])->setRemoteRoute('movies')->setTemplate('<em style="color: YellowGreen">{{value}}</em>') ?>
 			<?= Warkham::oracle('oracle')->placeholder('Rechercher un film')->setRemoteRoute('movies')->setQueryMinLength(3)->setTemplate('<em style="color: red">{{value.id}} - {{value.text}}</em>') ?>

@@ -1,0 +1,29 @@
+// File fields
+//
+//////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////
+
+.js-browse input[type="file"] {
+	bottom: 10px;
+	z-index: 2;
+	position: absolute;
+	cursor: pointer;
+	opacity: 0;
+	font-size: 3rem;
+}
+
+.wkm-file-wrapper--preview {
+	$size: 15rem;
+
+	width: $size;
+	height: $size;
+	background: grey(90);
+	position: relative;
+	text-align: center;
+	border-radius: 0.5em;
+
+	.wkm-file-wrapper {
+		margin-top: $size - 5rem;
+		display: inline-block;
+	}
+}
