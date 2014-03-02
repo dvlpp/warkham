@@ -4,6 +4,7 @@ namespace Warkham\Controllers;
 use App;
 use Illuminate\Routing\Controller;
 use Input;
+use Intervention\Image\Image;
 
 /**
  * A Warkham controller
@@ -30,5 +31,23 @@ abstract class AbstractWarkhamController extends Controller
 
 			$upload->move($destination, $name);
 		}
+	}
+
+	/**
+	 * Resize an image
+	 *
+	 * @param string  $image
+	 * @param integer $width
+	 * @param integer $height
+	 *
+	 * @return Image
+	 */
+	public function resizeImage($image, $width, $height)
+	{
+		$image = Image::make('public/'.$image);
+		$image->resize($width, $height);
+		$image->save();
+
+		return $image;
 	}
 }

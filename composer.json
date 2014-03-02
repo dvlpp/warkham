@@ -4,7 +4,8 @@
 		"illuminate/support": "~4",
 		"illuminate/container": "~4",
 		"illuminate/events": "~4",
-		"anahkiasen/former": "dev-develop"
+		"anahkiasen/former": "dev-develop",
+		"intervention/image": "dev-master"
 	},
 	"require-dev": {
 		"mockery/mockery": "dev-master",
