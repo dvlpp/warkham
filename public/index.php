@@ -67,9 +67,9 @@ switch ($request) {
 		<?= Warkham::open() ?>
 			<?= Warkham::text('text') ?>
 			<?= Warkham::checkbox('checkbox') ?>
-			<?= Warkham::file('file') ?>
-			<?= Warkham::file('file')->multiple(true)->uploadRoute('upload')->progress(true) ?>
-			<?= Warkham::file('file')->multiple(true)->uploadRoute('upload')->thumbnail(200, 200) ?>
+			<?= Warkham::file('file', 'Classic') ?>
+			<?= Warkham::file('file', 'File (FileAPI)')->multiple(true)->uploadRoute('upload')->progress(true) ?>
+			<?= Warkham::file('file', 'File (thumbnail)')->multiple(true)->uploadRoute('upload')->thumbnail(200, 200) ?>
 			<?= Warkham::textarea('textarea') ?>
 			<?= Warkham::autocomplete('autocomplete')->setDataset(['foo', 'bar'])->setRemoteRoute('movies')->setTemplate('<em style="color: YellowGreen">{{value}}</em>') ?>
 			<?= Warkham::oracle('oracle')->placeholder('Rechercher un film')->setRemoteRoute('movies')->setQueryMinLength(3)->setTemplate('<em style="color: red">{{value.id}} - {{value.text}}</em>') ?>

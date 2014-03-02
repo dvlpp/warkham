@@ -15036,6 +15036,1303 @@ var __module0__ = (function(__dependency1__, __dependency2__, __dependency3__, _
   return __module0__;
 })();
 
+/*! fileapi 2.0.2 - BSD | git://github.com/mailru/FileAPI.git */
+!function(a){"use strict";var b=a.HTMLCanvasElement&&a.HTMLCanvasElement.prototype,c=a.Blob&&function(){try{return Boolean(new Blob)}catch(a){return!1}}(),d=c&&a.Uint8Array&&function(){try{return 100===new Blob([new Uint8Array(100)]).size}catch(a){return!1}}(),e=a.BlobBuilder||a.WebKitBlobBuilder||a.MozBlobBuilder||a.MSBlobBuilder,f=(c||e)&&a.atob&&a.ArrayBuffer&&a.Uint8Array&&function(a){var b,f,g,h,i,j;for(b=a.split(",")[0].indexOf("base64")>=0?atob(a.split(",")[1]):decodeURIComponent(a.split(",")[1]),f=new ArrayBuffer(b.length),g=new Uint8Array(f),h=0;h<b.length;h+=1)g[h]=b.charCodeAt(h);return i=a.split(",")[0].split(":")[1].split(";")[0],c?new Blob([d?g:f],{type:i}):(j=new e,j.append(f),j.getBlob(i))};a.HTMLCanvasElement&&!b.toBlob&&(b.mozGetAsFile?b.toBlob=function(a,c,d){d&&b.toDataURL&&f?a(f(this.toDataURL(c,d))):a(this.mozGetAsFile("blob",c))}:b.toDataURL&&f&&(b.toBlob=function(a,b,c){a(f(this.toDataURL(b,c)))})),a.dataURLtoBlob=f}(window),function(a,b){"use strict";function c(a,b,c,d,e){var f={type:c.type||c,target:a,result:d};R(f,e),b(f)}function d(a){return u&&!!u.prototype["readAs"+a]}function e(a,e,f,g){if(X.isFile(a)&&d(f)){var h=new u;S(h,L,function j(b){var d=b.type;"progress"==d?c(a,e,b,b.target.result,{loaded:b.loaded,total:b.total}):"loadend"==d?(T(h,L,j),h=null):c(a,e,b,b.target.result)});try{g?h["readAs"+f](a,g):h["readAs"+f](a)}catch(i){c(a,e,"error",b,{error:i.toString()})}}else c(a,e,"error",b,{error:"filreader_not_support_"+f})}function f(a,b){if(!a.type&&0===a.size%4096&&a.size<=102400)if(u)try{var c=new u;U(c,L,function(a){var d="error"!=a.type;b(d),d&&c.abort()}),c.readAsDataURL(a)}catch(d){b(!1)}else b(null);else b(!0)}function g(a){var b;return a.getAsEntry?b=a.getAsEntry():a.webkitGetAsEntry&&(b=a.webkitGetAsEntry()),b}function h(a,b){if(a)if(a.isFile)a.file(function(c){c.fullPath=a.fullPath,b(!1,[c])},function(a){b("FileError.code: "+a.code)});else if(a.isDirectory){var c=a.createReader(),d=[];c.readEntries(function(a){X.afor(a,function(a,c){h(c,function(c,e){c?X.log(c):d=d.concat(e),a?a():b(!1,d)})})},function(a){b("directory_reader: "+a)})}else h(g(a),b);else b("invalid entry")}function i(a){var b={};return Q(a,function(a,c){a&&"object"==typeof a&&void 0===a.nodeType&&(a=R({},a)),b[c]=a}),b}function j(a){return F.test(a&&a.tagName)}function k(a){return(a.originalEvent||a||"").dataTransfer||{}}function l(a){var b;for(b in a)if(a.hasOwnProperty(b)&&!(a[b]instanceof Object||"overlay"===b||"filter"===b))return!0;return!1}var m=1,n=function(){},o=a.document,p=o.doctype||{},q=a.navigator.userAgent,r=a.createObjectURL&&a||a.URL&&URL.revokeObjectURL&&URL||a.webkitURL&&webkitURL,s=a.Blob,t=a.File,u=a.FileReader,v=a.FormData,w=a.XMLHttpRequest,x=a.jQuery,y=!(!(t&&u&&(a.Uint8Array||v||w.prototype.sendAsBinary))||/safari\//i.test(q)&&!/chrome\//i.test(q)&&/windows/i.test(q)),z=y&&"withCredentials"in new w,A=y&&!!s&&!!(s.prototype.webkitSlice||s.prototype.mozSlice||s.prototype.slice),B=a.dataURLtoBlob,C=/img/i,D=/canvas/i,E=/img|canvas/i,F=/input/i,G=/^data:[^,]+,/,H=a.Math,I=function(b){return b=new a.Number(H.pow(1024,b)),b.from=function(a){return H.round(a*this)},b},J={},K=[],L="abort progress error load loadend",M="status statusText readyState response responseXML responseText responseBody".split(" "),N="currentTarget",O="preventDefault",P=function(a){return a&&"length"in a},Q=function(a,b,c){if(a)if(P(a))for(var d=0,e=a.length;e>d;d++)d in a&&b.call(c,a[d],d,a);else for(var f in a)a.hasOwnProperty(f)&&b.call(c,a[f],f,a)},R=function(a){for(var b=arguments,c=1,d=function(b,c){a[c]=b};c<b.length;c++)Q(b[c],d);return a},S=function(a,b,c){if(a){var d=X.uid(a);J[d]||(J[d]={}),Q(b.split(/\s+/),function(b){x?x.event.add(a,b,c):(J[d][b]||(J[d][b]=[]),J[d][b].push(c),a.addEventListener?a.addEventListener(b,c,!1):a.attachEvent?a.attachEvent("on"+b,c):a["on"+b]=c)})}},T=function(a,b,c){if(a){var d=X.uid(a),e=J[d]||{};Q(b.split(/\s+/),function(b){if(x)x.event.remove(a,b,c);else{for(var d=e[b]||[],f=d.length;f--;)if(d[f]===c){d.splice(f,1);break}a.addEventListener?a.removeEventListener(b,c,!1):a.detachEvent?a.detachEvent("on"+b,c):a["on"+b]=null}})}},U=function(a,b,c){S(a,b,function d(e){T(a,b,d),c(e)})},V=function(b){return b.target||(b.target=a.event&&a.event.srcElement||o),3===b.target.nodeType&&(b.target=b.target.parentNode),b},W=function(a){var b=o.createElement("input");return b.setAttribute("type","file"),a in b},X={version:"2.0.2",cors:!1,html5:!0,media:!1,formData:!0,debug:!1,pingUrl:!1,multiFlash:!1,flashAbortTimeout:0,withCredentials:!0,staticPath:"./dist/",flashUrl:0,flashImageUrl:0,postNameConcat:function(a,b){return a+(null!=b?"["+b+"]":"")},ext2mime:{jpg:"image/jpeg",tif:"image/tiff",txt:"text/plain"},accept:{"image/*":"art bm bmp dwg dxf cbr cbz fif fpx gif ico iefs jfif jpe jpeg jpg jps jut mcf nap nif pbm pcx pgm pict pm png pnm qif qtif ras rast rf rp svf tga tif tiff xbm xbm xpm xwd","audio/*":"m4a flac aac rm mpa wav wma ogg mp3 mp2 m3u mod amf dmf dsm far gdm imf it m15 med okt s3m stm sfx ult uni xm sid ac3 dts cue aif aiff wpl ape mac mpc mpp shn wv nsf spc gym adplug adx dsp adp ymf ast afc hps xs","video/*":"m4v 3gp nsv ts ty strm rm rmvb m3u ifo mov qt divx xvid bivx vob nrg img iso pva wmv asf asx ogm m2v avi bin dat dvr-ms mpg mpeg mp4 mkv avc vp3 svq3 nuv viv dv fli flv wpl"},chunkSize:0,chunkUploadRetry:0,chunkNetworkDownRetryTimeout:2e3,KB:I(1),MB:I(2),GB:I(3),TB:I(4),expando:"fileapi"+(new Date).getTime(),uid:function(a){return a?a[X.expando]=a[X.expando]||X.uid():(++m,X.expando+m)},log:function(){X.debug&&a.console&&console.log&&(console.log.apply?console.log.apply(console,arguments):console.log([].join.call(arguments," ")))},newImage:function(a,b){var c=o.createElement("img");return b&&X.event.one(c,"error load",function(a){b("error"==a.type,c),c=null}),c.src=a,c},getXHR:function(){var b;if(w)b=new w;else if(a.ActiveXObject)try{b=new ActiveXObject("MSXML2.XMLHttp.3.0")}catch(c){b=new ActiveXObject("Microsoft.XMLHTTP")}return b},isArray:P,support:{dnd:z&&"ondrop"in o.createElement("div"),cors:z,html5:y,chunked:A,dataURI:!0,accept:W("accept"),multiple:W("multiple")},event:{on:S,off:T,one:U,fix:V},throttle:function(b,c){var d,e;return function(){e=arguments,d||(b.apply(a,e),d=setTimeout(function(){d=0,b.apply(a,e)},c))}},F:function(){},parseJSON:function(b){var c;return c=a.JSON&&JSON.parse?JSON.parse(b):new Function("return ("+b.replace(/([\r\n])/g,"\\$1")+");")()},trim:function(a){return a=String(a),a.trim?a.trim():a.replace(/^\s+|\s+$/g,"")},defer:function(){var a,c,d=[],e={resolve:function(b,f){for(e.resolve=n,c=b||!1,a=f;f=d.shift();)f(c,a)},then:function(e){c!==b?e(c,a):d.push(e)}};return e},queue:function(a){var b=0,c=0,d=!1,e=!1,f={inc:function(){c++},next:function(){b++,setTimeout(f.check,0)},check:function(){b>=c&&!d&&f.end()},isFail:function(){return d},fail:function(){!d&&a(d=!0)},end:function(){e||(e=!0,a())}};return f},each:Q,afor:function(a,b){var c=0,d=a.length;P(a)&&d--?!function e(){b(d!=c&&e,a[c],c++)}():b(!1)},extend:R,isFile:function(a){return y&&a&&a instanceof t},isCanvas:function(a){return a&&D.test(a.nodeName)},getFilesFilter:function(a){return a="string"==typeof a?a:a.getAttribute&&a.getAttribute("accept")||"",a?new RegExp("("+a.replace(/\./g,"\\.").replace(/,/g,"|")+")$","i"):/./},readAsDataURL:function(a,b){X.isCanvas(a)?c(a,b,"load",X.toDataURL(a)):e(a,b,"DataURL")},readAsBinaryString:function(a,b){d("BinaryString")?e(a,b,"BinaryString"):e(a,function(a){if("load"==a.type)try{a.result=X.toBinaryString(a.result)}catch(c){a.type="error",a.message=c.toString()}b(a)},"DataURL")},readAsArrayBuffer:function(a,b){e(a,b,"ArrayBuffer")},readAsText:function(a,b,c){c||(c=b,b="utf-8"),e(a,c,"Text",b)},toDataURL:function(a,b){return"string"==typeof a?a:a.toDataURL?a.toDataURL(b||"image/png"):void 0},toBinaryString:function(b){return a.atob(X.toDataURL(b).replace(G,""))},readAsImage:function(a,d,e){if(X.isFile(a))if(r){var f=r.createObjectURL(a);f===b?c(a,d,"error"):X.readAsImage(f,d,e)}else X.readAsDataURL(a,function(b){"load"==b.type?X.readAsImage(b.result,d,e):(e||"error"==b.type)&&c(a,d,b,null,{loaded:b.loaded,total:b.total})});else if(X.isCanvas(a))c(a,d,"load",a);else if(C.test(a.nodeName))if(a.complete)c(a,d,"load",a);else{var g="error abort load";U(a,g,function i(b){"load"==b.type&&r&&r.revokeObjectURL(a.src),T(a,g,i),c(a,d,b,a)})}else if(a.iframe)c(a,d,{type:"error"});else{var h=X.newImage(a.dataURL||a);X.readAsImage(h,d,e)}},checkFileObj:function(a){var b={},c=X.accept;return"object"==typeof a?b=a:b.name=(a+"").split(/\\|\//g).pop(),null==b.type&&(b.type=b.name.split(".").pop()),Q(c,function(a,c){a=new RegExp(a.replace(/\s/g,"|"),"i"),(a.test(b.type)||X.ext2mime[b.type])&&(b.type=X.ext2mime[b.type]||c.split("/")[0]+"/"+b.type)}),b},getDropFiles:function(a,b){var c=[],d=k(a),e=P(d.items)&&d.items[0]&&g(d.items[0]),i=X.queue(function(){b(c)});Q((e?d.items:d.files)||[],function(a){i.inc();try{e?h(a,function(a,b){a?X.log("[err] getDropFiles:",a):c.push.apply(c,b),i.next()}):f(a,function(b){b&&c.push(a),i.next()})}catch(b){i.next(),X.log("[err] getDropFiles: ",b)}}),i.check()},getFiles:function(a,b,c){var d=[];return c?(X.filterFiles(X.getFiles(a),b,c),null):(a.jquery&&(a.each(function(){d=d.concat(X.getFiles(this))}),a=d,d=[]),"string"==typeof b&&(b=X.getFilesFilter(b)),a.originalEvent?a=V(a.originalEvent):a.srcElement&&(a=V(a)),a.dataTransfer?a=a.dataTransfer:a.target&&(a=a.target),a.files?(d=a.files,y||(d[0].blob=a,d[0].iframe=!0)):!y&&j(a)?X.trim(a.value)&&(d=[X.checkFileObj(a.value)],d[0].blob=a,d[0].iframe=!0):P(a)&&(d=a),X.filter(d,function(a){return!b||b.test(a.name)}))},getTotalSize:function(a){for(var b=0,c=a&&a.length;c--;)b+=a[c].size;return b},getInfo:function(a,b){var c={},d=K.concat();X.isFile(a)?!function e(){var f=d.shift();f?f.test(a.type)?f(a,function(a,d){a?b(a):(R(c,d),e())}):e():b(!1,c)}():b("not_support_info",c)},addInfoReader:function(a,b){b.test=function(b){return a.test(b)},K.push(b)},filter:function(a,b){for(var c,d=[],e=0,f=a.length;f>e;e++)e in a&&(c=a[e],b.call(c,c,e,a)&&d.push(c));return d},filterFiles:function(a,b,c){if(a.length){var d,e=a.concat(),f=[],g=[];!function h(){e.length?(d=e.shift(),X.getInfo(d,function(a,c){(b(d,a?!1:c)?f:g).push(d),h()})):c(f,g)}()}else c([],a)},upload:function(a){a=R({prepare:X.F,beforeupload:X.F,upload:X.F,fileupload:X.F,fileprogress:X.F,filecomplete:X.F,progress:X.F,complete:X.F,pause:X.F,imageOriginal:!0,chunkSize:X.chunkSize,chunkUpoloadRetry:X.chunkUploadRetry},a),a.imageAutoOrientation&&!a.imageTransform&&(a.imageTransform={rotate:"auto"});var b,c=new X.XHR(a),d=this._getFilesDataArray(a.files),e=this,f=0,g=0,h=!1;return Q(d,function(a){f+=a.size}),c.files=[],Q(d,function(a){c.files.push(a.file)}),c.total=f,c.loaded=0,c.filesLeft=d.length,a.beforeupload(c,a),b=function(){var j=d.shift(),k=j&&j.file,l=!1,m=i(a);c.filesLeft=d.length,k&&k.name===X.expando&&(k=null,X.log("[warn] FileAPI.upload() — called without files")),("abort"!=c.statusText||c.current)&&j?(h=!1,c.currentFile=k,k&&a.prepare(k,m),e._getFormData(m,j,function(h){g||a.upload(c,a);var i=new X.XHR(R({},m,{upload:k?function(){a.fileupload(k,i,m)}:n,progress:k?function(b){l||(a.fileprogress({type:"progress",total:j.total=b.total,loaded:j.loaded=b.loaded},k,i,m),a.progress({type:"progress",total:f,loaded:c.loaded=0|g+j.size*(b.loaded/b.total)},k,i,m))}:n,complete:function(d){l=!0,Q(M,function(a){c[a]=i[a]}),k&&(j.loaded=j.total,this.progress(j),g+=j.size,c.loaded=g,a.filecomplete(d,i,k,m)),b.call(e)}}));c.abort=function(a){a||(d.length=0),this.current=a,i.abort()},i.send(h)})):(a.complete(200==c.status||201==c.status?!1:c.statusText||"error",c,a),h=!0)},setTimeout(b,0),c.append=function(a,g){a=X._getFilesDataArray([].concat(a)),Q(a,function(a){f+=a.size,c.files.push(a.file),g?d.unshift(a):d.push(a)}),c.statusText="",h&&b.call(e)},c.remove=function(a){for(var b,c=d.length;c--;)d[c].file==a&&(b=d.splice(c,1),f-=b.size);return b},c},_getFilesDataArray:function(a){var b=[],c={};if(j(a)){var d=X.getFiles(a);c[a.name||"file"]=null!==a.getAttribute("multiple")?d:d[0]}else P(a)&&j(a[0])?Q(a,function(a){c[a.name||"file"]=X.getFiles(a)}):c=a;return Q(c,function e(a,c){P(a)?Q(a,function(a){e(a,c)}):a&&(a.name||a.image)&&b.push({name:c,file:a,size:a.size,total:a.size,loaded:0})}),b.length||b.push({file:{name:X.expando}}),b},_getFormData:function(a,b,c){var d=b.file,e=b.name,f=d.name,g=d.type,h=X.support.transform&&a.imageTransform,i=new X.Form,j=X.queue(function(){c(i)}),k=h&&l(h),m=X.postNameConcat;!function n(b){b.image?(j.inc(),b.toData(function(a,b){f=f||(new Date).getTime()+".png",n(b),j.next()})):X.Image&&h&&(/^image/.test(b.type)||E.test(b.nodeName))?(j.inc(),k&&(h=[h]),X.Image.transform(b,h,a.imageAutoOrientation,function(c,d){if(k&&!c)B||X.flashEngine||(i.multipart=!0),i.append(e,d[0],f,h[0].type||g);else{var l=0;c||Q(d,function(a,b){B||X.flashEngine||(i.multipart=!0),h[b].postName||(l=1),i.append(h[b].postName||m(e,b),a,f,h[b].type||g)}),(c||a.imageOriginal)&&i.append(m(e,l?"original":null),b,f,g)}j.next()})):f!==X.expando&&i.append(e,b,f)}(d),Q(a.data,function o(a,b){"object"==typeof a?Q(a,function(a,c){o(a,m(b,c))}):i.append(b,a)}),j.check()},reset:function(a,b){var c,d;return x?(d=x(a).clone(!0).insertBefore(a).val("")[0],b||x(a).remove()):(c=a.parentNode,d=c.insertBefore(a.cloneNode(!0),a),d.value="",b||c.removeChild(a),Q(J[X.uid(a)],function(b,c){Q(b,function(b){T(a,c,b),S(d,c,b)})})),d},load:function(a,b){var c=X.getXHR();return c?(c.open("GET",a,!0),c.overrideMimeType&&c.overrideMimeType("text/plain; charset=x-user-defined"),S(c,"progress",function(a){a.lengthComputable&&b({type:a.type,loaded:a.loaded,total:a.total},c)}),c.onreadystatechange=function(){if(4==c.readyState)if(c.onreadystatechange=null,200==c.status){a=a.split("/");var d={name:a[a.length-1],size:c.getResponseHeader("Content-Length"),type:c.getResponseHeader("Content-Type")};d.dataURL="data:"+d.type+";base64,"+X.encode64(c.responseBody||c.responseText),b({type:"load",result:d},c)}else b({type:"error"},c)},c.send(null)):b({type:"error"}),c},encode64:function(a){var b="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=",c="",d=0;for("string"!=typeof a&&(a=String(a));d<a.length;){var e,f,g=255&a.charCodeAt(d++),h=255&a.charCodeAt(d++),i=255&a.charCodeAt(d++),j=g>>2,k=(3&g)<<4|h>>4;isNaN(h)?e=f=64:(e=(15&h)<<2|i>>6,f=isNaN(i)?64:63&i),c+=b.charAt(j)+b.charAt(k)+b.charAt(e)+b.charAt(f)}return c}};X.addInfoReader(/^image/,function(a,b){if(!a.__dimensions){var c=a.__dimensions=X.defer();X.readAsImage(a,function(a){var b=a.target;c.resolve("load"==a.type?!1:"error",{width:b.width,height:b.height}),b=null})}a.__dimensions.then(b)}),X.event.dnd=function(a,b,c){var d,e;c||(c=b,b=X.F),u?(S(a,"dragenter dragleave dragover",function(a){for(var c=k(a).types,f=c&&c.length,g=!1;f--;)if(~c[f].indexOf("File")){a[O](),e!==a.type&&(e=a.type,"dragleave"!=e&&b.call(a[N],!0,a),g=!0);break}g&&(clearTimeout(d),d=setTimeout(function(){b.call(a[N],"dragleave"!=e,a)},50))}),S(a,"drop",function(a){a[O](),e=0,b.call(a[N],!1,a),X.getDropFiles(a,function(b){c.call(a[N],b,a)})})):X.log("Drag'n'Drop -- not supported")},X.event.dnd.off=function(a,b,c){T(a,"dragenter dragleave dragover",b),T(a,"drop",c)},x&&!x.fn.dnd&&(x.fn.dnd=function(a,b){return this.each(function(){X.event.dnd(this,a,b)})},x.fn.offdnd=function(a,b){return this.each(function(){X.event.dnd.off(this,a,b)})}),a.FileAPI=R(X,a.FileAPI),X.log("FileAPI: "+X.version),X.log("protocol: "+a.location.protocol),X.log("doctype: ["+p.name+"] "+p.publicId+" "+p.systemId),Q(o.getElementsByTagName("meta"),function(a){/x-ua-compatible/i.test(a.getAttribute("http-equiv"))&&X.log("meta.http-equiv: "+a.getAttribute("content"))}),X.flashUrl||(X.flashUrl=X.staticPath+"FileAPI.flash.swf"),X.flashImageUrl||(X.flashImageUrl=X.staticPath+"FileAPI.flash.image.swf"),X.flashWebcamUrl||(X.flashWebcamUrl=X.staticPath+"FileAPI.flash.camera.swf")}(window,void 0),function(a,b,c){"use strict";function d(b){if(b instanceof d){var c=new d(b.file);return a.extend(c.matrix,b.matrix),c}return this instanceof d?(this.file=b,this.matrix={sx:0,sy:0,sw:0,sh:0,dx:0,dy:0,dw:0,dh:0,resize:0,deg:0,quality:1,filter:0},void 0):new d(b)}var e=Math.min,f=Math.round,g=function(){return b.createElement("canvas")},h=!1,i={8:270,3:180,6:90};try{h=g().toDataURL("image/png").indexOf("data:image/png")>-1}catch(j){}d.prototype={image:!0,constructor:d,set:function(b){return a.extend(this.matrix,b),this},crop:function(a,b,d,e){return d===c&&(d=a,e=b,a=b=0),this.set({sx:a,sy:b,sw:d,sh:e||d})},resize:function(a,b,c){return"string"==typeof b&&(c=b,b=a),this.set({dw:a,dh:b,resize:c})},preview:function(a,b){return this.resize(a,b||a,"preview")},rotate:function(a){return this.set({deg:a})},filter:function(a){return this.set({filter:a})},overlay:function(a){return this.set({overlay:a})},clone:function(){return new d(this)},_load:function(b,c){var d=this;/img|video/i.test(b.nodeName)?c.call(d,null,b):a.readAsImage(b,function(a){c.call(d,"load"!=a.type,a.result)})},_apply:function(b,c){var f,h=g(),i=this.getMatrix(b),j=h.getContext("2d"),k=b.videoWidth||b.width,l=b.videoHeight||b.height,m=i.deg,n=i.dw,o=i.dh,p=k,q=l,r=i.filter,s=b,t=i.overlay,u=a.queue(function(){c(!1,h)}),v=a.renderImageToCanvas;for(b._type=this.file.type;e(p/n,q/o)>2;)p=0|p/2+.5,q=0|q/2+.5,f=g(),f.width=p,f.height=q,s!==b?(v(f,s,0,0,s.width,s.height,0,0,p,q),s=f):(s=f,v(s,b,i.sx,i.sy,i.sw,i.sh,0,0,p,q),i.sx=i.sy=i.sw=i.sh=0);h.width=m%180?o:n,h.height=m%180?n:o,h.type=i.type,h.quality=i.quality,j.rotate(m*Math.PI/180),v(h,s,i.sx,i.sy,i.sw||s.width,i.sh||s.height,180==m||270==m?-n:0,90==m||180==m?-o:0,n,o),n=h.width,o=h.height,t&&a.each([].concat(t),function(b){u.inc();var c=new window.Image,d=function(){var e=0|b.x,f=0|b.y,g=b.w||c.width,h=b.h||c.height,i=b.rel;e=1==i||4==i||7==i?(n-g+e)/2:2==i||5==i||8==i?n-(g+e):e,f=3==i||4==i||5==i?(o-h+f)/2:i>=6?o-(h+f):f,a.event.off(c,"error load abort",d);try{j.globalAlpha=b.opacity||1,j.drawImage(c,e,f,g,h)}catch(k){}u.next()};a.event.on(c,"error load abort",d),c.src=b.src,c.complete&&d()}),r&&(u.inc(),d.applyFilter(h,r,u.next)),u.check()},getMatrix:function(b){var c=a.extend({},this.matrix),d=c.sw=c.sw||b.videoWidth||b.naturalWidth||b.width,g=c.sh=c.sh||b.videoHeight||b.naturalHeight||b.height,h=c.dw=c.dw||d,i=c.dh=c.dh||g,j=d/g,k=h/i,l=c.resize;if("preview"==l){if(h!=d||i!=g){var m,n;k>=j?(m=d,n=m/k):(n=g,m=n*k),(m!=d||n!=g)&&(c.sx=~~((d-m)/2),c.sy=~~((g-n)/2),d=m,g=n)}}else l&&(d>h||g>i?"min"==l?(h=f(k>j?e(d,h):i*j),i=f(k>j?h/j:e(g,i))):(h=f(j>=k?e(d,h):i*j),i=f(j>=k?h/j:e(g,i))):(h=d,i=g));return c.sw=d,c.sh=g,c.dw=h,c.dh=i,c},_trans:function(a){this._load(this.file,function(b,c){b?a(b):this._apply(c,a)})},get:function(b){if(a.support.transform){var c=this,d=c.matrix;"auto"==d.deg?a.getInfo(c.file,function(a,e){d.deg=i[e&&e.exif&&e.exif.Orientation]||0,c._trans(b)}):c._trans(b)}else b("not_support_transform")},toData:function(a){this.get(a)}},d.exifOrientation=i,d.transform=function(b,e,f,g){function h(h,i){var j={},k=a.queue(function(a){g(a,j)});h?k.fail():a.each(e,function(a,e){if(!k.isFail()){var g=new d(i.nodeType?i:b);if("function"==typeof a?a(i,g):a.width?g[a.preview?"preview":"resize"](a.width,a.height,a.type):a.maxWidth&&(i.width>a.maxWidth||i.height>a.maxHeight)&&g.resize(a.maxWidth,a.maxHeight,"max"),a.crop){var h=a.crop;g.crop(0|h.x,0|h.y,h.w||h.width,h.h||h.height)}a.rotate===c&&f&&(a.rotate="auto"),g.set({deg:a.rotate,type:a.type||b.type||"image/png",quality:a.quality||1,overlay:a.overlay,filter:a.filter}),k.inc(),g.toData(function(a,b){a?k.fail():(j[e]=b,k.next())})}})}b.width?h(!1,b):a.getInfo(b,h)},a.each(["TOP","CENTER","BOTTOM"],function(b,c){a.each(["LEFT","CENTER","RIGHT"],function(a,e){d[b+"_"+a]=3*c+e,d[a+"_"+b]=3*c+e})}),d.toCanvas=function(a){var c=b.createElement("canvas");return c.width=a.videoWidth||a.width,c.height=a.videoHeight||a.height,c.getContext("2d").drawImage(a,0,0),c},d.fromDataURL=function(b,c,d){var e=a.newImage(b);a.extend(e,c),d(e)},d.applyFilter=function(b,c,e){"function"==typeof c?c(b,e):window.Caman&&window.Caman("IMG"==b.tagName?d.toCanvas(b):b,function(){"string"==typeof c?this[c]():a.each(c,function(a,b){this[b](a)},this),this.render(e)})},a.renderImageToCanvas=function(a,b,c,d,e,f,g,h,i,j){return a.getContext("2d").drawImage(b,c,d,e,f,g,h,i,j),a},a.support.canvas=a.support.transform=h,a.Image=d}(FileAPI,document),function(a){"use strict";a(FileAPI)}(function(a){"use strict";if(window.navigator&&window.navigator.platform&&/iP(hone|od|ad)/.test(window.navigator.platform)){var b=a.renderImageToCanvas;a.detectSubsampling=function(a){var b,c;return a.width*a.height>1048576?(b=document.createElement("canvas"),b.width=b.height=1,c=b.getContext("2d"),c.drawImage(a,-a.width+1,0),0===c.getImageData(0,0,1,1).data[3]):!1},a.detectVerticalSquash=function(a,b){var c,d,e,f,g,h=a.naturalHeight||a.height,i=document.createElement("canvas"),j=i.getContext("2d");for(b&&(h/=2),i.width=1,i.height=h,j.drawImage(a,0,0),c=j.getImageData(0,0,1,h).data,d=0,e=h,f=h;f>d;)g=c[4*(f-1)+3],0===g?e=f:d=f,f=e+d>>1;return f/h||1},a.renderImageToCanvas=function(c,d,e,f,g,h,i,j,k,l){if("image/jpeg"===d._type){var m,n,o,p,q=c.getContext("2d"),r=document.createElement("canvas"),s=1024,t=r.getContext("2d");if(r.width=s,r.height=s,q.save(),m=a.detectSubsampling(d),m&&(e/=2,f/=2,g/=2,h/=2),n=a.detectVerticalSquash(d,m),m||1!==n){for(f*=n,k=Math.ceil(s*k/g),l=Math.ceil(s*l/h/n),j=0,p=0;h>p;){for(i=0,o=0;g>o;)t.clearRect(0,0,s,s),t.drawImage(d,e,f,g,h,-o,-p,g,h),q.drawImage(r,0,0,s,s,i,j,k,l),o+=s,i+=k;p+=s,j+=l}return q.restore(),c}}return b(c,d,e,f,g,h,i,j,k,l)}}}),function(a,b){"use strict";function c(b,c,d){var e=b.blob,f=b.file;if(f){if(!e.toDataURL)return a.readAsBinaryString(e,function(a){"load"==a.type&&c(b,a.result)}),void 0;var g={"image/jpeg":".jpe?g","image/png":".png"},h=g[b.type]?b.type:"image/png",i=g[h]||".png",j=e.quality||1;f.match(new RegExp(i+"$","i"))||(f+=i.replace("?","")),b.file=f,b.type=h,!d&&e.toBlob?e.toBlob(function(a){c(b,a)},h,j):c(b,a.toBinaryString(e.toDataURL(h,j)))}else c(b,e)}var d=b.document,e=b.FormData,f=function(){this.items=[]},g=b.encodeURIComponent;f.prototype={append:function(a,b,c,d){this.items.push({name:a,blob:b&&b.blob||(void 0==b?"":b),file:b&&(c||b.name),type:b&&(d||b.type)})},each:function(a){for(var b=0,c=this.items.length;c>b;b++)a.call(this,this.items[b])},toData:function(b,c){c._chunked=a.support.chunked&&c.chunkSize>0&&1==a.filter(this.items,function(a){return a.file}).length,a.support.html5?a.formData&&!this.multipart&&e?c._chunked?(a.log("FileAPI.Form.toPlainData"),this.toPlainData(b)):(a.log("FileAPI.Form.toFormData"),this.toFormData(b)):(a.log("FileAPI.Form.toMultipartData"),this.toMultipartData(b)):(a.log("FileAPI.Form.toHtmlData"),this.toHtmlData(b))},_to:function(b,c,d,e){var f=a.queue(function(){c(b)});this.each(function(a){d(a,b,f,e)}),f.check()},toHtmlData:function(b){this._to(d.createDocumentFragment(),b,function(b,c){var e,f=b.blob;b.file?(a.reset(f,!0),f.name=b.name,c.appendChild(f)):(e=d.createElement("input"),e.name=b.name,e.type="hidden",e.value=f,c.appendChild(e))})},toPlainData:function(a){this._to({},a,function(a,b,d){a.file&&(b.type=a.file),a.blob.toBlob?(d.inc(),c(a,function(a,c){b.name=a.name,b.file=c,b.size=c.length,b.type=a.type,d.next()})):a.file?(b.name=a.blob.name,b.file=a.blob,b.size=a.blob.size,b.type=a.type):(b.params||(b.params=[]),b.params.push(g(a.name)+"="+g(a.blob))),b.start=-1,b.end=b.file&&b.file.FileAPIReadPosition||-1,b.retry=0})},toFormData:function(a){this._to(new e,a,function(a,b,d){a.blob&&a.blob.toBlob?(d.inc(),c(a,function(a,c){b.append(a.name,c,a.file),d.next()})):a.file?b.append(a.name,a.blob,a.file):b.append(a.name,a.blob),a.file&&b.append("_"+a.name,a.file)})},toMultipartData:function(b){this._to([],b,function(a,b,d,e){d.inc(),c(a,function(a,c){b.push("--_"+e+('\r\nContent-Disposition: form-data; name="'+a.name+'"'+(a.file?'; filename="'+g(a.file)+'"':"")+(a.file?"\r\nContent-Type: "+(a.type||"application/octet-stream"):"")+"\r\n\r\n"+(a.file?c:g(c))+"\r\n")),d.next()},!0)},a.expando)}},a.Form=f}(FileAPI,window),function(a,b){"use strict";var c=function(){},d=a.document,e=function(a){this.uid=b.uid(),this.xhr={abort:c,getResponseHeader:c,getAllResponseHeaders:c},this.options=a},f={"":1,XML:1,Text:1,Body:1};e.prototype={status:0,statusText:"",constructor:e,getResponseHeader:function(a){return this.xhr.getResponseHeader(a)},getAllResponseHeaders:function(){return this.xhr.getAllResponseHeaders()||{}},end:function(d,e){var f=this,g=f.options;f.end=f.abort=c,f.status=d,e&&(f.statusText=e),b.log("xhr.end:",d,e),g.complete(200==d||201==d?!1:f.statusText||"unknown",f),f.xhr&&f.xhr.node&&setTimeout(function(){var b=f.xhr.node;try{b.parentNode.removeChild(b)}catch(c){}try{delete a[f.uid]}catch(c){}a[f.uid]=f.xhr.node=null},9)},abort:function(){this.end(0,"abort"),this.xhr&&(this.xhr.aborted=!0,this.xhr.abort())},send:function(a){var b=this,c=this.options;a.toData(function(a){c.upload(c,b),b._send.call(b,c,a)},c)},_send:function(c,e){var g,h=this,i=h.uid,j=c.url;if(b.log("XHR._send:",e),c.cache||(j+=(~j.indexOf("?")?"&":"?")+b.uid()),e.nodeName){c.upload(c,h),g=d.createElement("div"),g.innerHTML='<form target="'+i+'" action="'+j+'" method="POST" enctype="multipart/form-data" style="position: absolute; top: -1000px; overflow: hidden; width: 1px; height: 1px;"><iframe name="'+i+'" src="javascript:false;"></iframe><input value="'+i+'" name="callback" type="hidden"/></form>',h.xhr.abort=function(){var a=g.getElementsByTagName("iframe")[0];if(a)try{a.stop?a.stop():a.contentWindow.stop?a.contentWindow.stop():a.contentWindow.document.execCommand("Stop")}catch(b){}g=null};var k=g.getElementsByTagName("form")[0];k.appendChild(e),b.log(k.parentNode.innerHTML),d.body.appendChild(g),h.xhr.node=g,a[i]=function(a,b,c){h.readyState=4,h.responseText=c,h.end(a,b),g=null},h.readyState=2,k.submit(),k=null}else{if(this.xhr&&this.xhr.aborted)return b.log("Error: already aborted"),void 0;if(g=h.xhr=b.getXHR(),e.params&&(j+=(j.indexOf("?")<0?"?":"&")+e.params.join("&")),g.open("POST",j,!0),b.withCredentials&&(g.withCredentials="true"),c.headers&&c.headers["X-Requested-With"]||g.setRequestHeader("X-Requested-With","XMLHttpRequest"),b.each(c.headers,function(a,b){g.setRequestHeader(b,a)}),c._chunked){g.upload&&g.upload.addEventListener("progress",function(a){e.retry||c.progress({type:a.type,total:e.size,loaded:e.start+a.loaded,totalSize:e.size},h,c)},!1),g.onreadystatechange=function(){var a=parseInt(g.getResponseHeader("X-Last-Known-Byte"),10);if(h.status=g.status,h.statusText=g.statusText,h.readyState=g.readyState,4==g.readyState){for(var d in f)h["response"+d]=g["response"+d];if(g.onreadystatechange=null,!g.status||g.status-201>0)if(b.log("Error: "+g.status),(!g.status&&!g.aborted||500==g.status||416==g.status)&&++e.retry<=c.chunkUploadRetry){var i=g.status?0:b.chunkNetworkDownRetryTimeout;c.pause(e.file,c),b.log("X-Last-Known-Byte: "+a),e.end=a?a:e.start-1,setTimeout(function(){h._send(c,e)},i)}else h.end(g.status);else e.retry=0,e.end==e.size-1?h.end(g.status):(b.log("X-Last-Known-Byte: "+a),a&&(e.end=a),e.file.FileAPIReadPosition=e.end,setTimeout(function(){h._send(c,e)},0));g=null}},e.start=e.end+1,e.end=Math.max(Math.min(e.start+c.chunkSize,e.size)-1,e.start);var l;(l="slice")in e.file||(l="mozSlice")in e.file||(l="webkitSlice")in e.file,g.setRequestHeader("Content-Range","bytes "+e.start+"-"+e.end+"/"+e.size),g.setRequestHeader("Content-Disposition","attachment; filename="+encodeURIComponent(e.name)),g.setRequestHeader("Content-Type",e.type||"application/octet-stream"),l=e.file[l](e.start,e.end+1),g.send(l),l=null}else if(g.upload&&g.upload.addEventListener("progress",b.throttle(function(a){c.progress(a,h,c)},100),!1),g.onreadystatechange=function(){if(h.status=g.status,h.statusText=g.statusText,h.readyState=g.readyState,4==g.readyState){for(var a in f)h["response"+a]=g["response"+a];g.onreadystatechange=null,h.end(g.status),g=null}},b.isArray(e))if(g.setRequestHeader("Content-Type","multipart/form-data; boundary=_"+b.expando),e=e.join("")+"--_"+b.expando+"--",g.sendAsBinary)g.sendAsBinary(e);else{var m=Array.prototype.map.call(e,function(a){return 255&a.charCodeAt(0)});g.send(new Uint8Array(m).buffer)}else g.send(e)}}},b.XHR=e}(window,FileAPI),function(a,b){"use strict";function c(a){return a>=0?a+"px":a}function d(a){var b,c=f.createElement("canvas"),d=!1;try{b=c.getContext("2d"),b.drawImage(a,0,0,1,1),d=255!=b.getImageData(0,0,1,1).data[4]}catch(e){}return d}var e=a.URL||a.webkitURL,f=a.document,g=a.navigator,h=g.getUserMedia||g.webkitGetUserMedia||g.mozGetUserMedia||g.msGetUserMedia,i=!!h;b.support.media=i;var j=function(a){this.video=a};j.prototype={isActive:function(){return!!this._active},start:function(a){var b,c,f=this,i=f.video,j=function(d){f._active=!d,clearTimeout(c),clearTimeout(b),a&&a(d,f)};h.call(g,{video:!0},function(a){f.stream=a,i.src=e.createObjectURL(a),b=setInterval(function(){d(i)&&j(null)},1e3),c=setTimeout(function(){j("timeout")},5e3),i.play()},j)},stop:function(){try{this._active=!1,this.video.pause(),this.stream.stop()}catch(a){}},shot:function(){return new k(this.video)}},j.get=function(a){return new j(a.firstChild)},j.publish=function(d,e,g){"function"==typeof e&&(g=e,e={}),e=b.extend({},{width:"100%",height:"100%",start:!0},e),d.jquery&&(d=d[0]);var h=function(a){if(a)g(a);else{var b=j.get(d);e.start?b.start(g):g(null,b)}};if(d.style.width=c(e.width),d.style.height=c(e.height),b.html5&&i){var k=f.createElement("video");k.style.width=c(e.width),k.style.height=c(e.height),a.jQuery?jQuery(d).empty():d.innerHTML="",d.appendChild(k),h()}else j.fallback(d,e,h)},j.fallback=function(a,b,c){c("not_support_camera")};var k=function(a){var c=a.nodeName?b.Image.toCanvas(a):a,d=b.Image(c);return d.type="image/png",d.width=c.width,d.height=c.height,d.size=4*c.width*c.height,d};j.Shot=k,b.Camera=j}(window,FileAPI),function(a,b,c){"use strict";var d=a.document,e=a.location,f=a.navigator,g=c.each,h=[];c.support.flash=function(){var b=f.mimeTypes,d=!1;if(f.plugins&&"object"==typeof f.plugins["Shockwave Flash"])d=f.plugins["Shockwave Flash"].description&&!(b&&b["application/x-shockwave-flash"]&&!b["application/x-shockwave-flash"].enabledPlugin);else try{d=!(!a.ActiveXObject||!new ActiveXObject("ShockwaveFlash.ShockwaveFlash"))}catch(g){c.log("Flash -- does not supported.")}return d&&/^file:/i.test(e)&&c.log("[warn] Flash does not work on `file:` protocol."),d}(),c.support.flash&&(0||!c.html5||!c.support.html5||c.cors&&!c.support.cors||c.media&&!c.support.media)&&function(){function i(a){return('<object id="#id#" classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" width="'+(a.width||"100%")+'" height="'+(a.height||"100%")+'"><param name="movie" value="#src#" /><param name="flashvars" value="#flashvars#" /><param name="swliveconnect" value="true" /><param name="allowscriptaccess" value="always" /><param name="allownetworking" value="all" /><param name="menu" value="false" /><param name="wmode" value="#wmode#" /><embed flashvars="#flashvars#" swliveconnect="true" allownetworking="all" allowscriptaccess="always" name="#id#" src="#src#" width="'+(a.width||"100%")+'" height="'+(a.height||"100%")+'" menu="false" wmode="transparent" type="application/x-shockwave-flash"></embed></object>').replace(/#(\w+)#/gi,function(b,c){return a[c]})}function j(a,b){if(a&&a.style){var c,d;for(c in b){d=b[c],"number"==typeof d&&(d+="px");try{a.style[c]=d}catch(e){}}}}function k(a,b){g(b,function(b,c){var d=a[c];a[c]=function(){return this.parent=d,b.apply(this,arguments)}})}function l(a){return a&&!a.flashId}function m(a){var b=a.wid=c.uid();return w._fn[b]=a,"FileAPI.Flash._fn."+b}function n(a){try{w._fn[a.wid]=null,delete w._fn[a.wid]}catch(b){}}function o(a,b){if(!v.test(a)){if(/^\.\//.test(a)||"/"!=a.charAt(0)){var c=e.pathname;c=c.substr(0,c.lastIndexOf("/")),a=(c+"/"+a).replace("/./","/")}"//"!=a.substr(0,2)&&(a="//"+e.host+a),v.test(a)||(a=e.protocol+a)}return b&&(a+=(/\?/.test(a)?"&":"?")+b),a
+}function p(a,b,e){function f(){try{var a=w.get(h);a.setImage(b)}catch(d){c.log('[err] FlashAPI.Preview.setImage -- can not set "base64":',d)}}var g,h=c.uid(),k=d.createElement("div"),l=10;for(g in a)k.setAttribute(g,a[g]),k[g]=a[g];j(k,a),a.width="100%",a.height="100%",k.innerHTML=i(c.extend({id:h,src:o(c.flashImageUrl,"r="+c.uid()),wmode:"opaque",flashvars:"scale="+a.scale+"&callback="+m(function p(){return n(p),--l>0&&f(),!0})},a)),e(!1,k),k=null}function q(a){return{id:a.id,name:a.name,matrix:a.matrix,flashId:a.flashId}}function r(b){var c=b.getBoundingClientRect(),e=d.body,f=(b&&b.ownerDocument).documentElement;return{top:c.top+(a.pageYOffset||f.scrollTop)-(f.clientTop||e.clientTop||0),left:c.left+(a.pageXOffset||f.scrollLeft)-(f.clientLeft||e.clientLeft||0),width:c.right-c.left,height:c.bottom-c.top}}var s=c.uid(),t=0,u={},v=/^https?:/i,w={_fn:{},init:function(){var a=d.body&&d.body.firstChild;if(a)do if(1==a.nodeType){c.log("FlashAPI.state: awaiting");var b=d.createElement("div");return b.id="_"+s,j(b,{top:1,right:1,width:5,height:5,position:"absolute",zIndex:1e6+""}),a.parentNode.insertBefore(b,a),w.publish(b,s),void 0}while(a=a.nextSibling);10>t&&setTimeout(w.init,50*++t)},publish:function(a,b,d){d=d||{},a.innerHTML=i({id:b,src:o(c.flashUrl,"r="+c.version),wmode:d.camera?"":"transparent",flashvars:"callback="+(d.onEvent||"FileAPI.Flash.onEvent")+"&flashId="+b+"&storeKey="+f.userAgent.match(/\d/gi).join("")+"_"+c.version+(w.isReady||(c.pingUrl?"&ping="+c.pingUrl:""))+"&timeout="+c.flashAbortTimeout+(d.camera?"&useCamera="+o(c.flashWebcamUrl):"")},d)},ready:function(){c.log("FlashAPI.state: ready"),w.ready=c.F,w.isReady=!0,w.patch(),c.event.on(d,"mouseover",w.mouseover),c.event.on(d,"click",function(a){w.mouseover(a)&&(a.preventDefault?a.preventDefault():a.returnValue=!0)})},getEl:function(){return d.getElementById("_"+s)},getWrapper:function(a){do if(/js-fileapi-wrapper/.test(a.className))return a;while((a=a.parentNode)&&a!==d.body)},mouseover:function(a){var b=c.event.fix(a).target;if(/input/i.test(b.nodeName)&&"file"==b.type){var e=b.getAttribute(s),f=w.getWrapper(b);if(c.multiFlash){if("i"==e||"r"==e)return!1;if("p"!=e){b.setAttribute(s,"i");var g=d.createElement("div");if(!f)return c.log("[err] FlashAPI.mouseover: js-fileapi-wrapper not found"),void 0;j(g,{top:0,left:0,width:b.offsetWidth+100,height:b.offsetHeight+100,zIndex:1e6+"",position:"absolute"}),f.appendChild(g),w.publish(g,c.uid()),b.setAttribute(s,"p")}return!0}if(f){var h=r(f);j(w.getEl(),h),w.curInp=b}}else/object|embed/i.test(b.nodeName)||j(w.getEl(),{top:1,left:1,width:5,height:5})},onEvent:function(a){var b=a.type;if("ready"==b){try{w.getInput(a.flashId).setAttribute(s,"r")}catch(d){}return w.ready(),setTimeout(function(){w.mouseenter(a)},50),!0}"ping"===b?c.log("(flash -> js).ping:",[a.status,a.savedStatus],a.error):"log"===b?c.log("(flash -> js).log:",a.target):b in w&&setTimeout(function(){c.log("FlashAPI.event."+a.type+":",a),w[b](a)},1)},mouseenter:function(a){var b=w.getInput(a.flashId);if(b){w.cmd(a,"multiple",null!=b.getAttribute("multiple"));var d=[],e={};g((b.getAttribute("accept")||"").split(/,\s*/),function(a){c.accept[a]&&g(c.accept[a].split(" "),function(a){e[a]=1})}),g(e,function(a,b){d.push(b)}),w.cmd(a,"accept",d.length?d.join(",")+","+d.join(",").toUpperCase():"*")}},get:function(b){return d[b]||a[b]||d.embeds[b]},getInput:function(a){if(!c.multiFlash)return w.curInp;try{var b=w.getWrapper(w.get(a));if(b)return b.getElementsByTagName("input")[0]}catch(d){c.log('[err] Can not find "input" by flashId:',a,d)}},select:function(a){var e,f=w.getInput(a.flashId),h=c.uid(f),i=a.target.files;g(i,function(a){c.checkFileObj(a)}),u[h]=i,d.createEvent?(e=d.createEvent("Event"),e.files=i,e.initEvent("change",!0,!0),f.dispatchEvent(e)):b?b(f).trigger({type:"change",files:i}):(e=d.createEventObject(),e.files=i,f.fireEvent("onchange",e))},cmd:function(a,b,d,e){try{return c.log("(js -> flash)."+b+":",d),w.get(a.flashId||a).cmd(b,d)}catch(f){c.log("(js -> flash).onError:",f),e||setTimeout(function(){w.cmd(a,b,d,!0)},50)}},patch:function(){c.flashEngine=c.support.transform=!0,k(c,{getFiles:function(a,b,d){if(d)return c.filterFiles(c.getFiles(a),b,d),null;var e=c.isArray(a)?a:u[c.uid(a.target||a.srcElement||a)];return e?(b&&(b=c.getFilesFilter(b),e=c.filter(e,function(a){return b.test(a.name)})),e):this.parent.apply(this,arguments)},getInfo:function(a,b){if(l(a))this.parent.apply(this,arguments);else if(a.isShot)b(null,a.info={width:a.width,height:a.height});else{if(!a.__info){var d=a.__info=c.defer();w.cmd(a,"getFileInfo",{id:a.id,callback:m(function e(b,c){n(e),d.resolve(b,a.info=c)})})}a.__info.then(b)}}}),c.support.transform=!0,c.Image&&k(c.Image.prototype,{get:function(a,b){this.set({scaleMode:b||"noScale"}),this.parent(a)},_load:function(a,b){if(c.log("FlashAPI.Image._load:",a),l(a))this.parent.apply(this,arguments);else{var d=this;c.getInfo(a,function(c){b.call(d,c,a)})}},_apply:function(a,b){if(c.log("FlashAPI.Image._apply:",a),l(a))this.parent.apply(this,arguments);else{var d=this.getMatrix(a.info),e=b;w.cmd(a,"imageTransform",{id:a.id,matrix:d,callback:m(function f(g,h){c.log("FlashAPI.Image._apply.callback:",g),n(f),g?e(g):c.support.html5||c.support.dataURI&&!(h.length>3e4)?(d.filter&&(e=function(a,e){a?b(a):c.Image.applyFilter(e,d.filter,function(){b(a,this.canvas)})}),c.newImage("data:"+a.type+";base64,"+h,e)):p({width:d.deg%180?d.dh:d.dw,height:d.deg%180?d.dw:d.dh,scale:d.scaleMode},h,e)})})}},toData:function(a){var b=this.file,d=b.info,e=this.getMatrix(d);l(b)?this.parent.apply(this,arguments):("auto"==e.deg&&(e.deg=c.Image.exifOrientation[d&&d.exif&&d.exif.Orientation]||0),a.call(this,!b.info,{id:b.id,flashId:b.flashId,name:b.name,type:b.type,matrix:e}))}}),c.Image&&k(c.Image,{fromDataURL:function(a,b,d){!c.support.dataURI||a.length>3e4?p(c.extend({scale:"exactFit"},b),a.replace(/^data:[^,]+,/,""),function(a,b){d(b)}):this.parent(a,b,d)}}),c.Camera.fallback=function(a,b,d){var e=c.uid();c.log("FlashAPI.Camera.publish: "+e),w.publish(a,e,c.extend(b,{camera:!0,onEvent:m(function f(a){"camera"==a.type&&(n(f),a.error?(c.log("FlashAPI.Camera.publish.error: "+a.error),d(a.error)):(c.log("FlashAPI.Camera.publish.success: "+e),d(null)))})}))},g(h,function(a){c.Camera.fallback.apply(c.Camera,a)}),h=[],k(c.Camera.prototype,{_id:function(){return this.video.id},start:function(a){var b=this;w.cmd(this._id(),"camera.on",{callback:m(function d(e){n(d),e.error?(c.log("FlashAPI.camera.on.error: "+e.error),a(e.error,b)):(c.log("FlashAPI.camera.on.success: "+b._id()),b._active=!0,a(null,b))})})},stop:function(){this._active=!1,w.cmd(this._id(),"camera.off")},shot:function(){c.log("FlashAPI.Camera.shot:",this._id());var a=w.cmd(this._id(),"shot",{});return a.type="image/png",a.flashId=this._id(),a.isShot=!0,new c.Camera.Shot(a)}}),k(c.Form.prototype,{toData:function(a){for(var b=this.items,d=b.length;d--;)if(b[d].file&&l(b[d].blob))return this.parent.apply(this,arguments);c.log("FlashAPI.Form.toData"),a(b)}}),k(c.XHR.prototype,{_send:function(a,b){if(b.nodeName||b.append&&c.support.html5||c.isArray(b)&&"string"==typeof b[0])return this.parent.apply(this,arguments);var d,e,f={},h={},i=this;if(g(b,function(a){a.file?(h[a.name]=a=q(a.blob),e=a.id,d=a.flashId):f[a.name]=a.blob}),e||(d=s),!d)return c.log("[err] FlashAPI._send: flashId -- undefined"),this.parent.apply(this,arguments);c.log("FlashAPI.XHR._send: "+d+" -> "+e,h),i.xhr={headers:{},abort:function(){w.cmd(d,"abort",{id:e})},getResponseHeader:function(a){return this.headers[a]},getAllResponseHeaders:function(){return this.headers}};var j=c.queue(function(){w.cmd(d,"upload",{url:o(a.url),data:f,files:e?h:null,headers:a.headers||{},callback:m(function b(d){var e=d.type,f=d.result;c.log("FlashAPI.upload."+e+":",d),"progress"==e?(d.loaded=Math.min(d.loaded,d.total),d.lengthComputable=!0,a.progress(d)):"complete"==e?(n(b),"string"==typeof f&&(i.responseText=f.replace(/%22/g,'"').replace(/%5c/g,"\\").replace(/%26/g,"&").replace(/%25/g,"%")),i.end(d.status||200)):("abort"==e||"error"==e)&&(i.end(d.status||0,d.message),n(b))})})});g(h,function(a){j.inc(),c.getInfo(a,j.next)}),j.check()}})}};c.Camera.fallback=function(){h.push(arguments)},c.Flash=w,c.newImage("data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==",function(a,b){c.support.dataURI=!(1!=b.width||1!=b.height),w.init()})}()}(window,window.jQuery,FileAPI),"function"==typeof define&&define.amd&&define("FileAPI",[],function(){return FileAPI});
+/**
+ * jQuery plugin for FileAPI v2+
+ * @auhtor	RubaXa	<trash@rubaxa.org>
+ */
+
+/*jslint evil: true */
+/*global jQuery, FileAPI*/
+(function ($, api){
+	"use strict";
+
+	var
+		  noop = $.noop
+		, oldJQ = !$.fn.prop
+		, propFn = oldJQ ? 'attr' : 'prop'
+
+		, _dataAttr = 'data-fileapi'
+		, _dataFileId = 'data-fileapi-id'
+
+		, _slice	= [].slice
+		, _each		= api.each
+		, _extend	= api.extend
+
+		, _bind		= function (ctx, fn) {
+			var args = _slice.call(arguments, 2);
+			return	fn.bind ? fn.bind.apply(fn, [ctx].concat(args)) : function (){
+				return fn.apply(ctx, args.concat(_slice.call(arguments)));
+			};
+		}
+
+		, _optDataAttr = function (name){
+			return '['+_dataAttr+'="'+name+'"]';
+		}
+
+		, _isID = function (selector){
+			return	selector.indexOf('#') === 0;
+		}
+	;
+
+
+
+	var Plugin = function (el, options){
+		this.$el = el = $(el).on('change.fileapi', _bind(this, this._onSelect));
+		this.el  = el[0];
+
+		this._options = {}; // previous options
+		this.options  = { // current options
+			url: 0,
+			data: {}, // additional POST-data
+			accept: 0, // accept mime types, "*" — unlimited
+			multiple: false, // single or multiple mode upload mode
+			paramName: 0, // POST-parameter name
+			dataType: 'json',
+			duplicate: false, // ignore duplicate
+			chunkSize: 0, // or chunk size in bytes, eg: .5 * FileAPI.MB
+			chunkUploadRetry: 3, // number of retries during upload chunks (html5)
+
+			maxSize: 0, // max file size, 0 — unlimited
+			maxFiles: 0, // 0 unlimited
+			imageSize: 0, // { minWidth: 320, minHeight: 240, maxWidth: 3840, maxHeight: 2160 }
+
+			sortFn: 0,
+			filterFn: 0,
+			autoUpload: false,
+
+			clearOnSelect: void 0,
+			clearOnComplete: void 0,
+
+			lang: {
+				  B:	'bytes'
+				, KB:	'KB'
+				, MB:	'MB'
+				, GB:	'GB'
+				, TB:	'TB'
+			},
+			sizeFormat: '0.00',
+
+			imageTransform: 0,
+			imageAutoOrientation: !!FileAPI.support.exif,
+
+			elements: {
+				ctrl: {
+					upload: _optDataAttr('ctrl.upload'),
+					reset: _optDataAttr('ctrl.reset'),
+					abort: _optDataAttr('ctrl.abort')
+				},
+				empty: {
+					show: _optDataAttr('empty.show'),
+					hide: _optDataAttr('empty.hide')
+				},
+				emptyQueue: {
+					show: _optDataAttr('emptyQueue.show'),
+					hide: _optDataAttr('emptyQueue.hide')
+				},
+				active: {
+					show: _optDataAttr('active.show'),
+					hide: _optDataAttr('active.hide')
+				},
+				size: _optDataAttr('size'),
+				name: _optDataAttr('name'),
+				progress: _optDataAttr('progress'),
+				list: _optDataAttr('list'),
+				file: {
+					tpl: _optDataAttr('file.tpl'),
+					progress: _optDataAttr('file.progress'),
+					active: {
+						show: _optDataAttr('file.active.show'),
+						hide: _optDataAttr('file.active.hide')
+					},
+					preview: {
+						el: 0,
+						get: 0,
+						width: 0,
+						height: 0,
+						processing: 0
+					},
+					abort: _optDataAttr('file.abort'),
+					remove: _optDataAttr('file.remove'),
+					rotate: _optDataAttr('file.rotate')
+				},
+				dnd: {
+					el: _optDataAttr('dnd'),
+					hover: 'dnd_hover',
+					fallback: _optDataAttr('dnd.fallback')
+				}
+			},
+
+			onDrop: noop,
+			onDropHover: noop,
+
+			onSelect: noop,
+
+			onUpload: noop,
+			onProgress: noop,
+			onComplete: noop,
+
+			onFilePrepare: noop,
+			onFileUpload: noop,
+			onFileProgress: noop,
+			onFileComplete: noop,
+
+			onFileRemove: null,
+			onFileRemoveCompleted: null
+		};
+
+		$.extend(true, this.options, options); // deep extend
+		options = this.options;
+
+		this.option('elements.file.preview.rotate', options.imageAutoOrientation);
+
+		if( !options.url ){
+			var url = this.$el.attr('action') || this.$el.find('form').attr('action');
+			if( url ){
+				options.url = url;
+			} else {
+				this._throw('url — is not defined');
+			}
+		}
+
+
+		this.$files = this.$elem('list');
+		this.itemTplFn = $.fn.fileapi.tpl( $('<div/>').append( this.$elem('file.tpl')).html() );
+
+
+		_each(options, function (value, option){
+			this._setOption(option, value);
+		}, this);
+
+
+		this.$el
+			.on('reset.fileapi', _bind(this, this._onReset))
+			.on('submit.fileapi', _bind(this, this._onSubmit))
+			.on('upload.fileapi progress.fileapi complete.fileapi', _bind(this, this._onUploadEvent))
+			.on('fileupload.fileapi fileprogress.fileapi filecomplete.fileapi', _bind(this, this._onFileUploadEvent))
+			.on('click', '['+_dataAttr+']', _bind(this, this._onActionClick))
+		;
+
+
+		// Controls
+		var ctrl = options.elements.ctrl;
+		if( ctrl ){
+			this._listen('click', ctrl.reset, _bind(this, this._onReset));
+			this._listen('click', ctrl.upload, _bind(this, this._onSubmit));
+			this._listen('click', ctrl.abort, _bind(this, this._onAbort));
+		}
+
+		// Drag'n'Drop
+		var dnd = FileAPI.support.dnd;
+		this.$elem('dnd.el', true).toggle(dnd);
+		this.$elem('dnd.fallback').toggle(!dnd);
+
+		if( dnd ){
+			this.$elem('dnd.el', true).dnd(_bind(this, this._onDropHover), _bind(this, this._onDrop));
+		}
+
+
+		this.$progress = this.$elem('progress');
+
+		if( options.clearOnSelect === void 0 ){
+			options.clearOnSelect = !options.multiple;
+		}
+
+		this.clear();
+	};
+
+
+	Plugin.prototype = {
+		constructor: Plugin,
+
+		_throw: function (msg){
+			throw "jquery.fileapi: " + msg;
+		},
+
+		_getFiles: function (evt, fn){
+			var
+				  opts = this.options
+				, maxSize = opts.maxSize
+				, maxFiles = opts.maxFiles
+				, filterFn = opts.filterFn
+				, countFiles = this.files.length
+				, files = api.getFiles(evt)
+				, data = {
+					  all: files
+					, files: []
+					, other: []
+					, duplicate: opts.duplicate ? [] : this._extractDuplicateFiles(files)
+				}
+				, imageSize = opts.imageSize
+				, _this = this
+			;
+
+			if( imageSize || filterFn ){
+				api.filterFiles(files, function (file, info){
+					if( info && imageSize ){
+						_checkFileByCriteria(file, 'minWidth', imageSize.minWidth, info.width);
+						_checkFileByCriteria(file, 'minHeight', imageSize.minHeight, info.height);
+						_checkFileByCriteria(file, 'maxWidth', imageSize.maxWidth, info.width);
+						_checkFileByCriteria(file, 'maxHeight', imageSize.maxHeight, info.height);
+					}
+
+					_checkFileByCriteria(file, 'maxSize', maxSize, file.size);
+
+					return	!file.errors && (!filterFn || filterFn(file, info));
+				}, function (success, rejected){
+					_extractFilesOverLimit(maxFiles, countFiles, success, rejected);
+
+					data.other = rejected;
+					data.files = success;
+
+					fn.call(_this, data);
+				});
+			} else {
+				_each(files, function (file){
+					_checkFileByCriteria(file, 'maxSize', maxSize, file.size);
+					data[file.errors ? 'other' : 'files'].push(file);
+				});
+
+				_extractFilesOverLimit(maxFiles, countFiles, data.files, data.other);
+				fn.call(_this, data);
+			}
+		},
+
+		_extractDuplicateFiles: function (list/**Array*/){
+			var duplicates = [], i = list.length, files = this.files, j;
+
+			while( i-- ){
+				j = files.length;
+				while( j-- ){
+					if( this._fileCompare(list[i], files[j]) ){
+						duplicates.push( list.splice(i, 1) );
+						break;
+					}
+				}
+			}
+
+			return	duplicates;
+		},
+
+		_fileCompare: function (A/**File*/, B/**File*/){
+			return (A.size == B.size) && (A.name == B.name);
+		},
+
+		_getFormatedSize: function (size){
+			var opts = this.options, postfix = 'B';
+
+			if( size >= api.TB ){
+				size /= api[postfix = 'TB'];
+			}
+			else if( size >= api.GB ){
+				size /= api[postfix = 'GB'];
+			}
+			else if( size >= api.MB ){
+				size /= api[postfix = 'MB'];
+			}
+			else if( size >= api.KB ){
+				size /= api[postfix = 'KB'];
+			}
+
+			return	opts.sizeFormat.replace(/^\d+([^\d]+)(\d*)/, function (_, separator, fix){
+				size = size.toFixed(fix.length);
+				return	(size + '').replace('.', separator) +' '+ opts.lang[postfix];
+			});
+		},
+
+		_onSelect: function (evt){
+			if( this.options.clearOnSelect ){
+				this.queue = [];
+				this.files = [];
+			}
+
+			this._getFiles(evt, _bind(this, function (data){
+				if( data.all.length && this.emit('select', data) !== false ){
+					this.add(data.files);
+				}
+
+				// Reset input
+				FileAPI.reset(evt.target);
+			}));
+		},
+
+		_onActionClick: function (evt){
+			var
+				  el = evt.currentTarget
+				, act = $.attr(el, _dataAttr)
+				, uid = $(el).closest('['+_dataFileId+']', this.$el).attr(_dataFileId)
+				, file = this._getFile(uid)
+				, prevent = true
+			;
+
+			if( 'file.remove' == act ){
+				if( file && this.emit('fileRemove'+(file.complete ? 'Completed' : ''), file) ){
+					this.remove(uid);
+				}
+			}
+			else if( /^file\.rotate/.test(act)  ){
+				this.rotate(uid, (/ccw/.test(act) ? '-=90' : '+=90'));
+			}
+			else {
+				prevent = false;
+			}
+
+			if( prevent ){
+				evt.preventDefault();
+			}
+		},
+
+		_listen: function (name, selector, fn){
+			selector && _each($.trim(selector).split(','), function (selector){
+				selector = $.trim(selector);
+
+				if( _isID(selector) ){
+					$(selector).on(name+'.fileapi', fn);
+				} else {
+					this.$el.on(name+'.fileapi', selector, fn);
+				}
+			}, this);
+		},
+
+		_onSubmit: function (evt){
+			evt.preventDefault();
+			this.upload();
+		},
+
+		_onReset: function (evt){
+			evt.preventDefault();
+			this.clear();
+		},
+
+		_onAbort: function (evt){
+			evt.preventDefault();
+			this.abort();
+		},
+
+		_onDrop: function (files){
+			this._getFiles(files, function (data){
+				if( this.emit('drop', data) !== false ){
+					this.add(data.files);
+				}
+			});
+		},
+
+		_onDropHover: function (state, evt){
+			if( this.emit('dropHover', { state: state, event: evt }) !== false ){
+				var hover = this.option('elements.dnd.hover');
+				if( hover ){
+					$(evt.currentTarget).toggleClass(hover, state);
+				}
+			}
+		},
+
+		_getFile: function (uid){
+			return api.filter(this.files, function (file){ return api.uid(file) == uid; })[0];
+		},
+
+		_getUploadEvent: function (extra){
+			var xhr = this.xhr, evt = {
+				  xhr: xhr
+				, file: xhr.currentFile
+				, files: xhr.files
+				, widget: this
+			};
+			return	_extend(evt, extra);
+		},
+
+		_emitUploadEvent: function (prefix){
+			var evt = this._getUploadEvent();
+			this.emit(prefix+'Upload', evt);
+		},
+
+		_emitProgressEvent: function (prefix, event){
+			var evt = this._getUploadEvent(event);
+			this.emit(prefix+'Progress', evt);
+		},
+
+		_emitCompleteEvent: function (prefix, err, xhr, file){
+			var evt = this._getUploadEvent({
+				  error: err
+				, status: xhr.status
+				, statusText: xhr.statusText
+				, result: xhr.responseText
+			});
+
+			if( prefix == 'file' ){
+				file.complete = true;
+			}
+
+			if( !err && (this.options.dataType == 'json') ){
+				try {
+					evt.result = $.parseJSON(evt.result);
+				} catch (err){
+					evt.error = err;
+				}
+			}
+
+			this.emit(prefix+'Complete', evt);
+		},
+
+		_onUploadEvent: function (evt, ui){
+			var _this = this, $progress = _this.$progress, type = evt.type;
+
+			if( type == 'progress' ){
+				$progress.stop().animate({ width: ui.loaded/ui.total*100 + '%' }, 300);
+			}
+			else if( type == 'upload' ){
+				// Начало загрузки
+				$progress.width(0);
+			}
+			else {
+				// Завершение загрузки
+				var fn = function (){
+					$progress.dequeue();
+					_this[_this.options.clearOnComplete ? 'clear' : 'dequeue']();
+				};
+
+				this.xhr = null;
+				this.active = false;
+
+				if( $progress.length ){
+					$progress.queue(fn);
+				} else {
+					fn();
+				}
+			}
+		},
+
+		_onFileUploadPrepare: function (file, opts){
+			var
+				  uid	= api.uid(file)
+				, deg	= this._rotate[uid]
+				, crop	= this._crop[uid]
+				, resize = this._resize[uid]
+				, evt = this._getUploadEvent()
+			;
+
+			if( deg || crop ){
+				var trans = opts.imageTransform = opts.imageTransform || {};
+				deg = deg || (this.options.imageAutoOrientation ? 'auto' : void 0);
+
+				if( $.isEmptyObject(trans) || _isOriginTransform(trans) ){
+					_extend(trans, resize);
+
+					trans.crop		= crop;
+					trans.rotate	= deg;
+				}
+				else {
+					_each(trans, function (opts){
+						_extend(opts, resize);
+
+						opts.crop	= crop;
+						opts.rotate	= deg;
+					});
+				}
+			}
+
+			evt.file = file;
+			evt.options = opts;
+
+			this.emit('filePrepare', evt);
+		},
+
+		_onFileUploadEvent: function (evt, ui){
+			var
+				  _this = this
+				, type = evt.type.substr(4)
+				, uid = api.uid(ui.file)
+				, $file = this.$file(uid)
+				, $progress = this._$fileprogress
+				, opts = this.options
+			;
+
+			if( this.__fileId !== uid ){
+				this.__fileId = uid;
+				this._$fileprogress = $progress = this.$elem('file.progress', $file);
+			}
+
+			if( type == 'progress' ){
+				$progress.stop().animate({ width: ui.loaded/ui.total*100 + '%' }, 300);
+			}
+			else if( type == 'upload' || type == 'complete' ){
+				var fn = function (){
+					var
+						  elem = 'file.'+ type
+						, $remove = _this.$elem('file.remove', $file)
+					;
+
+					if( type == 'upload' ){
+						$remove.hide();
+						$progress.width(0);
+					} else if( opts.onRemoveCompleted ){
+						$remove.show();
+					}
+
+					$progress.dequeue();
+
+					_this.$elem(elem + '.show', $file).show();
+					_this.$elem(elem + '.hide', $file).hide();
+				};
+
+				if( $progress.length ){
+					$progress.queue(fn);
+				} else {
+					fn();
+				}
+
+				if( type == 'complete' ){
+					this.uploaded.push(ui.file);
+					delete this._rotate[uid];
+				}
+			}
+		},
+
+		_redraw: function (clear/**Boolean*/){
+			var
+				  files = this.files
+				, active = !!this.active
+				, empty = !files.length && !active
+				, emptyQueue = !this.queue.length && !active
+				, name = []
+				, size = 0
+				, $files = this.$files
+				, offset = $files.children().length
+				, preview = this.option('elements.file.preview')
+			;
+
+			if( clear ){
+				this.$files.empty();
+			}
+
+			_each(files, function (file, i){
+				var uid = api.uid(file);
+
+				name.push(file.name);
+				size += file.size;
+
+				if( $files.length && !this.$file(uid).length ){
+					var html = this.itemTplFn({
+						  $idx: offset + i
+						, uid:  uid
+						, name: file.name
+						, type: file.type
+						, size: file.size
+						, sizeText: this._getFormatedSize(file.size)
+					});
+
+					$files.append( $(html).attr(_dataFileId, uid) );
+
+					if( preview.el ){
+						this._makeFilePreview(uid, file, preview);
+					}
+				}
+			}, this);
+
+
+			this.$elem('name').text( name.join(', ') );
+			this.$elem('size').text( size ? this._getFormatedSize(size) : '' );
+
+
+			this.$elem('empty.show').toggle( empty );
+			this.$elem('empty.hide').toggle( !empty );
+
+
+			this.$elem('emptyQueue.show').toggle( emptyQueue );
+			this.$elem('emptyQueue.hide').toggle( !emptyQueue );
+
+
+			this.$elem('active.show').toggle( active );
+			this.$elem('active.hide').toggle( !active );
+
+
+			this.$('.js-fileapi-wrapper,:file')
+				[active ? 'attr' : 'removeAttr']('aria-disabled', active)
+				[propFn]('disabled', active)
+			;
+
+			// Upload control
+			this._disableElem('ctrl.upload', emptyQueue || active);
+
+			// Reset control
+			this._disableElem('ctrl.reset', emptyQueue || active);
+
+			// Abort control
+			this._disableElem('ctrl.abort', !active);
+		},
+
+		_disableElem: function (name, state){
+			this.$elem(name)
+				[state ? 'attr' : 'removeAttr']('aria-disabled', 'disabled')
+				[propFn]('disabled', state)
+			;
+		},
+
+		_makeFilePreview: function (uid, file, opts, global){
+			var
+				  _this = this
+				, $el = global ? _this.$(opts.el) : _this.$file(uid).find(opts.el)
+			;
+
+			if( !_this._crop[uid] ){
+				if( /^image/.test(file.type) ){
+					var
+						  image = api.Image(file)
+						, doneFn = function (){
+							image.get(function (err, img){
+								if( !_this._crop[uid] ){
+									if( err ){
+										opts.get && opts.get($el, file);
+										_this.emit('previewError', [err, file]);
+									} else {
+										$el.html(img);
+									}
+								}
+							});
+						}
+					;
+
+					if( opts.width ){
+						image.preview(opts.width, opts.height);
+					}
+
+					if( opts.rotate ){
+						image.rotate('auto');
+					}
+
+					if( opts.processing ){
+						opts.processing(file, image, doneFn);
+					} else {
+						doneFn();
+					}
+				}
+				else {
+					opts.get && opts.get($el, file);
+				}
+			}
+		},
+
+		emit: function (name, arg){
+			var opts = this.options, evt = $.Event(name.toLowerCase()), res;
+			evt.widget = this;
+			name = $.camelCase('on-'+name);
+			if( $.isFunction(opts[name]) ){
+				res = opts[name].call(this.el, evt, arg);
+			}
+			this.$el.triggerHandler(evt, arg);
+			return	(res !== false) && !evt.isDefaultPrevented();
+		},
+
+		/**
+		 * Add files to queue
+		 * @param  {Array}    files
+		 * @param  {Boolean}  [clear]
+		 */
+		add: function (files, clear){
+			files = [].concat(files);
+
+			if( files.length ){
+				var
+					  opts = this.options
+					, sortFn = opts.sortFn
+					, preview = opts.elements.preview
+				;
+
+				if( sortFn ){
+					files.sort(sortFn);
+				}
+
+				if( preview && preview.el ){
+					_each(files, function (file){
+						this._makeFilePreview(api.uid(file), file, preview, true);
+					}, this);
+				}
+
+				if( this.xhr ){
+					this.xhr.append(files);
+				}
+
+				this.queue = clear ? files : this.queue.concat(files);
+				this.files = clear ? files : this.files.concat(files);
+
+				if( this.active ){
+					this.xhr.append(files);
+					this._redraw(clear);
+				}
+				else {
+					this._redraw(clear);
+					if( this.options.autoUpload ){
+						this.upload();
+					}
+				}
+			}
+		},
+
+		/**
+		 * Find element
+		 * @param	{String}	sel
+		 * @param	{jQuery}	[ctx]
+		 * @return	{jQuery}
+		 */
+		$: function (sel, ctx){
+			if( typeof sel === 'string' ){
+				sel	= /^#/.test(sel) ? sel : (ctx ? $(ctx) : this.$el).find(sel);
+			}
+			return	$(sel);
+		},
+
+		/**
+		 * @param  {String}   name
+		 * @param  {Boolean|jQuery}  [up]
+		 * @param  {jQuery}   [ctx]
+		 * @return {jQuery}
+		 */
+		$elem: function (name, up, ctx){
+			if( up && up.jquery ){
+				ctx = up;
+				up = false;
+			}
+
+			var sel = this.option('elements.'+name);
+			if( sel === void 0 && up ){
+				sel = this.option('elements.'+name.substr(0, name.lastIndexOf('.')));
+			}
+
+			return	this.$($.type(sel) != 'string' && $.isEmptyObject(sel) ? [] : sel, ctx);
+		},
+
+		/**
+		 * @param  {String}  uid
+		 * @return {jQuery}
+		 */
+		$file: function (uid){
+			return	this.$('['+_dataFileId+'="'+uid+'"]');
+		},
+
+		/**
+		 * Get/set options
+		 * @param {String} name
+		 * @param {*} [value]
+		 * @return {*}
+		 */
+		option: function (name, value){
+			if( value !== void 0 && $.isPlainObject(value) ){
+				_each(value, function (val, key){
+					this.option(name+'.'+key, val);
+				}, this);
+
+				return	this;
+			}
+
+			var opts = this.options, val = opts[name], i = 0, len, part;
+
+			if( name.indexOf('.') != -1 ){
+				val  = opts;
+				name = name.split('.');
+				len  = name.length;
+
+				for( ; i < len; i++ ){
+					part = name[i];
+
+					if( (value !== void 0) && (len - i === 1) ){
+						val[part] = value;
+						break;
+					}
+					else if( !val[part] ){
+						val[part] = {};
+					}
+
+					val = val[part];
+				}
+			}
+			else if( value !== void 0 ){
+				opts[name] = value;
+			}
+
+			if( value !== void 0 ){
+				this._setOption(name, value, this._options[name]);
+				this._options[name] = value;
+			}
+
+			return	value !== void 0 ? value : val;
+		},
+
+		_setOption: function (name, nVal){
+			switch( name ){
+				case 'accept':
+				case 'multiple':
+				case 'paramName':
+						if( name == 'paramName' ){ name = 'name'; }
+						if( nVal ){
+							this.$(':file')[propFn](name, nVal);
+						}
+					break;
+			}
+		},
+
+		serialize: function (){
+			var obj = {}, val;
+
+			this.$el.find(':input').each(function(name, node){
+				if(
+					   (name = node.name) && !node.disabled
+					&& (node.checked || /select|textarea|input/i.test(node.nodeName) && !/checkbox|radio|file/i.test(node.type))
+				){
+					val	= $(node).val();
+					if( obj[name] !== void 0 ){
+						if( !obj[name].push ){
+							obj[name] = [obj[name]];
+						}
+
+						obj[name].push(val);
+					} else {
+						obj[name] = val;
+					}
+				}
+			});
+
+			return	obj;
+		},
+
+		upload: function (){
+			if( !this.active ){
+				this.active = true;
+
+				var
+					  $el = this.$el
+					, opts = this.options
+					, files = {}
+					, uploadOpts = {
+						  url:   opts.url
+						, data:  _extend({}, this.serialize(), opts.data)
+						, headers: opts.headers
+						, files: files
+						, chunkSize: opts.chunkSize|0
+						, chunkUploadRetry: opts.chunkUploadRetry|0
+						, prepare: _bind(this, this._onFileUploadPrepare)
+						, imageTransform: opts.imageTransform
+					}
+				;
+
+				// Set files
+				files[$el.find(':file').attr('name') || 'files[]'] = this.queue;
+
+				// Add event listeners
+				_each(['Upload', 'Progress', 'Complete'], function (name){
+					var lowerName = name.toLowerCase();
+					uploadOpts[lowerName] = _bind(this, this['_emit'+name+'Event'], '');
+					uploadOpts['file'+lowerName] = _bind(this, this['_emit'+name+'Event'], 'file');
+				}, this);
+
+				// Start uploading
+				this.xhr = api.upload(uploadOpts);
+				this._redraw();
+			}
+		},
+
+		abort: function (text){
+			if( this.active && this.xhr ){
+				this.xhr.abort(text);
+			}
+		},
+
+		crop: function (file, coords){
+			var
+				  uid = api.uid(file)
+				, opts = this.options
+				, preview = opts.multiple ? this.option('elements.file.preview') : opts.elements.preview
+				, $el = (opts.multiple ? this.$file(uid) : this.$el).find(preview && preview.el)
+			;
+
+			if( $el.length ){
+				api.getInfo(file, _bind(this, function (err, info){
+					if( err ){
+						this.emit('previewError', [err, file]);
+					} else {
+						if( !$el.find('div>div').length ){
+							$el.html(
+								$('<div><div></div></div>')
+									.css(preview)
+									.css('overflow', 'hidden')
+							);
+						}
+
+						if( this.__cropFile !== file ){
+							this.__cropFile = file;
+							api.Image(file).rotate(opts.imageAutoOrientation ? 'auto' : 0).get(function (err, img){
+								$el.find('>div>div').html($(img).width('100%').height('100%'));
+							}, 'exactFit');
+						}
+
+
+						var
+							  pw = preview.width, ph = preview.height
+							, mx = pw, my = ph
+							, rx = pw/coords.rw, ry = ph/coords.rh
+						;
+						
+						if( preview.keepAspectRatio ){
+							if (rx > 1 && ry > 1){ // image is smaller than preview (no scale)
+								rx = ry = 1;
+								my = coords.h;
+								mx = coords.w;
+
+							} else { // image is bigger than preview (scale)
+								if( rx < ry ){
+									ry = rx;
+									my = pw * coords.rh / coords.rw;
+								} else {
+									rx = ry;
+									mx = ph * coords.rw / coords.rh;
+								}
+							}
+						}
+
+						$el.find('>div>div').css({
+							  width:	Math.round(rx * info[coords.flip ? 'height' : 'width'])
+							, height:	Math.round(ry * info[coords.flip ? 'width' : 'height'])
+							, marginLeft:	-Math.round(rx * coords.rx)
+							, marginTop:	-Math.round(ry * coords.ry)
+						});
+
+						if( preview.keepAspectRatio ){ // create side gaps
+							$el.find('>div').css({
+								  width:	Math.round(mx)
+								, height:	Math.round(my)
+								, marginLeft:	mx < pw  ? Math.round((pw - mx) / 2)  : 0
+								, marginTop:	my < ph ? Math.round((ph - my) / 2) : 0
+							});
+						}
+					}
+				}));
+			}
+
+			this._crop[uid] = coords;
+		},
+
+		resize: function (file, width, height, type){
+			this._resize[api.uid(file)] = {
+				  type: type
+				, width: width
+				, height: height
+			};
+		},
+
+		rotate: function (file, deg){
+			var
+				  uid = typeof file == 'object' ? api.uid(file) : file
+				, opts = this.options
+				, preview = opts.multiple ? this.option('elements.file.preview') : opts.elements.preview
+				, $el = (opts.multiple ? this.$file(uid) : this.$el).find(preview && preview.el)
+				, _rotate = this._rotate
+			;
+
+			if( /([+-])=/.test(deg) ){
+				deg = _rotate[uid] = (_rotate[uid] || 0) + (RegExp.$1 == '+' ? 1 : -1) * deg.substr(2);
+			} else {
+				_rotate[uid] = deg;
+			}
+
+			$el.css({
+				  '-webkit-transform': 'rotate('+deg+'deg)'
+				, '-moz-transform': 'rotate('+deg+'deg)'
+				, 'transform': 'rotate('+deg+'deg)'
+			});
+		},
+
+		remove: function (file){
+			var uid = typeof file == 'object' ? api.uid(file) : file;
+
+			this.$file(uid).remove();
+			this.queue = api.filter(this.queue, function (file){ return api.uid(file) != uid; });
+			this.files = api.filter(this.files, function (file){ return api.uid(file) != uid; });
+			this._redraw();
+		},
+
+		clear: function (){
+			this._crop		= {};
+			this._resize	= {};
+			this._rotate	= {}; // rotate deg
+
+			this.queue		= [];
+			this.files		= []; // all files
+			this.uploaded	= []; // uploaded files
+
+			this.$files.empty();
+			this._redraw();
+		},
+
+		dequeue: function (){
+			this.queue = [];
+			this._redraw();
+		},
+
+		widget: function (){
+			return	this;
+		},
+
+		toString: function (){
+			return	'[jQuery.FileAPI object]';
+		},
+
+		destroy: function (){
+			this.$el
+				.off('.fileapi')
+				.removeData('fileapi')
+			;
+
+			_each(this.options.elements.ctrl, function (selector){
+				_isID(selector) && $(selector).off('click.fileapi');
+			});
+		}
+	};
+
+
+	function _isOriginTransform(trans){
+		var key;
+		for( key in trans ){
+			if( trans.hasOwnProperty(key) ){
+				if( !(trans[key] instanceof Object || key === 'overlay') ){
+					return	true;
+				}
+			}
+		}
+		return	false;
+	}
+
+
+	function _checkFileByCriteria(file, name, excepted, actual){
+		if( excepted ){
+			var val = excepted - actual, isMax = /max/.test(name);
+			if( (isMax && val < 0) || (!isMax && val > 0) ){
+				if( !file.errors ){
+					file.errors = {};
+				}
+				file.errors[name] = Math.abs(val);
+			}
+		}
+	}
+
+
+	function _extractFilesOverLimit(limit, countFiles, files, other){
+		if( limit ){
+			var delta = files.length - (limit - countFiles);
+			if( delta > 0 ){
+				_each(files.splice(0, delta), function (file, i){
+					_checkFileByCriteria(file, 'maxFiles', -1, i);
+					other.push(file);
+				});
+			}
+		}
+	}
+
+
+
+
+
+	/**
+	 * @export
+	 * @param	{Object}	options
+	 * @param	{String}	[value]
+	 */
+	$.fn.fileapi = function (options, value){
+		var plugin = this.data('fileapi');
+
+		if( plugin ){
+			if( options === 'widget' ){
+				return	plugin;
+			}
+
+			if( typeof options == 'string' ){
+				var fn = plugin[options], res;
+				if( $.isFunction(fn) ){
+					res = fn.apply(plugin, _slice.call(arguments, 1));
+				}
+				else if( fn === void 0 ){
+					res = plugin.option(options, value);
+				}
+				return	res === void 0 ? this : res;
+			}
+		} else if( options == null || typeof options == 'object' ){
+			this.data('fileapi', new Plugin(this, options));
+		}
+
+		return	this;
+	};
+
+
+	$.fn.fileapi.version = '0.3.2';
+	$.fn.fileapi.tpl = function (text){
+		var index = 0;
+		var source = "__b+='";
+
+		text.replace(/(?:&lt;|<)%([-=])?([\s\S]+?)%(?:&gt;|>)|$/g, function (match, mode, expr, offset){
+			source += text.slice(index, offset).replace(/[\r\n"']/g, function (match){ return '\\'+match; });
+
+			if( expr ){
+				if( mode ){
+					source	+= "'+\n((__x=("+ expr +"))==null?'':" + (mode == "-" ? "__esc(__x)" : "__x")+")\n+'";
+				} else {
+					source	+= "';\n"+ expr +"\n__b+='";
+				}
+			}
+
+			index = offset + match.length;
+			return match;
+		});
+
+		return new Function("ctx", "var __x,__b=''," +
+			"__esc=function(val){return typeof val=='string'?val.replace(/</g,'&lt;').replace(/\"/g,'&quot;'):val;};" +
+			"with(ctx||{}){\n"+ source +"';\n}return __b;");
+	};
+
+
+	/**
+	 * FileAPI.Camera wrapper
+	 * @param  {Object|String}  options
+	 * @returns {jQuery}
+	 */
+	$.fn.webcam = function (options){
+		var el = this, ret = el, $el = $(el), key = 'fileapi-camera', inst = $el.data(key);
+
+		if( inst === true ){
+			api.log("[webcam.warn] not ready.");
+			ret = null;
+		}
+		else if( options === 'widget' ){
+			ret	= inst;
+		}
+		else if( options === 'destroy' ){
+			inst.stop();
+			$el.empty();
+		}
+		else if( inst ){
+			ret	= inst[options]();
+		}
+		else if( inst === false ){
+			api.log("[webcam.error] вoes not work.");
+			ret = null;
+		}
+		else {
+			$el.data(key, true);
+			options = _extend({ success: noop, error: noop }, options);
+
+			FileAPI.Camera.publish($el, options, function (err, cam){
+				$el.data(key, err ? false : cam);
+				options[err ? 'error' : 'success'].call(el, err || cam);
+			});
+		}
+
+		return	ret;
+	};
+
+
+	/**
+	 * Wrapper for JCrop
+	 */
+	$.fn.cropper = function (opts){
+		var $el = this, file = opts.file;
+
+		if( typeof opts === 'string' ){
+			$el.first().Jcrop.apply($el, arguments);
+		}
+		else {
+			var
+				minSize = opts.minSize || [0, 0],
+				ratio = (opts.aspectRatio || minSize[0]/minSize[1])
+			;
+
+			if( $.isArray(opts.minSize) && opts.aspectRatio === void 0 && ratio > 0 ){
+				opts.aspectRatio = ratio;
+			}
+
+			api.getInfo(file, function (err, info){
+				var Image = api.Image(file), maxSize = opts.maxSize;
+
+				if( maxSize ){
+					Image.resize(
+						  Math.max(maxSize[0], minSize[0])
+						, Math.max(maxSize[1], minSize[1])
+						, 'max'
+					);
+				}
+
+				Image.rotate('auto').get(function (err, img){
+					var
+						  selection = opts.selection
+						, minSide = Math.min(img.width, img.height)
+
+						, selWidth = minSide
+						, selHeight = minSide / ratio
+
+						, deg = FileAPI.Image.exifOrientation[info.exif && info.exif.Orientation] || 0
+					;
+
+					if( selection ){
+						if( /%/.test(selection) || (selection > 0 && selection < 1) ){
+							selection	 = parseFloat(selection, 10) / (selection > 0 ? 1 : 100);
+							selWidth	*= selection;
+							selHeight	*= selection;
+						}
+
+						var
+							  selLeft = (img.width - selWidth)/2
+							, selTop = (img.height - selHeight)/2
+						;
+
+						opts.setSelect = [selLeft|0, selTop|0, (selLeft + selWidth)|0, (selTop + selHeight)|0];
+					}
+
+					_each(['onSelect', 'onChange'], function (name, fn){
+						if( fn = opts[name] ){
+							opts[name] = function (coords){
+								var
+									  flip = deg % 180
+									, ow = info.width
+									, oh = info.height
+									, fx = coords.x/img.width
+									, fy = coords.y/img.height
+									, fw = coords.w/img.width
+									, fh = coords.h/img.height
+									, x = ow * (flip ?  fy : fx)
+									, y = oh * (flip ? 1 - (coords.x + coords.w)/img.width : fy)
+									, w = ow * (flip ? fh : fw)
+									, h = oh * (flip ? fw : fh)
+								;
+
+
+								fn({
+									  x: x
+									, y: y
+									, w: w
+									, h: h
+									, rx: fx * (flip ? oh : ow)
+									, ry: fy * (flip ? ow : oh)
+									, rw: fw * (flip ? oh : ow)
+									, rh: fh * (flip ? ow : oh)
+									, lx: coords.x // local coords
+									, ly: coords.y
+									, lw: coords.w
+									, lh: coords.h
+									, deg: deg
+									, flip: flip
+								});
+							};
+						}
+					});
+
+					var $inner = $('<div/>').css('lineHeight', 0).append( $(img).css('margin', 0) );
+					$el.html($inner);
+					$inner.Jcrop(opts).trigger('resize');
+				});
+			});
+		}
+
+		return	$el;
+	};
+})(jQuery, FileAPI);
+
 /*
 Copyright 2012 Igor Vaynberg
 
@@ -22382,6 +23679,43 @@ $('.wkm-list').each(function() {
 		adaptContainerCssClass : replaceClasses,
 		maximumSelectionSize   : maxSize,
 	});
+});
+$('.wkm-file-wrapper').each(function() {
+	var $file     = $(this).find('input');
+	var endpoint  = $file.data('url') || window.location.href;
+	var thumbnail = $file.data('data-thumbnail');
+	var width     = $file.data('data-thumbnailwidth');
+	var height    = $file.data('data-thumbnailheight');
+	var multiple  = $file.data('multiple') || false;
+
+	var options = {
+		url        : endpoint,
+		multiple   : multiple,
+		maxSize    : 20 * FileAPI.MB,
+		autoUpload : true,
+		elements   : {
+			size: '.js-size',
+			active: { show: '.js-upload', hide: '.js-browse' },
+			progress: '.js-progress'
+		}
+	};
+
+	if (thumbnail) {
+		options.imageSize = {
+			minWidth  : width,
+			minHeight : height,
+		};
+
+		options.elements.preview = {
+			el: '.js-preview',
+			width: width,
+			height: height
+		};
+	}
+
+	console.log(options);
+
+	$(this).fileapi(options);
 });
 //////////////////////////////////////////////////////////////////////
 ////////////////////////////////// FORM //////////////////////////////
