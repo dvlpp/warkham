@@ -17,12 +17,12 @@ class ItemTest extends WarkhamTestCase
 				'<label for="items">Items</label>'.
 				'<ul class="list-group">'.
 					'<li class="list-group-item">'.
-						'<label for="items[new][dummy]">Items[new][dummy]</label>'.
-						'<input class="wkm-text form-control" id="items[new][dummy]" type="text" name="items[new][dummy]">'.
+						'<label for="items[0][dummy]">Items[0][dummy]</label>'.
+						'<input class="wkm-text form-control" id="items[0][dummy]" type="text" name="items[0][dummy]">'.
 					'</li>'.
 					'<li class="list-group-item">'.
-						'<label for="items[new][number]">Items[new][number]</label>'.
-						'<input class="form-control" id="items[new][number]" type="number" name="items[new][number]">'.
+						'<label for="items[0][number]">Items[0][number]</label>'.
+						'<input class="form-control" id="items[0][number]" type="number" name="items[0][number]">'.
 					'</li>'.
 				'</ul>'.
 			'</div>';
@@ -46,32 +46,18 @@ class ItemTest extends WarkhamTestCase
 				'<label for="items">Items</label>'.
 				'<ul class="list-group">'.
 					'<li class="list-group-item">'.
-						'<label for="items[0][dummy]">Items[0][dummy]</label>'.
-						'<input class="wkm-text form-control" id="items[0][dummy]" type="text" name="items[0][dummy]" value="foo">'.
+						'<label for="items[1][dummy]">Items[1][dummy]</label><input class="wkm-text form-control" id="items[1][dummy]" type="text" name="items[1][dummy]" value="bar">'.
 					'</li>'.
 					'<li class="list-group-item">'.
-						'<label for="items[0][number]">Items[0][number]</label>'.
-						'<input class="form-control" id="items[0][number]" type="number" name="items[0][number]" value="1">'.
+						'<label for="items[1][number]">Items[1][number]</label><input class="form-control" id="items[1][number]" type="number" name="items[1][number]" value="2">'.
 					'</li>'.
 				'</ul>'.
 				'<ul class="list-group">'.
 					'<li class="list-group-item">'.
-						'<label for="items[1][dummy]">Items[1][dummy]</label>'.
-						'<input class="wkm-text form-control" id="items[1][dummy]" type="text" name="items[1][dummy]" value="bar">'.
+						'<label for="items[0][dummy]">Items[0][dummy]</label><input class="wkm-text form-control" id="items[0][dummy]" type="text" name="items[0][dummy]" value="foo">'.
 					'</li>'.
 					'<li class="list-group-item">'.
-						'<label for="items[1][number]">Items[1][number]</label>'.
-						'<input class="form-control" id="items[1][number]" type="number" name="items[1][number]" value="2">'.
-					'</li>'.
-				'</ul>'.
-				'<ul class="list-group">'.
-					'<li class="list-group-item">'.
-						'<label for="items[new][dummy]">Items[new][dummy]</label>'.
-						'<input class="wkm-text form-control" id="items[new][dummy]" type="text" name="items[new][dummy]">'.
-					'</li>'.
-					'<li class="list-group-item">'.
-						'<label for="items[new][number]">Items[new][number]</label>'.
-						'<input class="form-control" id="items[new][number]" type="number" name="items[new][number]">'.
+						'<label for="items[0][number]">Items[0][number]</label><input class="form-control" id="items[0][number]" type="number" name="items[0][number]" value="1">'.
 					'</li>'.
 				'</ul>'.
 			'</div>';
@@ -100,16 +86,6 @@ class ItemTest extends WarkhamTestCase
 					'<li class="list-group-item">'.
 						'<label for="items[0][number]">Items[0][number]</label>'.
 						'<input class="form-control" id="items[0][number]" type="number" name="items[0][number]" value="23">'.
-					'</li>'.
-				'</ul>'.
-				'<ul class="list-group">'.
-					'<li class="list-group-item">'.
-						'<label for="items[new][dummy]">Items[new][dummy]</label>'.
-						'<input class="wkm-text form-control" id="items[new][dummy]" type="text" name="items[new][dummy]">'.
-					'</li>'.
-					'<li class="list-group-item">'.
-						'<label for="items[new][number]">Items[new][number]</label>'.
-						'<input class="form-control" id="items[new][number]" type="number" name="items[new][number]">'.
 					'</li>'.
 				'</ul>'.
 			'</div>';
@@ -157,14 +133,15 @@ class ItemTest extends WarkhamTestCase
 		$matcher =
 			'<ul class="list-group wkm-template">'.
 				'<li class="list-group-item">'.
-					'<label for="items[new][dummy]-2">Items[new][dummy]-2</label>'.
-					'<input class="wkm-text form-control" id="items[new][dummy]-2" type="text" name="items[new][dummy]">'.
+					'<label for="items[new][dummy]">Items[new][dummy]</label>'.
+					'<input class="wkm-text form-control" id="items[new][dummy]" type="text" name="items[new][dummy]">'.
 				'</li>'.
 				'<li class="list-group-item">'.
-					'<label for="items[new][number]-2">Items[new][number]-2</label>'.
-					'<input class="form-control" id="items[new][number]-2" type="number" name="items[new][number]">'.
+					'<label for="items[new][number]">Items[new][number]</label>'.
+					'<input class="form-control" id="items[new][number]" type="number" name="items[new][number]">'.
 				'</li>'.
 			'</ul>';
+
 		$this->assertContains($matcher, $items->render());
 	}
 
@@ -187,12 +164,10 @@ class ItemTest extends WarkhamTestCase
 		$matcher =
 			'<ul class="list-group wkm-template">'.
 				'<li class="list-group-item">'.
-					'<label for="items[new][dummy]-2">Items[new][dummy]-2</label>'.
-					'<input class="wkm-text form-control" id="items[new][dummy]-2" type="text" name="items[new][dummy]">'.
+					'<label for="items[new][dummy]">Items[new][dummy]</label>'.
+					'<input class="wkm-text form-control" id="items[new][dummy]" type="text" name="items[new][dummy]">'.
 				'</li>'.
-				'<li class="list-group-item">'.
-					'<button class="btn-NOPE" data-action="remove-item">NOPE</button>'.
-				'</li>'.
+				'<li class="list-group-item"><button class="btn-NOPE" data-action="remove-item">NOPE</button></li>'.
 			'</ul>';
 
 		$this->assertContains($matcher, $items->render());
