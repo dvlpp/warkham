@@ -3,7 +3,7 @@ namespace Warkham\Traits;
 
 use Warkham\WarkhamTestCase;
 
-class AbstractFieldTest extends WarkhamTestCase
+class WarkhamFieldTest extends WarkhamTestCase
 {
 	public function testCanSetValueWithUnifiedMethod()
 	{

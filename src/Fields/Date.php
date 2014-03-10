@@ -2,7 +2,6 @@
 namespace Warkham\Fields;
 
 use Warkham\Abstracts\AbstractGroupField;
-use Illuminate\Container\Container;
 
 /**
  * A date field

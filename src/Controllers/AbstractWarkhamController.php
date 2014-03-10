@@ -1,7 +1,6 @@
 <?php
 namespace Warkham\Controllers;
 
-use App;
 use Illuminate\Routing\Controller;
 use Input;
 use Intervention\Image\Image;
