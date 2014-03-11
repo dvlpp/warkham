@@ -79,11 +79,16 @@ abstract class AbstractGroupField extends Tag
 	 * Create a label element from a string
 	 *
 	 * @param string $label
+	 * @param string $field
 	 *
 	 * @return Element
 	 */
 	protected function createLabel($label, $field = null)
 	{
+		if ($label instanceof Element) {
+			$label = $label->getValue();
+		}
+
 		$label = Helpers::translate($label);
 		$label = Element::create('label', $label)->for($field ?: strtolower($label));
 		$label->addClass($this->app['former.framework']->getLabelClasses());

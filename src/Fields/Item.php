@@ -97,12 +97,13 @@ class Item extends AbstractGroupField
 			$field = clone $field;
 
 			// Append item identifier to field name
-			$name = $field->getName();
+			$name  = $field->getName();
+			$label = $field->getLabel();
 			$field->name($this->getFieldName($name, $identifier));
 
 			// Create LI element
 			$li = $this->createLi(array(
-				'label' => $this->createLabel($field->getCreatedId())->class(''),
+				'label' => $this->createLabel($label, $field->getCreatedId())->class(''),
 				'field' => clone $field,
 			));
 
@@ -213,7 +214,9 @@ class Item extends AbstractGroupField
 		// Set the value of each child individually
 		foreach ($this->values as $key => $item) {
 			foreach ($item as $field => $value) {
-				$this->getItem($key)->getChild($this->getFieldName($field, $key))->getChild('field')->setValue($value);
+				if ($child = $this->getItem($key)->getChild($this->getFieldName($field, $key))) {
+					$child->getChild('field')->setValue($value);
+				}
 			}
 		}
 
