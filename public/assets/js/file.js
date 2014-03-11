@@ -31,7 +31,5 @@ $('.wkm-file-wrapper').each(function() {
 		};
 	}
 
-	console.log(options);
-
 	$(this).fileapi(options);
 });
