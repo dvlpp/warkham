@@ -1,3 +1,7 @@
+$('.wkm-file-wrapper .btn-txt').click(function() {
+	$(this).siblings('input[type="file"]').click();
+});
+
 $('.wkm-file-wrapper').each(function() {
 	var $file     = $(this).find('input');
 	var endpoint  = $file.data('url') || window.location.href;

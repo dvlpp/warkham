@@ -4,12 +4,7 @@
 //////////////////////////////////////////////////////////////////////
 
 .js-browse input[type="file"] {
-	bottom: 10px;
-	z-index: 2;
-	position: absolute;
-	cursor: pointer;
-	opacity: 0;
-	font-size: 3rem;
+	display: none;
 }
 
 .wkm-file-wrapper--preview {
