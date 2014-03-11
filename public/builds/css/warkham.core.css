@@ -626,12 +626,7 @@ disabled look for disabled choices in the results dropdown
  * Generates a vertical gradient
  */
 .js-browse input[type="file"] {
-  bottom: 10px;
-  z-index: 2;
-  position: absolute;
-  cursor: pointer;
-  opacity: 0;
-  font-size: 3rem; }
+  display: none; }
 
 .wkm-file-wrapper--preview {
   width: 15rem;
