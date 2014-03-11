@@ -9674,7 +9674,7 @@ var docElement            = doc.documentElement,
 })( this, document );
 
 /*!
- * Modernizr v2.7.1
+ * Modernizr v2.7.2
  * www.modernizr.com
  *
  * Copyright (c) Faruk Ates, Paul Irish, Alex Sexton
@@ -9699,7 +9699,7 @@ var docElement            = doc.documentElement,
 
 window.Modernizr = (function( window, document, undefined ) {
 
-    var version = '2.7.1',
+    var version = '2.7.2',
 
     Modernizr = {},
 
@@ -10280,7 +10280,7 @@ window.Modernizr = (function( window, document, undefined ) {
 
     // Note, Android < 4 will pass this test, but can only animate
     //   a single property at a time
-    //   daneden.me/2011/12/putting-up-with-androids-bullshit/
+    //   goo.gl/v3V4Gp
     tests['cssanimations'] = function() {
         return testPropsAll('animationName');
     };
@@ -11081,7 +11081,7 @@ window.Modernizr = (function( window, document, undefined ) {
 })(this, this.document);
 
 /* ===================================================
- * bootstrap-markdown.js v2.2.1
+ * bootstrap-markdown.js v2.3.1
  * http://github.com/toopay/bootstrap-markdown
  * ===================================================
  * Copyright 2013 Taufan Aditya

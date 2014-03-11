@@ -27,7 +27,7 @@ module.exports = {
 		undef         : true,
 		unused        : true,
 
-		predef: ['Modernizr', 'Bloodhound', 'Handlebars', 'yepnope'],
+		predef: ['Modernizr', 'Bloodhound', 'Handlebars', 'yepnope', 'FileAPI'],
 		globals: {
 			replaceClasses: true,
 		}
