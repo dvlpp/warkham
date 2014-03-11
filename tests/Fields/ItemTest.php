@@ -15,16 +15,6 @@ class ItemTest extends WarkhamTestCase
 		$matcher =
 			'<div class="wkm-items">'.
 				'<label for="items">Items</label>'.
-				'<ul class="list-group">'.
-					'<li class="list-group-item">'.
-						'<label for="items[0][dummy]">Items[0][dummy]</label>'.
-						'<input class="wkm-text form-control" id="items[0][dummy]" type="text" name="items[0][dummy]">'.
-					'</li>'.
-					'<li class="list-group-item">'.
-						'<label for="items[0][number]">Items[0][number]</label>'.
-						'<input class="form-control" id="items[0][number]" type="number" name="items[0][number]">'.
-					'</li>'.
-				'</ul>'.
 			'</div>';
 
 		$this->assertHtml($matcher, $items->render());

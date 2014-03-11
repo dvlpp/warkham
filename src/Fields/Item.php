@@ -146,9 +146,6 @@ class Item extends AbstractGroupField
 		$this->app['former']->labels = array();
 		$this->app['former']->ids    = array();
 
-		// Create list and nest it
-		$this->getItem(0, true);
-
 		// Set values
 		$this->setValues();
 
