@@ -44,6 +44,22 @@ class Date extends AbstractGroupField
 		return $this;
 	}
 
+	/**
+	 * Whether to output a time field or not
+	 *
+	 * @param boolean $with
+	 *
+	 * @return self
+	 */
+	public function withTime($with = true)
+	{
+		if (!$with) {
+			unset($this->children['time']);
+		}
+
+		return $this;
+	}
+
 	////////////////////////////////////////////////////////////////////
 	//////////////////////////////// BOUNDS ////////////////////////////
 	////////////////////////////////////////////////////////////////////

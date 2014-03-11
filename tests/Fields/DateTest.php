@@ -64,4 +64,11 @@ class DateTest extends WarkhamTestCase
 			'step'  => '60',
 		));
 	}
+
+	public function testCanRemoveTimeField()
+	{
+		$field = $this->warkham->date('dummy')->withTime(false);
+
+		$this->assertNotContains('dummy[time]', $field->render());
+	}
 }
