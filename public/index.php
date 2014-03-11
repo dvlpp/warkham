@@ -64,7 +64,7 @@ switch ($request) {
 			<h1>Warkham</h1>
 		</header>
 
-		<?= Warkham::open() ?>
+		<?= Warkham::openForFiles() ?>
 			<?= Warkham::text('text') ?>
 			<?= Warkham::checkbox('checkbox') ?>
 			<?= Warkham::file('file', 'Classic') ?>
